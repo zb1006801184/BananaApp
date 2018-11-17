@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		0B735345A2DF44C2D2BC8870 /* libPods-Banana.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD31385AC2BA4DDCB8EDB5A2 /* libPods-Banana.a */; };
+		2A068160219FED8300ACE26B /* NetWorkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A06815F219FED8300ACE26B /* NetWorkTool.m */; };
+		2A068165219FEF2900ACE26B /* BSomeWays.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A068164219FEF2900ACE26B /* BSomeWays.m */; };
+		2A06816A219FF05300ACE26B /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A068169219FF05300ACE26B /* UIView+Layout.m */; };
+		2A068170219FF12600ACE26B /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A06816F219FF12600ACE26B /* HomeViewController.m */; };
+		2A068174219FF19100ACE26B /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A068173219FF19100ACE26B /* TabBarViewController.m */; };
+		2A06817D219FF64400ACE26B /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A06817B219FF64400ACE26B /* MineViewController.m */; };
+		2A06817E219FF64400ACE26B /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A06817C219FF64400ACE26B /* MineViewController.xib */; };
+		2A068182219FF65900ACE26B /* AllProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A068180219FF65900ACE26B /* AllProductViewController.m */; };
+		2A068183219FF65900ACE26B /* AllProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A068181219FF65900ACE26B /* AllProductViewController.xib */; };
+		2A068189219FF99200ACE26B /* UIColor+RGBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A068188219FF99200ACE26B /* UIColor+RGBHelper.m */; };
 		2A928AFF219FE6EE0078AB7B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A928AFE219FE6EE0078AB7B /* AppDelegate.m */; };
 		2A928B02219FE6EE0078AB7B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A928B01219FE6EE0078AB7B /* ViewController.m */; };
 		2A928B05219FE6EE0078AB7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A928B03219FE6EE0078AB7B /* Main.storyboard */; };
@@ -37,6 +47,26 @@
 
 /* Begin PBXFileReference section */
 		1BE855A206E8D107BE45AD53 /* Pods-Banana.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Banana.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Banana/Pods-Banana.debug.xcconfig"; sourceTree = "<group>"; };
+		2A06815E219FED8300ACE26B /* NetWorkTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetWorkTool.h; sourceTree = "<group>"; };
+		2A06815F219FED8300ACE26B /* NetWorkTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetWorkTool.m; sourceTree = "<group>"; };
+		2A068163219FEF2900ACE26B /* BSomeWays.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSomeWays.h; sourceTree = "<group>"; };
+		2A068164219FEF2900ACE26B /* BSomeWays.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSomeWays.m; sourceTree = "<group>"; };
+		2A068166219FEF7600ACE26B /* BConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BConstant.h; sourceTree = "<group>"; };
+		2A068168219FF05300ACE26B /* UIView+Layout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		2A068169219FF05300ACE26B /* UIView+Layout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		2A06816E219FF12600ACE26B /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		2A06816F219FF12600ACE26B /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		2A068172219FF19100ACE26B /* TabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		2A068173219FF19100ACE26B /* TabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		2A06817A219FF64400ACE26B /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
+		2A06817B219FF64400ACE26B /* MineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
+		2A06817C219FF64400ACE26B /* MineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineViewController.xib; sourceTree = "<group>"; };
+		2A06817F219FF65900ACE26B /* AllProductViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllProductViewController.h; sourceTree = "<group>"; };
+		2A068180219FF65900ACE26B /* AllProductViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllProductViewController.m; sourceTree = "<group>"; };
+		2A068181219FF65900ACE26B /* AllProductViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllProductViewController.xib; sourceTree = "<group>"; };
+		2A068187219FF99200ACE26B /* UIColor+RGBHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGBHelper.h"; sourceTree = "<group>"; };
+		2A068188219FF99200ACE26B /* UIColor+RGBHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGBHelper.m"; sourceTree = "<group>"; };
+		2A06818A219FFA1000ACE26B /* Banana.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Banana.pch; sourceTree = "<group>"; };
 		2A928AFA219FE6EE0078AB7B /* Banana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Banana.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A928AFD219FE6EE0078AB7B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2A928AFE219FE6EE0078AB7B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -92,6 +122,86 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		2A06815D219FED5800ACE26B /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				2A06815E219FED8300ACE26B /* NetWorkTool.h */,
+				2A06815F219FED8300ACE26B /* NetWorkTool.m */,
+			);
+			path = NetWork;
+			sourceTree = "<group>";
+		};
+		2A068162219FEEF800ACE26B /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				2A068163219FEF2900ACE26B /* BSomeWays.h */,
+				2A068164219FEF2900ACE26B /* BSomeWays.m */,
+				2A068166219FEF7600ACE26B /* BConstant.h */,
+				2A06818A219FFA1000ACE26B /* Banana.pch */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		2A068167219FEFA200ACE26B /* Addtion */ = {
+			isa = PBXGroup;
+			children = (
+				2A068168219FF05300ACE26B /* UIView+Layout.h */,
+				2A068169219FF05300ACE26B /* UIView+Layout.m */,
+				2A068187219FF99200ACE26B /* UIColor+RGBHelper.h */,
+				2A068188219FF99200ACE26B /* UIColor+RGBHelper.m */,
+			);
+			path = Addtion;
+			sourceTree = "<group>";
+		};
+		2A06816C219FF0DB00ACE26B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2A068171219FF15700ACE26B /* Tabbar */,
+				2A06816D219FF0FD00ACE26B /* Home */,
+				2A068179219FF5F800ACE26B /* AllProduct */,
+				2A068178219FF5F100ACE26B /* Mine */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		2A06816D219FF0FD00ACE26B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2A06816E219FF12600ACE26B /* HomeViewController.h */,
+				2A06816F219FF12600ACE26B /* HomeViewController.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		2A068171219FF15700ACE26B /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				2A068172219FF19100ACE26B /* TabBarViewController.h */,
+				2A068173219FF19100ACE26B /* TabBarViewController.m */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		2A068178219FF5F100ACE26B /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				2A06817A219FF64400ACE26B /* MineViewController.h */,
+				2A06817B219FF64400ACE26B /* MineViewController.m */,
+				2A06817C219FF64400ACE26B /* MineViewController.xib */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		2A068179219FF5F800ACE26B /* AllProduct */ = {
+			isa = PBXGroup;
+			children = (
+				2A06817F219FF65900ACE26B /* AllProductViewController.h */,
+				2A068180219FF65900ACE26B /* AllProductViewController.m */,
+				2A068181219FF65900ACE26B /* AllProductViewController.xib */,
+			);
+			path = AllProduct;
+			sourceTree = "<group>";
+		};
 		2A928AF1219FE6EE0078AB7B = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +227,10 @@
 		2A928AFC219FE6EE0078AB7B /* Banana */ = {
 			isa = PBXGroup;
 			children = (
+				2A068167219FEFA200ACE26B /* Addtion */,
+				2A068162219FEEF800ACE26B /* Util */,
+				2A06815D219FED5800ACE26B /* NetWork */,
+				2A06816C219FF0DB00ACE26B /* Main */,
 				2A928AFD219FE6EE0078AB7B /* AppDelegate.h */,
 				2A928AFE219FE6EE0078AB7B /* AppDelegate.m */,
 				2A928B00219FE6EE0078AB7B /* ViewController.h */,
@@ -263,6 +377,8 @@
 				2A928B0A219FE6EF0078AB7B /* LaunchScreen.storyboard in Resources */,
 				2A928B07219FE6EF0078AB7B /* Assets.xcassets in Resources */,
 				2A928B05219FE6EE0078AB7B /* Main.storyboard in Resources */,
+				2A06817E219FF64400ACE26B /* MineViewController.xib in Resources */,
+				2A068183219FF65900ACE26B /* AllProductViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,8 +452,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A068165219FEF2900ACE26B /* BSomeWays.m in Sources */,
+				2A068160219FED8300ACE26B /* NetWorkTool.m in Sources */,
+				2A06816A219FF05300ACE26B /* UIView+Layout.m in Sources */,
+				2A06817D219FF64400ACE26B /* MineViewController.m in Sources */,
+				2A068189219FF99200ACE26B /* UIColor+RGBHelper.m in Sources */,
+				2A068182219FF65900ACE26B /* AllProductViewController.m in Sources */,
 				2A928B02219FE6EE0078AB7B /* ViewController.m in Sources */,
+				2A068174219FF19100ACE26B /* TabBarViewController.m in Sources */,
 				2A928B0D219FE6EF0078AB7B /* main.m in Sources */,
+				2A068170219FF12600ACE26B /* HomeViewController.m in Sources */,
 				2A928AFF219FE6EE0078AB7B /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,6 +635,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Banana/Util/Banana.pch";
 				INFOPLIST_FILE = Banana/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -528,6 +654,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Banana/Util/Banana.pch";
 				INFOPLIST_FILE = Banana/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
