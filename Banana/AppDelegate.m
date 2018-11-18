@@ -22,6 +22,7 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [[UINavigationBar appearance] setTranslucent:NO];
     [self.window makeKeyWindow];
+    NSLog(@"1111");
     return YES;
 }
 
