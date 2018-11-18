@@ -19,9 +19,47 @@
         <view contentMode="scaleToFill" id="bKI-Ob-Auf">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LOGO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdd-uK-hJi">
+                    <rect key="frame" x="152.5" y="86" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="o4C-X9-iU2"/>
+                        <constraint firstAttribute="width" constant="70" id="xPH-i3-OUg"/>
+                    </constraints>
+                </imageView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入账号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1f2-uP-oeC">
+                    <rect key="frame" x="41" y="215" width="293" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="NSB-C0-AKV"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gDq-HJ-oww">
+                    <rect key="frame" x="43" y="253" width="292" height="1"/>
+                    <color key="backgroundColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="T7w-q9-qSv"/>
+                    </constraints>
+                </imageView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="3Rt-fi-ndZ" firstAttribute="trailing" secondItem="1f2-uP-oeC" secondAttribute="trailing" constant="41" id="4ER-Ka-NfY"/>
+                <constraint firstItem="gDq-HJ-oww" firstAttribute="top" secondItem="1f2-uP-oeC" secondAttribute="bottom" constant="8" id="AjX-cu-iR1"/>
+                <constraint firstItem="gDq-HJ-oww" firstAttribute="leading" secondItem="3Rt-fi-ndZ" secondAttribute="leading" constant="43" id="OVZ-U9-orv"/>
+                <constraint firstItem="Fdd-uK-hJi" firstAttribute="centerX" secondItem="bKI-Ob-Auf" secondAttribute="centerX" id="Wv3-n7-1UR"/>
+                <constraint firstItem="3Rt-fi-ndZ" firstAttribute="trailing" secondItem="gDq-HJ-oww" secondAttribute="trailing" constant="40" id="YEC-N4-8CP"/>
+                <constraint firstItem="Fdd-uK-hJi" firstAttribute="top" secondItem="3Rt-fi-ndZ" secondAttribute="top" constant="66" id="rYb-VA-z2A"/>
+                <constraint firstItem="1f2-uP-oeC" firstAttribute="top" secondItem="Fdd-uK-hJi" secondAttribute="bottom" constant="59" id="teV-gO-Am5"/>
+                <constraint firstItem="1f2-uP-oeC" firstAttribute="leading" secondItem="3Rt-fi-ndZ" secondAttribute="leading" constant="41" id="wy3-Jl-BsC"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="3Rt-fi-ndZ"/>
-            <point key="canvasLocation" x="6" y="-188"/>
+            <point key="canvasLocation" x="5.5999999999999996" y="-188.45577211394306"/>
         </view>
     </objects>
+    <resources>
+        <image name="LOGO" width="70" height="70"/>
+    </resources>
 </document>
