@@ -18,6 +18,10 @@
 		2A068182219FF65900ACE26B /* AllProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A068180219FF65900ACE26B /* AllProductViewController.m */; };
 		2A068183219FF65900ACE26B /* AllProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A068181219FF65900ACE26B /* AllProductViewController.xib */; };
 		2A068189219FF99200ACE26B /* UIColor+RGBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A068188219FF99200ACE26B /* UIColor+RGBHelper.m */; };
+		2A4883D221A14FCE006E74E2 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4883D121A14FCE006E74E2 /* RegisterViewController.m */; };
+		2A4883D421A14FDC006E74E2 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A4883D321A14FDC006E74E2 /* RegisterViewController.xib */; };
+		2A4883D821A1538D006E74E2 /* ReviseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4883D621A1538D006E74E2 /* ReviseViewController.m */; };
+		2A4883D921A1538D006E74E2 /* ReviseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A4883D721A1538D006E74E2 /* ReviseViewController.xib */; };
 		2A928AFF219FE6EE0078AB7B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A928AFE219FE6EE0078AB7B /* AppDelegate.m */; };
 		2A928B02219FE6EE0078AB7B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A928B01219FE6EE0078AB7B /* ViewController.m */; };
 		2A928B05219FE6EE0078AB7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A928B03219FE6EE0078AB7B /* Main.storyboard */; };
@@ -72,6 +76,12 @@
 		2A068187219FF99200ACE26B /* UIColor+RGBHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGBHelper.h"; sourceTree = "<group>"; };
 		2A068188219FF99200ACE26B /* UIColor+RGBHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGBHelper.m"; sourceTree = "<group>"; };
 		2A06818A219FFA1000ACE26B /* Banana.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Banana.pch; sourceTree = "<group>"; };
+		2A4883D021A14FCE006E74E2 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		2A4883D121A14FCE006E74E2 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		2A4883D321A14FDC006E74E2 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		2A4883D521A1538D006E74E2 /* ReviseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviseViewController.h; sourceTree = "<group>"; };
+		2A4883D621A1538D006E74E2 /* ReviseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviseViewController.m; sourceTree = "<group>"; };
+		2A4883D721A1538D006E74E2 /* ReviseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviseViewController.xib; sourceTree = "<group>"; };
 		2A928AFA219FE6EE0078AB7B /* Banana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Banana.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A928AFD219FE6EE0078AB7B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2A928AFE219FE6EE0078AB7B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -294,6 +304,12 @@
 				2AA1B42721A13F8100B0C320 /* LoginViewController.h */,
 				2AA1B42821A13F8100B0C320 /* LoginViewController.m */,
 				2AA1B42E21A145BD00B0C320 /* LoginViewController.xib */,
+				2A4883D021A14FCE006E74E2 /* RegisterViewController.h */,
+				2A4883D121A14FCE006E74E2 /* RegisterViewController.m */,
+				2A4883D321A14FDC006E74E2 /* RegisterViewController.xib */,
+				2A4883D521A1538D006E74E2 /* ReviseViewController.h */,
+				2A4883D621A1538D006E74E2 /* ReviseViewController.m */,
+				2A4883D721A1538D006E74E2 /* ReviseViewController.xib */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -419,6 +435,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A4883D921A1538D006E74E2 /* ReviseViewController.xib in Resources */,
 				2A928B0A219FE6EF0078AB7B /* LaunchScreen.storyboard in Resources */,
 				2A928B07219FE6EF0078AB7B /* Assets.xcassets in Resources */,
 				2A928B05219FE6EE0078AB7B /* Main.storyboard in Resources */,
@@ -426,6 +443,7 @@
 				2A068183219FF65900ACE26B /* AllProductViewController.xib in Resources */,
 				2AA1B42F21A145BD00B0C320 /* LoginViewController.xib in Resources */,
 				2AA1B42421A1339C00B0C320 /* MineMainTableViewCell.xib in Resources */,
+				2A4883D421A14FDC006E74E2 /* RegisterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,9 +519,11 @@
 				2A928B02219FE6EE0078AB7B /* ViewController.m in Sources */,
 				2AE010FE21A1325D00A205F8 /* MineMainTableView.m in Sources */,
 				2AA1B42321A1339C00B0C320 /* MineMainTableViewCell.m in Sources */,
+				2A4883D221A14FCE006E74E2 /* RegisterViewController.m in Sources */,
 				2A068174219FF19100ACE26B /* TabBarViewController.m in Sources */,
 				2A928B0D219FE6EF0078AB7B /* main.m in Sources */,
 				2A068170219FF12600ACE26B /* HomeViewController.m in Sources */,
+				2A4883D821A1538D006E74E2 /* ReviseViewController.m in Sources */,
 				2A928AFF219FE6EE0078AB7B /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
