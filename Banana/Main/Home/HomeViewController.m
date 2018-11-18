@@ -16,10 +16,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"首页";
-    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 10, 100, 100)];
-    button.backgroundColor = [UIColor redColor];
-    [self.view addSubview:button];
+    self.title = @"贷款超市";
+
 }
 
 
