@@ -7,6 +7,7 @@
 
 #import "MineMainTableView.h"
 #import "MineMainTableViewCell.h"
+#import "MineMaterialViewController.h"
 @interface MineMainTableView ()<UITableViewDelegate,UITableViewDataSource>
 @end
 @implementation MineMainTableView
@@ -60,6 +61,14 @@
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 21)];
     view.backgroundColor = [UIColor colorWithHexString:@"#eeeeee"];
     return view;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    MineMaterialViewController *mine = [[MineMaterialViewController alloc]init];
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        mine.hidesBottomBarWhenPushed = YES;
+        [[BSomeWays getCurrentVC].navigationController pushViewController:mine animated:YES];
+    }
 }
 - (void)setDataList:(NSArray *)dataList {
     _dataList = dataList;

@@ -7,7 +7,7 @@
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
-
+#import "ReviseViewController.h"
 @interface LoginViewController ()
 
 @end
@@ -22,6 +22,11 @@
 - (IBAction)registerClick:(id)sender {
     RegisterViewController *registerVC = [[RegisterViewController alloc]init];
     [self.navigationController pushViewController:registerVC animated:YES];
+}
+
+- (IBAction)Revise:(id)sender {
+    ReviseViewController *ReviseVC = [[ReviseViewController alloc]init];
+    [self.navigationController pushViewController:ReviseVC animated:YES];
 }
 
 
