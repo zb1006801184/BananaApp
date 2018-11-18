@@ -8,6 +8,8 @@
 #import "MineMainTableView.h"
 #import "MineMainTableViewCell.h"
 #import "MineMaterialViewController.h"
+#import "AboutMineViewController.h"
+#import "MineSetViewController.h"
 @interface MineMainTableView ()<UITableViewDelegate,UITableViewDataSource>
 @end
 @implementation MineMainTableView
@@ -68,7 +70,18 @@
     if (indexPath.section == 0 && indexPath.row == 0) {
         mine.hidesBottomBarWhenPushed = YES;
         [[BSomeWays getCurrentVC].navigationController pushViewController:mine animated:YES];
+    }else if (indexPath.section == 0 && indexPath.row == 1) {
+        AboutMineViewController *about = [[AboutMineViewController alloc]init];
+        about.hidesBottomBarWhenPushed = YES;
+        [[BSomeWays getCurrentVC].navigationController pushViewController:about animated:YES];
     }
+    
+    if (indexPath.section == 1) {
+        MineSetViewController *set = [[MineSetViewController alloc]init];
+        set.hidesBottomBarWhenPushed = YES;
+        [[BSomeWays getCurrentVC].navigationController pushViewController:set animated:YES];
+    }
+    
 }
 - (void)setDataList:(NSArray *)dataList {
     _dataList = dataList;
