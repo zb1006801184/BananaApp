@@ -48,6 +48,8 @@
 		4096861121A15FF100ECF103 /* UIView+TXFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096860F21A15FF100ECF103 /* UIView+TXFrame.m */; };
 		4096861521A1602900ECF103 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4096861221A1602900ECF103 /* HomeCell.xib */; };
 		4096861621A1602900ECF103 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096861421A1602900ECF103 /* HomeCell.m */; };
+		4096862421A16CE600ECF103 /* AllProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096862221A16CE500ECF103 /* AllProductCell.m */; };
+		4096862521A16CE600ECF103 /* AllProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4096862321A16CE600ECF103 /* AllProductCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +142,9 @@
 		4096861221A1602900ECF103 /* HomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
 		4096861321A1602900ECF103 /* HomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
 		4096861421A1602900ECF103 /* HomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
+		4096862121A16CE500ECF103 /* AllProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllProductCell.h; sourceTree = "<group>"; };
+		4096862221A16CE500ECF103 /* AllProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllProductCell.m; sourceTree = "<group>"; };
+		4096862321A16CE600ECF103 /* AllProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllProductCell.xib; sourceTree = "<group>"; };
 		9DF2A706B8392E149059A03B /* Pods-Banana.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Banana.release.xcconfig"; path = "Pods/Target Support Files/Pods-Banana/Pods-Banana.release.xcconfig"; sourceTree = "<group>"; };
 		DD31385AC2BA4DDCB8EDB5A2 /* libPods-Banana.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Banana.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -273,6 +278,9 @@
 				2A06817F219FF65900ACE26B /* AllProductViewController.h */,
 				2A068180219FF65900ACE26B /* AllProductViewController.m */,
 				2A068181219FF65900ACE26B /* AllProductViewController.xib */,
+				4096862121A16CE500ECF103 /* AllProductCell.h */,
+				4096862221A16CE500ECF103 /* AllProductCell.m */,
+				4096862321A16CE600ECF103 /* AllProductCell.xib */,
 			);
 			path = AllProduct;
 			sourceTree = "<group>";
@@ -501,6 +509,7 @@
 				2A4883D921A1538D006E74E2 /* ReviseViewController.xib in Resources */,
 				2A928B0A219FE6EF0078AB7B /* LaunchScreen.storyboard in Resources */,
 				2A928B07219FE6EF0078AB7B /* Assets.xcassets in Resources */,
+				4096862521A16CE600ECF103 /* AllProductCell.xib in Resources */,
 				2ADB5CC221A163DE000FFA76 /* MineSetViewController.xib in Resources */,
 				2A928B05219FE6EE0078AB7B /* Main.storyboard in Resources */,
 				4096861521A1602900ECF103 /* HomeCell.xib in Resources */,
@@ -578,6 +587,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A068165219FEF2900ACE26B /* BSomeWays.m in Sources */,
+				4096862421A16CE600ECF103 /* AllProductCell.m in Sources */,
 				2A068160219FED8300ACE26B /* NetWorkTool.m in Sources */,
 				2A06816A219FF05300ACE26B /* UIView+Layout.m in Sources */,
 				2A06817D219FF64400ACE26B /* MineViewController.m in Sources */,

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="AllProductCell">
+            <rect key="frame" x="0.0" y="0.0" width="187" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="187" height="80"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LOGO" translatesAutoresizingMaskIntoConstraints="NO" id="bmu-TD-OcR">
+                        <rect key="frame" x="12" y="12" width="36" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="36" id="M1e-SF-qz6"/>
+                            <constraint firstAttribute="height" constant="36" id="o65-O5-I5D"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="香蕉钱包" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWZ-vU-81r">
+                        <rect key="frame" x="54" y="16" width="113" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="5Ru-Ea-dFA"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.12941176469999999" green="0.14901960780000001" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12.7万人已放贷" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blq-TV-doH">
+                        <rect key="frame" x="55" y="35" width="119" height="12"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="iz1-ty-961"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.12941176469999999" green="0.14901960780000001" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="极速下款|额度超高|审核简单" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qc9-lK-i4n">
+                        <rect key="frame" x="13" y="54" width="161" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="QdQ-eK-5k2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="qc9-lK-i4n" firstAttribute="top" secondItem="bmu-TD-OcR" secondAttribute="bottom" constant="6" id="1QE-TP-a8n"/>
+                <constraint firstAttribute="trailing" secondItem="blq-TV-doH" secondAttribute="trailing" constant="13" id="C7j-hD-apI"/>
+                <constraint firstItem="blq-TV-doH" firstAttribute="leading" secondItem="bmu-TD-OcR" secondAttribute="trailing" constant="7" id="J3M-Ie-DaS"/>
+                <constraint firstAttribute="trailing" secondItem="qc9-lK-i4n" secondAttribute="trailing" constant="13" id="Qf9-bY-sBg"/>
+                <constraint firstItem="qc9-lK-i4n" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="13" id="Sd6-t9-g00"/>
+                <constraint firstItem="bmu-TD-OcR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="VMv-Aj-JHh"/>
+                <constraint firstItem="blq-TV-doH" firstAttribute="top" secondItem="sWZ-vU-81r" secondAttribute="bottom" constant="4" id="XSn-Wj-Mus"/>
+                <constraint firstAttribute="trailing" secondItem="sWZ-vU-81r" secondAttribute="trailing" constant="20" id="haR-4h-a5g"/>
+                <constraint firstItem="sWZ-vU-81r" firstAttribute="leading" secondItem="bmu-TD-OcR" secondAttribute="trailing" constant="6" id="lyG-PA-Wyf"/>
+                <constraint firstItem="bmu-TD-OcR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="nIe-Cs-Uct"/>
+                <constraint firstItem="sWZ-vU-81r" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="rJW-ie-Mfi"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <connections>
+                <outlet property="borrowNOlabel" destination="blq-TV-doH" id="STR-Nw-HLA"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="54"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="LOGO" width="70" height="70"/>
+    </resources>
+</document>
