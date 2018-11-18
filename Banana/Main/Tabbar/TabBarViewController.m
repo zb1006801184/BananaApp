@@ -58,6 +58,8 @@
     [nav.navigationBar setTitleTextAttributes:dic];
     nav.tabBarItem.image = [[UIImage imageNamed:@"mine"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     nav.tabBarItem.selectedImage = [[UIImage imageNamed:@"mine_select"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    nav.navigationBar.barTintColor = [UIColor colorWithHexString:@"#232323"]; //导航栏的颜色
+
     return nav;
 }
 

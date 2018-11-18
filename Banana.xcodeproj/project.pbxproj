@@ -26,6 +26,11 @@
 		2A928B0D219FE6EF0078AB7B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A928B0C219FE6EF0078AB7B /* main.m */; };
 		2A928B17219FE6EF0078AB7B /* BananaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A928B16219FE6EF0078AB7B /* BananaTests.m */; };
 		2A928B22219FE6EF0078AB7B /* BananaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A928B21219FE6EF0078AB7B /* BananaUITests.m */; };
+		2AA1B42321A1339C00B0C320 /* MineMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA1B42121A1339C00B0C320 /* MineMainTableViewCell.m */; };
+		2AA1B42421A1339C00B0C320 /* MineMainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AA1B42221A1339C00B0C320 /* MineMainTableViewCell.xib */; };
+		2AA1B42A21A13F8100B0C320 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA1B42821A13F8100B0C320 /* LoginViewController.m */; };
+		2AA1B42B21A13F8100B0C320 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AA1B42921A13F8100B0C320 /* LoginViewController.xib */; };
+		2AE010FE21A1325D00A205F8 /* MineMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE010FD21A1325D00A205F8 /* MineMainTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +88,14 @@
 		2A928B1D219FE6EF0078AB7B /* BananaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BananaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A928B21219FE6EF0078AB7B /* BananaUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BananaUITests.m; sourceTree = "<group>"; };
 		2A928B23219FE6EF0078AB7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2AA1B42021A1339C00B0C320 /* MineMainTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineMainTableViewCell.h; sourceTree = "<group>"; };
+		2AA1B42121A1339C00B0C320 /* MineMainTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineMainTableViewCell.m; sourceTree = "<group>"; };
+		2AA1B42221A1339C00B0C320 /* MineMainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineMainTableViewCell.xib; sourceTree = "<group>"; };
+		2AA1B42721A13F8100B0C320 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		2AA1B42821A13F8100B0C320 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		2AA1B42921A13F8100B0C320 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		2AE010FC21A1325D00A205F8 /* MineMainTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineMainTableView.h; sourceTree = "<group>"; };
+		2AE010FD21A1325D00A205F8 /* MineMainTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineMainTableView.m; sourceTree = "<group>"; };
 		9DF2A706B8392E149059A03B /* Pods-Banana.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Banana.release.xcconfig"; path = "Pods/Target Support Files/Pods-Banana/Pods-Banana.release.xcconfig"; sourceTree = "<group>"; };
 		DD31385AC2BA4DDCB8EDB5A2 /* libPods-Banana.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Banana.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -185,6 +198,9 @@
 		2A068178219FF5F100ACE26B /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				2AA1B42621A13F5A00B0C320 /* Login */,
+				2AA1B41F21A1338300B0C320 /* Cells */,
+				2AE010FB21A130D100A205F8 /* Views */,
 				2A06817A219FF64400ACE26B /* MineViewController.h */,
 				2A06817B219FF64400ACE26B /* MineViewController.m */,
 				2A06817C219FF64400ACE26B /* MineViewController.xib */,
@@ -260,6 +276,35 @@
 				2A928B23219FE6EF0078AB7B /* Info.plist */,
 			);
 			path = BananaUITests;
+			sourceTree = "<group>";
+		};
+		2AA1B41F21A1338300B0C320 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2AA1B42021A1339C00B0C320 /* MineMainTableViewCell.h */,
+				2AA1B42121A1339C00B0C320 /* MineMainTableViewCell.m */,
+				2AA1B42221A1339C00B0C320 /* MineMainTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		2AA1B42621A13F5A00B0C320 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2AA1B42721A13F8100B0C320 /* LoginViewController.h */,
+				2AA1B42821A13F8100B0C320 /* LoginViewController.m */,
+				2AA1B42921A13F8100B0C320 /* LoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		2AE010FB21A130D100A205F8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2AE010FC21A1325D00A205F8 /* MineMainTableView.h */,
+				2AE010FD21A1325D00A205F8 /* MineMainTableView.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		F8AE9840E838E20D219756C8 /* Frameworks */ = {
@@ -379,6 +424,8 @@
 				2A928B05219FE6EE0078AB7B /* Main.storyboard in Resources */,
 				2A06817E219FF64400ACE26B /* MineViewController.xib in Resources */,
 				2A068183219FF65900ACE26B /* AllProductViewController.xib in Resources */,
+				2AA1B42B21A13F8100B0C320 /* LoginViewController.xib in Resources */,
+				2AA1B42421A1339C00B0C320 /* MineMainTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,9 +495,12 @@
 				2A068160219FED8300ACE26B /* NetWorkTool.m in Sources */,
 				2A06816A219FF05300ACE26B /* UIView+Layout.m in Sources */,
 				2A06817D219FF64400ACE26B /* MineViewController.m in Sources */,
+				2AA1B42A21A13F8100B0C320 /* LoginViewController.m in Sources */,
 				2A068189219FF99200ACE26B /* UIColor+RGBHelper.m in Sources */,
 				2A068182219FF65900ACE26B /* AllProductViewController.m in Sources */,
 				2A928B02219FE6EE0078AB7B /* ViewController.m in Sources */,
+				2AE010FE21A1325D00A205F8 /* MineMainTableView.m in Sources */,
+				2AA1B42321A1339C00B0C320 /* MineMainTableViewCell.m in Sources */,
 				2A068174219FF19100ACE26B /* TabBarViewController.m in Sources */,
 				2A928B0D219FE6EF0078AB7B /* main.m in Sources */,
 				2A068170219FF12600ACE26B /* HomeViewController.m in Sources */,
