@@ -35,6 +35,10 @@
 		2AA1B42A21A13F8100B0C320 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA1B42821A13F8100B0C320 /* LoginViewController.m */; };
 		2AA1B42F21A145BD00B0C320 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AA1B42E21A145BD00B0C320 /* LoginViewController.xib */; };
 		2AE010FE21A1325D00A205F8 /* MineMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE010FD21A1325D00A205F8 /* MineMainTableView.m */; };
+		4096861021A15FF100ECF103 /* TXScrollLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096860E21A15FF100ECF103 /* TXScrollLabelView.m */; };
+		4096861121A15FF100ECF103 /* UIView+TXFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096860F21A15FF100ECF103 /* UIView+TXFrame.m */; };
+		4096861521A1602900ECF103 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4096861221A1602900ECF103 /* HomeCell.xib */; };
+		4096861621A1602900ECF103 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096861421A1602900ECF103 /* HomeCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +110,13 @@
 		2AA1B42E21A145BD00B0C320 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		2AE010FC21A1325D00A205F8 /* MineMainTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineMainTableView.h; sourceTree = "<group>"; };
 		2AE010FD21A1325D00A205F8 /* MineMainTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineMainTableView.m; sourceTree = "<group>"; };
+		4096860C21A15FF100ECF103 /* TXScrollLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXScrollLabelView.h; sourceTree = "<group>"; };
+		4096860D21A15FF100ECF103 /* UIView+TXFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TXFrame.h"; sourceTree = "<group>"; };
+		4096860E21A15FF100ECF103 /* TXScrollLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXScrollLabelView.m; sourceTree = "<group>"; };
+		4096860F21A15FF100ECF103 /* UIView+TXFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TXFrame.m"; sourceTree = "<group>"; };
+		4096861221A1602900ECF103 /* HomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
+		4096861321A1602900ECF103 /* HomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
+		4096861421A1602900ECF103 /* HomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
 		9DF2A706B8392E149059A03B /* Pods-Banana.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Banana.release.xcconfig"; path = "Pods/Target Support Files/Pods-Banana/Pods-Banana.release.xcconfig"; sourceTree = "<group>"; };
 		DD31385AC2BA4DDCB8EDB5A2 /* libPods-Banana.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Banana.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -192,6 +203,9 @@
 			children = (
 				2A06816E219FF12600ACE26B /* HomeViewController.h */,
 				2A06816F219FF12600ACE26B /* HomeViewController.m */,
+				4096861321A1602900ECF103 /* HomeCell.h */,
+				4096861421A1602900ECF103 /* HomeCell.m */,
+				4096861221A1602900ECF103 /* HomeCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -253,6 +267,7 @@
 		2A928AFC219FE6EE0078AB7B /* Banana */ = {
 			isa = PBXGroup;
 			children = (
+				4096860B21A15FF100ECF103 /* TXScrollLabelView */,
 				2A068167219FEFA200ACE26B /* Addtion */,
 				2A068162219FEEF800ACE26B /* Util */,
 				2A06815D219FED5800ACE26B /* NetWork */,
@@ -321,6 +336,17 @@
 				2AE010FD21A1325D00A205F8 /* MineMainTableView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4096860B21A15FF100ECF103 /* TXScrollLabelView */ = {
+			isa = PBXGroup;
+			children = (
+				4096860C21A15FF100ECF103 /* TXScrollLabelView.h */,
+				4096860D21A15FF100ECF103 /* UIView+TXFrame.h */,
+				4096860E21A15FF100ECF103 /* TXScrollLabelView.m */,
+				4096860F21A15FF100ECF103 /* UIView+TXFrame.m */,
+			);
+			path = TXScrollLabelView;
 			sourceTree = "<group>";
 		};
 		F8AE9840E838E20D219756C8 /* Frameworks */ = {
@@ -439,6 +465,7 @@
 				2A928B0A219FE6EF0078AB7B /* LaunchScreen.storyboard in Resources */,
 				2A928B07219FE6EF0078AB7B /* Assets.xcassets in Resources */,
 				2A928B05219FE6EE0078AB7B /* Main.storyboard in Resources */,
+				4096861521A1602900ECF103 /* HomeCell.xib in Resources */,
 				2A06817E219FF64400ACE26B /* MineViewController.xib in Resources */,
 				2A068183219FF65900ACE26B /* AllProductViewController.xib in Resources */,
 				2AA1B42F21A145BD00B0C320 /* LoginViewController.xib in Resources */,
@@ -514,12 +541,15 @@
 				2A06816A219FF05300ACE26B /* UIView+Layout.m in Sources */,
 				2A06817D219FF64400ACE26B /* MineViewController.m in Sources */,
 				2AA1B42A21A13F8100B0C320 /* LoginViewController.m in Sources */,
+				4096861021A15FF100ECF103 /* TXScrollLabelView.m in Sources */,
 				2A068189219FF99200ACE26B /* UIColor+RGBHelper.m in Sources */,
 				2A068182219FF65900ACE26B /* AllProductViewController.m in Sources */,
 				2A928B02219FE6EE0078AB7B /* ViewController.m in Sources */,
 				2AE010FE21A1325D00A205F8 /* MineMainTableView.m in Sources */,
 				2AA1B42321A1339C00B0C320 /* MineMainTableViewCell.m in Sources */,
+				4096861621A1602900ECF103 /* HomeCell.m in Sources */,
 				2A4883D221A14FCE006E74E2 /* RegisterViewController.m in Sources */,
+				4096861121A15FF100ECF103 /* UIView+TXFrame.m in Sources */,
 				2A068174219FF19100ACE26B /* TabBarViewController.m in Sources */,
 				2A928B0D219FE6EF0078AB7B /* main.m in Sources */,
 				2A068170219FF12600ACE26B /* HomeViewController.m in Sources */,
