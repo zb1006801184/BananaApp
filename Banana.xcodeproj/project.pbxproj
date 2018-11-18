@@ -29,7 +29,6 @@
 		2AA1B42321A1339C00B0C320 /* MineMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA1B42121A1339C00B0C320 /* MineMainTableViewCell.m */; };
 		2AA1B42421A1339C00B0C320 /* MineMainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AA1B42221A1339C00B0C320 /* MineMainTableViewCell.xib */; };
 		2AA1B42A21A13F8100B0C320 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA1B42821A13F8100B0C320 /* LoginViewController.m */; };
-		2AA1B42B21A13F8100B0C320 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AA1B42921A13F8100B0C320 /* LoginViewController.xib */; };
 		2AE010FE21A1325D00A205F8 /* MineMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE010FD21A1325D00A205F8 /* MineMainTableView.m */; };
 /* End PBXBuildFile section */
 
@@ -424,7 +423,6 @@
 				2A928B05219FE6EE0078AB7B /* Main.storyboard in Resources */,
 				2A06817E219FF64400ACE26B /* MineViewController.xib in Resources */,
 				2A068183219FF65900ACE26B /* AllProductViewController.xib in Resources */,
-				2AA1B42B21A13F8100B0C320 /* LoginViewController.xib in Resources */,
 				2AA1B42421A1339C00B0C320 /* MineMainTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
