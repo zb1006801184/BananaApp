@@ -46,6 +46,7 @@
 		2ADB5CC721A1666A000FFA76 /* MineIdeaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ADB5CC521A1666A000FFA76 /* MineIdeaViewController.xib */; };
 		2ADB5CCB21A169EF000FFA76 /* ChangePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ADB5CC921A169EF000FFA76 /* ChangePhoneViewController.m */; };
 		2AE010FE21A1325D00A205F8 /* MineMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE010FD21A1325D00A205F8 /* MineMainTableView.m */; };
+		2AF1677F21A2D1340016F7D2 /* MineRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF1677E21A2D1340016F7D2 /* MineRequest.m */; };
 		3749263F21A2402000C711AA /* ZLAdvertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749263D21A2402000C711AA /* ZLAdvertView.m */; };
 		3749264121A25E1900C711AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3749264021A25E1900C711AA /* Images.xcassets */; };
 		3749265121A266CE00C711AA /* AESCipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749264521A266CE00C711AA /* AESCipher.m */; };
@@ -151,6 +152,8 @@
 		2ADB5CC921A169EF000FFA76 /* ChangePhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePhoneViewController.m; sourceTree = "<group>"; };
 		2AE010FC21A1325D00A205F8 /* MineMainTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineMainTableView.h; sourceTree = "<group>"; };
 		2AE010FD21A1325D00A205F8 /* MineMainTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineMainTableView.m; sourceTree = "<group>"; };
+		2AF1677D21A2D1340016F7D2 /* MineRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineRequest.h; sourceTree = "<group>"; };
+		2AF1677E21A2D1340016F7D2 /* MineRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineRequest.m; sourceTree = "<group>"; };
 		3749263D21A2402000C711AA /* ZLAdvertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLAdvertView.m; sourceTree = "<group>"; };
 		3749263E21A2402000C711AA /* ZLAdvertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLAdvertView.h; sourceTree = "<group>"; };
 		3749264021A25E1900C711AA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -288,6 +291,7 @@
 		2A068178219FF5F100ACE26B /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				2AF1677C21A2D11E0016F7D2 /* Model */,
 				2AA1B42621A13F5A00B0C320 /* Login */,
 				2AA1B41F21A1338300B0C320 /* Cells */,
 				2AE010FB21A130D100A205F8 /* Views */,
@@ -428,6 +432,15 @@
 				2AE010FD21A1325D00A205F8 /* MineMainTableView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2AF1677C21A2D11E0016F7D2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2AF1677D21A2D1340016F7D2 /* MineRequest.h */,
+				2AF1677E21A2D1340016F7D2 /* MineRequest.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		3749263C21A2402000C711AA /* ZLAdvertView */ = {
@@ -679,6 +692,7 @@
 				2A928B02219FE6EE0078AB7B /* ViewController.m in Sources */,
 				3749266121A29EAA00C711AA /* popUpCell.m in Sources */,
 				2AE010FE21A1325D00A205F8 /* MineMainTableView.m in Sources */,
+				2AF1677F21A2D1340016F7D2 /* MineRequest.m in Sources */,
 				2AA1B42321A1339C00B0C320 /* MineMainTableViewCell.m in Sources */,
 				2ADB5CB721A15916000FFA76 /* MineMaterialViewController.m in Sources */,
 				2ADB5CC121A163DE000FFA76 /* MineSetViewController.m in Sources */,
