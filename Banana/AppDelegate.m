@@ -32,6 +32,8 @@
     //    广告页
     [self Bootadvertising];
     
+
+    
     return YES;
 }
 
@@ -88,3 +90,5 @@
 
 
 @end
+
+

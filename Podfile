@@ -10,4 +10,6 @@ target 'Banana' do
    pod 'IQKeyboardManager'
    pod 'MJExtension'
    pod 'SDWebImage', '~> 4.0'
+   pod 'FCUUID'
+
 end

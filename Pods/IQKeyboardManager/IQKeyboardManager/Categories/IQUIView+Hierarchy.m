@@ -92,8 +92,6 @@
 {
     UIViewController *matchController = [self viewContainingController];
     
-    UIViewController *parentContainerViewController = nil;
-    
     if (matchController.navigationController)
     {
         UINavigationController *navController = matchController.navigationController;
@@ -117,22 +115,22 @@
 
         if (navController == parentController)
         {
-            parentContainerViewController = navController.topViewController;
+            return navController.topViewController;
         }
         else
         {
-            parentContainerViewController = parentController;
+            return parentController;
         }
     }
     else if (matchController.tabBarController)
     {
         if ([matchController.tabBarController.selectedViewController isKindOfClass:[UINavigationController class]])
         {
-            parentContainerViewController = [(UINavigationController*)matchController.tabBarController.selectedViewController topViewController];
+            return [(UINavigationController*)matchController.tabBarController.selectedViewController topViewController];
         }
         else
         {
-            parentContainerViewController = matchController.tabBarController.selectedViewController;
+            return matchController.tabBarController.selectedViewController;
         }
     }
     else
@@ -148,12 +146,8 @@
             matchParentController = matchController.parentViewController;
         }
         
-        parentContainerViewController = matchController;
+        return matchController;
     }
-    
-    UIViewController *finalController = [parentContainerViewController parentIQContainerViewController] ?: parentContainerViewController;
-    
-    return finalController;
 }
 
 -(UIView*)superviewOfClassType:(Class)classType
@@ -206,16 +200,16 @@
 
     if (_IQcanBecomeFirstResponder == YES)
     {
-        _IQcanBecomeFirstResponder = ([self isUserInteractionEnabled] && ![self isHidden] && [self alpha]!=0.0 && ![self isAlertViewTextField]  && !self.textFieldSearchBar);
+        _IQcanBecomeFirstResponder = ([self isUserInteractionEnabled] && ![self isHidden] && [self alpha]!=0.0 && ![self isAlertViewTextField]  && !self.searchBar);
     }
     
     return _IQcanBecomeFirstResponder;
 }
 
-- (NSArray<UIView*>*)responderSiblings
+- (NSArray*)responderSiblings
 {
     //	Getting all siblings
-    NSArray<UIView*> *siblings = self.superview.subviews;
+    NSArray *siblings = self.superview.subviews;
     
     //Array of (UITextField/UITextView's).
     NSMutableArray<UIView*> *tempTextFields = [[NSMutableArray alloc] init];
@@ -227,7 +221,7 @@
     return tempTextFields;
 }
 
-- (NSArray<UIView*>*)deepResponderViews
+- (NSArray*)deepResponderViews
 {
     NSMutableArray<UIView*> *textFields = [[NSMutableArray alloc] init];
     
@@ -376,7 +370,7 @@
     return debugInfo;
 }
 
--(UISearchBar *)textFieldSearchBar
+-(UISearchBar *)searchBar
 {
     UIResponder *searchBar = [self nextResponder];
     
@@ -418,14 +412,6 @@
 
 @end
 
-@implementation UIViewController (IQ_UIView_Hierarchy)
-
--(nullable UIViewController*)parentIQContainerViewController
-{
-    return self;
-}
-
-@end
 
 @implementation NSObject (IQ_Logging)
 

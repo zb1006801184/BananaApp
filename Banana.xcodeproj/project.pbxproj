@@ -46,6 +46,13 @@
 		2ADB5CCB21A169EF000FFA76 /* ChangePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ADB5CC921A169EF000FFA76 /* ChangePhoneViewController.m */; };
 		2AE010FE21A1325D00A205F8 /* MineMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE010FD21A1325D00A205F8 /* MineMainTableView.m */; };
 		3749263F21A2402000C711AA /* ZLAdvertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749263D21A2402000C711AA /* ZLAdvertView.m */; };
+		3749264121A25E1900C711AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3749264021A25E1900C711AA /* Images.xcassets */; };
+		3749265121A266CE00C711AA /* AESCipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749264521A266CE00C711AA /* AESCipher.m */; };
+		3749265321A266CE00C711AA /* readme.ME in Resources */ = {isa = PBXBuildFile; fileRef = 3749264A21A266CE00C711AA /* readme.ME */; };
+		3749265421A266CE00C711AA /* RSAEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749264B21A266CE00C711AA /* RSAEncryptor.m */; };
+		3749265521A266CE00C711AA /* SHA256.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749264D21A266CE00C711AA /* SHA256.m */; };
+		3749265621A266CE00C711AA /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749264F21A266CE00C711AA /* GTMBase64.m */; };
+		3749265721A266CE00C711AA /* DES3Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749265021A266CE00C711AA /* DES3Util.m */; };
 		4096861021A15FF100ECF103 /* TXScrollLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096860E21A15FF100ECF103 /* TXScrollLabelView.m */; };
 		4096861121A15FF100ECF103 /* UIView+TXFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096860F21A15FF100ECF103 /* UIView+TXFrame.m */; };
 		4096861521A1602900ECF103 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4096861221A1602900ECF103 /* HomeCell.xib */; };
@@ -140,6 +147,19 @@
 		2AE010FD21A1325D00A205F8 /* MineMainTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineMainTableView.m; sourceTree = "<group>"; };
 		3749263D21A2402000C711AA /* ZLAdvertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLAdvertView.m; sourceTree = "<group>"; };
 		3749263E21A2402000C711AA /* ZLAdvertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLAdvertView.h; sourceTree = "<group>"; };
+		3749264021A25E1900C711AA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3749264421A266CE00C711AA /* RSAEncryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSAEncryptor.h; sourceTree = "<group>"; };
+		3749264521A266CE00C711AA /* AESCipher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESCipher.m; sourceTree = "<group>"; };
+		3749264621A266CE00C711AA /* DES3Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DES3Util.h; sourceTree = "<group>"; };
+		3749264721A266CE00C711AA /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		3749264821A266CE00C711AA /* SHA256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHA256.h; sourceTree = "<group>"; };
+		3749264A21A266CE00C711AA /* readme.ME */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.ME; sourceTree = "<group>"; };
+		3749264B21A266CE00C711AA /* RSAEncryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSAEncryptor.m; sourceTree = "<group>"; };
+		3749264C21A266CE00C711AA /* AESCipher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESCipher.h; sourceTree = "<group>"; };
+		3749264D21A266CE00C711AA /* SHA256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHA256.m; sourceTree = "<group>"; };
+		3749264E21A266CE00C711AA /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		3749264F21A266CE00C711AA /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		3749265021A266CE00C711AA /* DES3Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DES3Util.m; sourceTree = "<group>"; };
 		4096860C21A15FF100ECF103 /* TXScrollLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXScrollLabelView.h; sourceTree = "<group>"; };
 		4096860D21A15FF100ECF103 /* UIView+TXFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TXFrame.h"; sourceTree = "<group>"; };
 		4096860E21A15FF100ECF103 /* TXScrollLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXScrollLabelView.m; sourceTree = "<group>"; };
@@ -315,6 +335,7 @@
 		2A928AFC219FE6EE0078AB7B /* Banana */ = {
 			isa = PBXGroup;
 			children = (
+				3749264221A266CE00C711AA /* ios加密参考代码和工具 */,
 				3749263C21A2402000C711AA /* ZLAdvertView */,
 				4096860B21A15FF100ECF103 /* TXScrollLabelView */,
 				2A068167219FEFA200ACE26B /* Addtion */,
@@ -330,6 +351,7 @@
 				2A928B08219FE6EF0078AB7B /* LaunchScreen.storyboard */,
 				2A928B0B219FE6EF0078AB7B /* Info.plist */,
 				2A928B0C219FE6EF0078AB7B /* main.m */,
+				3749264021A25E1900C711AA /* Images.xcassets */,
 			);
 			path = Banana;
 			sourceTree = "<group>";
@@ -399,6 +421,25 @@
 			path = ZLAdvertView;
 			sourceTree = "<group>";
 		};
+		3749264221A266CE00C711AA /* ios加密参考代码和工具 */ = {
+			isa = PBXGroup;
+			children = (
+				3749264421A266CE00C711AA /* RSAEncryptor.h */,
+				3749264521A266CE00C711AA /* AESCipher.m */,
+				3749264621A266CE00C711AA /* DES3Util.h */,
+				3749264721A266CE00C711AA /* GTMBase64.h */,
+				3749264821A266CE00C711AA /* SHA256.h */,
+				3749264A21A266CE00C711AA /* readme.ME */,
+				3749264B21A266CE00C711AA /* RSAEncryptor.m */,
+				3749264C21A266CE00C711AA /* AESCipher.h */,
+				3749264D21A266CE00C711AA /* SHA256.m */,
+				3749264E21A266CE00C711AA /* GTMDefines.h */,
+				3749264F21A266CE00C711AA /* GTMBase64.m */,
+				3749265021A266CE00C711AA /* DES3Util.m */,
+			);
+			path = "ios加密参考代码和工具";
+			sourceTree = "<group>";
+		};
 		4096860B21A15FF100ECF103 /* TXScrollLabelView */ = {
 			isa = PBXGroup;
 			children = (
@@ -429,7 +470,7 @@
 				2A928AF6219FE6EE0078AB7B /* Sources */,
 				2A928AF7219FE6EE0078AB7B /* Frameworks */,
 				2A928AF8219FE6EE0078AB7B /* Resources */,
-				3CD8E9B463BA19A84BBC02D1 /* [CP] Copy Pods Resources */,
+				4313A936E0DF9AA053E28625 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -523,6 +564,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A4883D921A1538D006E74E2 /* ReviseViewController.xib in Resources */,
+				3749265321A266CE00C711AA /* readme.ME in Resources */,
 				2A928B0A219FE6EF0078AB7B /* LaunchScreen.storyboard in Resources */,
 				2A928B07219FE6EF0078AB7B /* Assets.xcassets in Resources */,
 				4096862521A16CE600ECF103 /* AllProductCell.xib in Resources */,
@@ -533,6 +575,7 @@
 				2A068183219FF65900ACE26B /* AllProductViewController.xib in Resources */,
 				2ADB5CC721A1666A000FFA76 /* MineIdeaViewController.xib in Resources */,
 				2ADB5CBD21A161FD000FFA76 /* AboutMineViewController.xib in Resources */,
+				3749264121A25E1900C711AA /* Images.xcassets in Resources */,
 				2ADB5CB821A15916000FFA76 /* MineMaterialViewController.xib in Resources */,
 				2AA1B42F21A145BD00B0C320 /* LoginViewController.xib in Resources */,
 				2AA34D9821A16E1400795F50 /* ChangePhoneViewController.xib in Resources */,
@@ -558,7 +601,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3CD8E9B463BA19A84BBC02D1 /* [CP] Copy Pods Resources */ = {
+		4313A936E0DF9AA053E28625 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -612,19 +655,24 @@
 				4096861021A15FF100ECF103 /* TXScrollLabelView.m in Sources */,
 				2A068189219FF99200ACE26B /* UIColor+RGBHelper.m in Sources */,
 				2A068182219FF65900ACE26B /* AllProductViewController.m in Sources */,
+				3749265121A266CE00C711AA /* AESCipher.m in Sources */,
 				2A928B02219FE6EE0078AB7B /* ViewController.m in Sources */,
 				2AE010FE21A1325D00A205F8 /* MineMainTableView.m in Sources */,
 				2AA1B42321A1339C00B0C320 /* MineMainTableViewCell.m in Sources */,
 				2ADB5CB721A15916000FFA76 /* MineMaterialViewController.m in Sources */,
 				2ADB5CC121A163DE000FFA76 /* MineSetViewController.m in Sources */,
 				2ADB5CC621A1666A000FFA76 /* MineIdeaViewController.m in Sources */,
+				3749265521A266CE00C711AA /* SHA256.m in Sources */,
 				2ADB5CBC21A161FD000FFA76 /* AboutMineViewController.m in Sources */,
+				3749265721A266CE00C711AA /* DES3Util.m in Sources */,
+				3749265621A266CE00C711AA /* GTMBase64.m in Sources */,
 				4096861621A1602900ECF103 /* HomeCell.m in Sources */,
 				2A4883D221A14FCE006E74E2 /* RegisterViewController.m in Sources */,
 				3749263F21A2402000C711AA /* ZLAdvertView.m in Sources */,
 				4096861121A15FF100ECF103 /* UIView+TXFrame.m in Sources */,
 				2A068174219FF19100ACE26B /* TabBarViewController.m in Sources */,
 				2A928B0D219FE6EF0078AB7B /* main.m in Sources */,
+				3749265421A266CE00C711AA /* RSAEncryptor.m in Sources */,
 				2A068170219FF12600ACE26B /* HomeViewController.m in Sources */,
 				2ADB5CCB21A169EF000FFA76 /* ChangePhoneViewController.m in Sources */,
 				2A4883D821A1538D006E74E2 /* ReviseViewController.m in Sources */,
@@ -800,6 +848,7 @@
 			baseConfigurationReference = 1BE855A206E8D107BE45AD53 /* Pods-Banana.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R5XV4VFSEK;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -821,6 +870,7 @@
 			baseConfigurationReference = 9DF2A706B8392E149059A03B /* Pods-Banana.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R5XV4VFSEK;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
