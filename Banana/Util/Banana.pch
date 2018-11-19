@@ -15,4 +15,6 @@
 #import "BConstant.h"
 #import "UIView+Layout.h"
 #import "BSomeWays.h"
+#import "UIImageView+WebCache.h"
+
 #endif /* Banana_pch */

@@ -8,6 +8,7 @@
 #import "AppDelegate.h"
 #import "TabBarViewController.h"
 #import "ZLAdvertView.h"
+#import "NetWorkTool.h"
 
 @interface AppDelegate ()
 
@@ -78,7 +79,35 @@
 //广告图数据
 -(void)_shufflingdata
 {
-    [self.zladvertView showtimer];
+    [[NetWorkTool shareInstance] postWithUrl:@"https://apptest.xiangjiaoqianbao.cn/indexShow/startShow" paramWithDic:nil success:^(id  _Nonnull responseObject) {        
+        NSString *Img = responseObject[@"imgUrl"];
+        NSString *Web = responseObject[@"adUrl"];
+
+        if ([Img isEqual:[NSNull null]]||[Img isEqualToString:@"#"]) {
+            Img = @"";
+        }
+        if ([Web isEqual:[NSNull null]]||[Web isEqualToString:@"#"]) {
+            Web = @"";
+        }
+        
+        if (![Img isEqualToString:@""]) {
+            
+            [self.zladvertView showtimer];
+             [self.zladvertView.starimg sd_setImageWithURL:[NSURL URLWithString:Img]];
+            if ([Web isEqualToString:@""]) {
+                self.zladvertView.detailsbtn.hidden = YES;
+            }
+
+        }else{
+            [self.zladvertView removeAdvertView];
+
+        }
+
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+        [self.zladvertView removeAdvertView];
+
+    }];
 
 }
 -(void)startimg

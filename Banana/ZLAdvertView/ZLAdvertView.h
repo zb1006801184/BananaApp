@@ -22,6 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UIButton *tiaoguobtn;
 
+@property (nonatomic, strong) UIButton *detailsbtn;
+
+
 @property (nonatomic, strong) NSTimer *timer;
 
 @property (nonatomic, assign) int time;

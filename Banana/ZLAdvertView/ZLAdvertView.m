@@ -56,16 +56,16 @@ static int const showtime = 3;
         
         
         
-        UIButton *detailsbtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        detailsbtn.frame = CGRectMake(kScreenWidth-80-20, self.bottom-80, 80, 30);
-        detailsbtn.backgroundColor = [UIColor colorWithHexString:@"#000000" alpha:0.6];
-        detailsbtn.alpha = .5;
-        detailsbtn.titleLabel.font = [UIFont systemFontOfSize:12];
-        [_starimg addSubview:detailsbtn];
-        [detailsbtn setTitle:[NSString stringWithFormat:@"查看详情"] forState:UIControlStateNormal];
-        [detailsbtn addTarget:self action:@selector(tapPage) forControlEvents:UIControlEventTouchUpInside];
-        detailsbtn.layer.masksToBounds = YES;
-        detailsbtn.layer.cornerRadius = 15;
+        _detailsbtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _detailsbtn.frame = CGRectMake(kScreenWidth-80-20, self.bottom-80, 80, 30);
+        _detailsbtn.backgroundColor = [UIColor colorWithHexString:@"#000000" alpha:0.6];
+        _detailsbtn.alpha = .5;
+        _detailsbtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        [_starimg addSubview:_detailsbtn];
+        [_detailsbtn setTitle:[NSString stringWithFormat:@"查看详情"] forState:UIControlStateNormal];
+        [_detailsbtn addTarget:self action:@selector(tapPage) forControlEvents:UIControlEventTouchUpInside];
+        _detailsbtn.layer.masksToBounds = YES;
+        _detailsbtn.layer.cornerRadius = 15;
         
         
     }
