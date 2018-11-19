@@ -10,7 +10,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MineRequest : NSObject
+//登录
++ (void)loginWithUsername:(NSString *)username  password:(NSString *)password  success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure;
+//注册
++ (void)registerWithPhone:(NSString *)Phone username:(NSString *)username checkCode:(NSString *)checkCode password:(NSString *)password success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure;
 
++ (void)sendCodeWithToken:(NSString *)token telephone:(NSString *)telephone operationType:(NSString *)operationType success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure;
 @end
 
 NS_ASSUME_NONNULL_END

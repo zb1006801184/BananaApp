@@ -33,7 +33,8 @@
     }else {
         //去登录
         LoginViewController *loginVC = [[LoginViewController alloc]init];
-        self.window.rootViewController = loginVC;
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
+        self.window.rootViewController = nav;
     }
 
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
@@ -88,7 +89,7 @@
 //广告图数据
 -(void)_shufflingdata
 {
-    [[NetWorkTool shareInstance] postWithUrl:@"https://apptest.xiangjiaoqianbao.cn/indexShow/startShow" paramWithDic:nil success:^(id  _Nonnull responseObject) {        
+    [[NetWorkTool shareInstance] postWithUrl:@"indexShow/startShow" paramWithDic:nil success:^(id  _Nonnull responseObject) {        
         NSString *Img = responseObject[@"imgUrl"];
         NSString *Web = responseObject[@"adUrl"];
 

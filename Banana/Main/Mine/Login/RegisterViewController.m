@@ -6,9 +6,12 @@
 //
 
 #import "RegisterViewController.h"
-
+#import "MineRequest.h"
 @interface RegisterViewController ()
-
+@property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
+@property (weak, nonatomic) IBOutlet UITextField *codeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passworkTextField;
+@property (nonatomic, strong) NSString *codeStr;
 @end
 
 @implementation RegisterViewController
@@ -19,14 +22,19 @@
     self.title = @"注册";
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)backLoginClick:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
-*/
+- (IBAction)getCodeClick:(id)sender {
+    //获取验证码
+    [MineRequest sendCodeWithToken:@"" telephone:_phoneTextField.text operationType:@"0" success:^(id  _Nonnull responseObject) {
+        NSLog(@"%@",responseObject);
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+- (IBAction)sureClick:(id)sender {
+    
+}
 
 @end

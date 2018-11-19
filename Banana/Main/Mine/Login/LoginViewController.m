@@ -24,9 +24,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"登录";
+    self.title = @"";
     _getCodeButton.hidden = YES;
 }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
 - (IBAction)registerClick:(id)sender {
     RegisterViewController *registerVC = [[RegisterViewController alloc]init];
     [self.navigationController pushViewController:registerVC animated:YES];
@@ -36,6 +48,7 @@
     ReviseViewController *ReviseVC = [[ReviseViewController alloc]init];
     [self.navigationController pushViewController:ReviseVC animated:YES];
 }
+
 
 //登录
 - (IBAction)loginClick:(id)sender {
