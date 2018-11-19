@@ -12,6 +12,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChangePhoneViewController">
             <connections>
+                <outlet property="codeTextField" destination="C1m-oV-Z0m" id="IT1-pB-L07"/>
+                <outlet property="getCodeButton" destination="cum-0z-iQj" id="RcJ-TP-pBr"/>
+                <outlet property="passwordTextField" destination="V2T-pS-ENM" id="8j3-jL-fcW"/>
+                <outlet property="phoneTextField" destination="inb-Yj-9Yv" id="VwP-Yy-Wq7"/>
                 <outlet property="view" destination="7Qk-6X-XdB" id="dKf-SD-w5g"/>
             </connections>
         </placeholder>
@@ -52,7 +56,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cum-0z-iQj">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cum-0z-iQj">
                     <rect key="frame" x="272" y="80" width="90" height="25"/>
                     <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -63,8 +67,11 @@
                     <state key="normal" title="获取验证码">
                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="getCodeClick:" destination="-1" eventType="touchUpInside" id="BAH-7k-UCe"/>
+                    </connections>
                 </button>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V2T-pS-ENM">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入新密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V2T-pS-ENM">
                     <rect key="frame" x="21" y="133" width="344" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="FwJ-tp-kNy"/>
@@ -86,6 +93,14 @@
                             <state key="normal" title="确认修改">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="sureClick:" destination="-1" eventType="touchUpInside" id="pbM-Ew-zXI"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>

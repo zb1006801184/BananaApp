@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
                 <outlet property="accountTextField" destination="1f2-uP-oeC" id="AkQ-uw-Ywm"/>
+                <outlet property="changeButton" destination="7s7-99-8Gg" id="klM-r4-CPv"/>
                 <outlet property="getCodeButton" destination="6H8-LT-pFC" id="0S0-Pw-T7t"/>
                 <outlet property="passwordTextField" destination="C5O-MB-dgh" id="J2b-8D-s6r"/>
                 <outlet property="view" destination="bKI-Ob-Auf" id="jH8-A7-5iX"/>
@@ -62,12 +63,15 @@
                         <constraint firstAttribute="height" constant="0.5" id="gUb-zJ-TGi"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7s7-99-8Gg">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7s7-99-8Gg">
                     <rect key="frame" x="41" y="332" width="72" height="29"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="验证码登录">
                         <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="changeType:" destination="-1" eventType="touchUpInside" id="iR7-WV-mjf"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFd-bf-cyM">
                     <rect key="frame" x="272" y="332" width="58" height="29"/>
@@ -89,6 +93,11 @@
                     <state key="normal" title="登录">
                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="loginClick:" destination="-1" eventType="touchUpInside" id="i9j-30-z3m"/>
                     </connections>
@@ -129,7 +138,7 @@
                         <constraint firstAttribute="trailing" secondItem="yzk-Kn-Dgr" secondAttribute="trailing" id="wwn-SA-iTS"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6H8-LT-pFC">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6H8-LT-pFC">
                     <rect key="frame" x="243" y="268.5" width="90" height="25"/>
                     <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -145,6 +154,9 @@
                             <integer key="value" value="3"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="getCodeClick:" destination="-1" eventType="touchUpInside" id="A4u-0c-MPQ"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

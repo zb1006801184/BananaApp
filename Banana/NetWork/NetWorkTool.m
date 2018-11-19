@@ -63,6 +63,8 @@ static id _instance = nil;
             success(jsonDictionary);
         }else{
             NSLog(@"%@",jsonDictionary);
+            [[UIApplication sharedApplication].keyWindow makeToast:jsonDictionary[@"rspMsg"] duration:2 position:CSToastPositionCenter style:nil];
+
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);

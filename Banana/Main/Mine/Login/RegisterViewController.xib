@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController">
             <connections>
                 <outlet property="codeTextField" destination="AJH-aq-IY2" id="ebP-r9-hTU"/>
+                <outlet property="getCodeButton" destination="sY2-dh-3fY" id="MOV-yT-6oO"/>
                 <outlet property="passworkTextField" destination="kNg-zX-SOu" id="Yr5-yX-OyS"/>
                 <outlet property="phoneTextField" destination="84n-cs-ftJ" id="SeT-Yq-szL"/>
                 <outlet property="view" destination="5vY-kW-c0x" id="1Qc-SU-QVV"/>
@@ -72,6 +73,11 @@
                     <state key="normal" title="确认">
                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="sureClick:" destination="-1" eventType="touchUpInside" id="gGk-mC-6Uz"/>
                     </connections>
@@ -112,7 +118,7 @@
                         <constraint firstItem="ghu-5g-aei" firstAttribute="top" secondItem="b2O-6d-NCE" secondAttribute="top" id="sm9-DA-FGb"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sY2-dh-3fY">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sY2-dh-3fY">
                     <rect key="frame" x="243" y="268.5" width="90" height="25"/>
                     <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
