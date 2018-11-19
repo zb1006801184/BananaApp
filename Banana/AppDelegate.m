@@ -7,8 +7,13 @@
 
 #import "AppDelegate.h"
 #import "TabBarViewController.h"
+#import "ZLAdvertView.h"
+
 @interface AppDelegate ()
 
+
+//广告图
+@property (nonatomic, strong) ZLAdvertView *zladvertView;
 @end
 
 @implementation AppDelegate
@@ -16,13 +21,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     TabBarViewController *tabBarVC = [[TabBarViewController alloc]init];
     self.window.rootViewController = tabBarVC;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [[UINavigationBar appearance] setTranslucent:NO];
     [self.window makeKeyWindow];
-    NSLog(@"1111");
+    //    广告页
+    [self Bootadvertising];
+    
     return YES;
 }
 
@@ -52,6 +61,30 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+#pragma mark - 广告图
+-(void)Bootadvertising{
+    
+    
+    //    自定义启动图和启动图数据
+    [self startimg];
+//    [self _shufflingdata];
+}
+
+
+////广告图数据
+//-(void)_shufflingdata
+//{
+//    [self.zladvertView showtimer];
+//
+//}
+-(void)startimg
+{
+    _zladvertView = [[ZLAdvertView alloc]initWithFrame:self.window.bounds];
+    [self.window addSubview:_zladvertView];
+}
+
 
 
 @end

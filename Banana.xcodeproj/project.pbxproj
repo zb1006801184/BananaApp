@@ -45,6 +45,7 @@
 		2ADB5CC721A1666A000FFA76 /* MineIdeaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ADB5CC521A1666A000FFA76 /* MineIdeaViewController.xib */; };
 		2ADB5CCB21A169EF000FFA76 /* ChangePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ADB5CC921A169EF000FFA76 /* ChangePhoneViewController.m */; };
 		2AE010FE21A1325D00A205F8 /* MineMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE010FD21A1325D00A205F8 /* MineMainTableView.m */; };
+		3749263F21A2402000C711AA /* ZLAdvertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749263D21A2402000C711AA /* ZLAdvertView.m */; };
 		4096861021A15FF100ECF103 /* TXScrollLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096860E21A15FF100ECF103 /* TXScrollLabelView.m */; };
 		4096861121A15FF100ECF103 /* UIView+TXFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096860F21A15FF100ECF103 /* UIView+TXFrame.m */; };
 		4096861521A1602900ECF103 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4096861221A1602900ECF103 /* HomeCell.xib */; };
@@ -137,6 +138,8 @@
 		2ADB5CC921A169EF000FFA76 /* ChangePhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePhoneViewController.m; sourceTree = "<group>"; };
 		2AE010FC21A1325D00A205F8 /* MineMainTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineMainTableView.h; sourceTree = "<group>"; };
 		2AE010FD21A1325D00A205F8 /* MineMainTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineMainTableView.m; sourceTree = "<group>"; };
+		3749263D21A2402000C711AA /* ZLAdvertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLAdvertView.m; sourceTree = "<group>"; };
+		3749263E21A2402000C711AA /* ZLAdvertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLAdvertView.h; sourceTree = "<group>"; };
 		4096860C21A15FF100ECF103 /* TXScrollLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXScrollLabelView.h; sourceTree = "<group>"; };
 		4096860D21A15FF100ECF103 /* UIView+TXFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TXFrame.h"; sourceTree = "<group>"; };
 		4096860E21A15FF100ECF103 /* TXScrollLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXScrollLabelView.m; sourceTree = "<group>"; };
@@ -312,6 +315,7 @@
 		2A928AFC219FE6EE0078AB7B /* Banana */ = {
 			isa = PBXGroup;
 			children = (
+				3749263C21A2402000C711AA /* ZLAdvertView */,
 				4096860B21A15FF100ECF103 /* TXScrollLabelView */,
 				2A068167219FEFA200ACE26B /* Addtion */,
 				2A068162219FEEF800ACE26B /* Util */,
@@ -384,6 +388,15 @@
 				2AE010FD21A1325D00A205F8 /* MineMainTableView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		3749263C21A2402000C711AA /* ZLAdvertView */ = {
+			isa = PBXGroup;
+			children = (
+				3749263D21A2402000C711AA /* ZLAdvertView.m */,
+				3749263E21A2402000C711AA /* ZLAdvertView.h */,
+			);
+			path = ZLAdvertView;
 			sourceTree = "<group>";
 		};
 		4096860B21A15FF100ECF103 /* TXScrollLabelView */ = {
@@ -608,6 +621,7 @@
 				2ADB5CBC21A161FD000FFA76 /* AboutMineViewController.m in Sources */,
 				4096861621A1602900ECF103 /* HomeCell.m in Sources */,
 				2A4883D221A14FCE006E74E2 /* RegisterViewController.m in Sources */,
+				3749263F21A2402000C711AA /* ZLAdvertView.m in Sources */,
 				4096861121A15FF100ECF103 /* UIView+TXFrame.m in Sources */,
 				2A068174219FF19100ACE26B /* TabBarViewController.m in Sources */,
 				2A928B0D219FE6EF0078AB7B /* main.m in Sources */,
