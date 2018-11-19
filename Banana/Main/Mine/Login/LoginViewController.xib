@@ -12,6 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
+                <outlet property="accountTextField" destination="1f2-uP-oeC" id="AkQ-uw-Ywm"/>
+                <outlet property="getCodeButton" destination="6H8-LT-pFC" id="0S0-Pw-T7t"/>
+                <outlet property="passwordTextField" destination="C5O-MB-dgh" id="J2b-8D-s6r"/>
                 <outlet property="view" destination="bKI-Ob-Auf" id="jH8-A7-5iX"/>
             </connections>
         </placeholder>
@@ -86,6 +89,9 @@
                     <state key="normal" title="登录">
                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="loginClick:" destination="-1" eventType="touchUpInside" id="i9j-30-z3m"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="if9-aa-Upd">
                     <rect key="frame" x="107.5" y="523" width="160" height="81"/>
@@ -134,6 +140,11 @@
                     <state key="normal" title="获取验证码">
                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

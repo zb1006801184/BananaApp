@@ -9,7 +9,7 @@
 #import "TabBarViewController.h"
 #import "ZLAdvertView.h"
 #import "NetWorkTool.h"
-
+#import "LoginViewController.h"
 @interface AppDelegate ()
 
 
@@ -25,8 +25,17 @@
     
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    TabBarViewController *tabBarVC = [[TabBarViewController alloc]init];
-    self.window.rootViewController = tabBarVC;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL isLogin = [defaults objectForKey:@"login"];
+    if (isLogin) {
+        TabBarViewController *tabBarVC = [[TabBarViewController alloc]init];
+        self.window.rootViewController = tabBarVC;
+    }else {
+        //去登录
+        LoginViewController *loginVC = [[LoginViewController alloc]init];
+        self.window.rootViewController = loginVC;
+    }
+
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [[UINavigationBar appearance] setTranslucent:NO];
     [self.window makeKeyWindow];

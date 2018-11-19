@@ -9,6 +9,13 @@
 #import "RegisterViewController.h"
 #import "ReviseViewController.h"
 @interface LoginViewController ()
+//账号
+@property (weak, nonatomic) IBOutlet UITextField *accountTextField;
+//密码
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+//获取验证码按钮
+@property (weak, nonatomic) IBOutlet UIButton *getCodeButton;
+
 
 @end
 
@@ -18,6 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"登录";
+    _getCodeButton.hidden = YES;
 }
 - (IBAction)registerClick:(id)sender {
     RegisterViewController *registerVC = [[RegisterViewController alloc]init];
@@ -29,5 +37,9 @@
     [self.navigationController pushViewController:ReviseVC animated:YES];
 }
 
+//登录
+- (IBAction)loginClick:(id)sender {
+    
+}
 
 @end

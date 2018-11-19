@@ -35,6 +35,7 @@
 		2AA1B42A21A13F8100B0C320 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA1B42821A13F8100B0C320 /* LoginViewController.m */; };
 		2AA1B42F21A145BD00B0C320 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AA1B42E21A145BD00B0C320 /* LoginViewController.xib */; };
 		2AA34D9821A16E1400795F50 /* ChangePhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AA34D9721A16E1400795F50 /* ChangePhoneViewController.xib */; };
+		2AD105E321A2CFF800982F5A /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD105E221A2CFF800982F5A /* API.m */; };
 		2ADB5CB721A15916000FFA76 /* MineMaterialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ADB5CB521A15916000FFA76 /* MineMaterialViewController.m */; };
 		2ADB5CB821A15916000FFA76 /* MineMaterialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ADB5CB621A15916000FFA76 /* MineMaterialViewController.xib */; };
 		2ADB5CBC21A161FD000FFA76 /* AboutMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ADB5CBA21A161FD000FFA76 /* AboutMineViewController.m */; };
@@ -132,6 +133,8 @@
 		2AA1B42821A13F8100B0C320 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		2AA1B42E21A145BD00B0C320 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		2AA34D9721A16E1400795F50 /* ChangePhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePhoneViewController.xib; sourceTree = "<group>"; };
+		2AD105E121A2CFF800982F5A /* API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
+		2AD105E221A2CFF800982F5A /* API.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = API.m; sourceTree = "<group>"; };
 		2ADB5CB421A15916000FFA76 /* MineMaterialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineMaterialViewController.h; sourceTree = "<group>"; };
 		2ADB5CB521A15916000FFA76 /* MineMaterialViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineMaterialViewController.m; sourceTree = "<group>"; };
 		2ADB5CB621A15916000FFA76 /* MineMaterialViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineMaterialViewController.xib; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 				2A068164219FEF2900ACE26B /* BSomeWays.m */,
 				2A068166219FEF7600ACE26B /* BConstant.h */,
 				2A06818A219FFA1000ACE26B /* Banana.pch */,
+				2AD105E121A2CFF800982F5A /* API.h */,
+				2AD105E221A2CFF800982F5A /* API.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -666,6 +671,7 @@
 				2A06816A219FF05300ACE26B /* UIView+Layout.m in Sources */,
 				2A06817D219FF64400ACE26B /* MineViewController.m in Sources */,
 				2AA1B42A21A13F8100B0C320 /* LoginViewController.m in Sources */,
+				2AD105E321A2CFF800982F5A /* API.m in Sources */,
 				4096861021A15FF100ECF103 /* TXScrollLabelView.m in Sources */,
 				2A068189219FF99200ACE26B /* UIColor+RGBHelper.m in Sources */,
 				2A068182219FF65900ACE26B /* AllProductViewController.m in Sources */,
