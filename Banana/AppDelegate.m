@@ -69,20 +69,20 @@
     
     //    自定义启动图和启动图数据
     [self startimg];
-//    [self _shufflingdata];
+    [self _shufflingdata];
 }
 
 
-////广告图数据
-//-(void)_shufflingdata
-//{
-//    [self.zladvertView showtimer];
-//
-//}
+//广告图数据
+-(void)_shufflingdata
+{
+    [self.zladvertView showtimer];
+
+}
 -(void)startimg
 {
     _zladvertView = [[ZLAdvertView alloc]initWithFrame:self.window.bounds];
-    [self.window addSubview:_zladvertView];
+    [self.window.rootViewController.view addSubview:_zladvertView];
 }
 
 

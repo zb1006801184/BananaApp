@@ -33,11 +33,11 @@ static int const showtime = 3;
         _starimg = [[UIImageView alloc]initWithFrame:self.bounds];
         [self addSubview:_starimg];
         _starimg.userInteractionEnabled = YES;
-        UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapPage)];
-        [_starimg addGestureRecognizer:tapGesturRecognizer];
-        _starimg.backgroundColor = [UIColor redColor];
+//        UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapPage)];
+//        [_starimg addGestureRecognizer:tapGesturRecognizer];
+        _starimg.backgroundColor = [UIColor whiteColor];
         _starimg.contentMode = UIViewContentModeScaleAspectFill;
-        _starimg.image = [UIImage imageNamed:(UIScreen.mainScreen.bounds.size.height == 812) ? @"LOGO" : @"LOGO"];
+        _starimg.image = [UIImage imageNamed:(UIScreen.mainScreen.bounds.size.height == 812) ? @"矩形" : @"矩形"];
         
         
         _tiaoguobtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -53,6 +53,20 @@ static int const showtime = 3;
         [_tiaoguobtn addTarget:self action:@selector(removeAdvertView) forControlEvents:UIControlEventTouchUpInside];
         _tiaoguobtn.layer.masksToBounds = YES;
         _tiaoguobtn.layer.cornerRadius = 15;
+        
+        
+        
+        UIButton *detailsbtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        detailsbtn.frame = CGRectMake(kScreenWidth-80-20, self.bottom-80, 80, 30);
+        detailsbtn.backgroundColor = [UIColor colorWithHexString:@"#000000" alpha:0.6];
+        detailsbtn.alpha = .5;
+        detailsbtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        [_starimg addSubview:detailsbtn];
+        [detailsbtn setTitle:[NSString stringWithFormat:@"查看详情"] forState:UIControlStateNormal];
+        [detailsbtn addTarget:self action:@selector(tapPage) forControlEvents:UIControlEventTouchUpInside];
+        detailsbtn.layer.masksToBounds = YES;
+        detailsbtn.layer.cornerRadius = 15;
+        
         
     }
     return self;

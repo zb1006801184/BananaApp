@@ -24,6 +24,10 @@
     // Do any additional setup after loading the view.
     self.title = @"贷款超市";
     
+    //广告页面跳转
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(alPushToAdvert) name:@"ZLPushToAdvert" object:nil];
+
+    
     [self initView];
     
 }
@@ -237,6 +241,14 @@
         layer.backgroundColor = color.CGColor;
         [view.layer addSublayer:layer];
     }
+}
+
+
+//跳转广告
+-(void)alPushToAdvert{
+    
+    NSLog(@"1111");
+
 }
 
 
