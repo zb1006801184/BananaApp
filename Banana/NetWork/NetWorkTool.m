@@ -94,7 +94,7 @@ static id _instance = nil;
     
     //    给参数添加公共请求参数
     int flowNo = arc4random() % 10000000;
-    [parameter setObject:[NSString stringWithFormat:@"%d",flowNo] forKey:@"flowNo"];//生成一个每次请求都不一样的随机数
+    [parameter setObject:[NSString stringWithFormat:@"%d%@",flowNo,[self getCurrentTimes]] forKey:@"flowNo"];//生成一个每次请求都不一样的随机数
     [parameter setObject:[self getCurrentTimes] forKey:@"timestamp"];//获取时间戳
     [parameter setObject:FCUUID.uuidForDevice forKey:@"mobileNo"];//生成设备唯一标识
     [parameter setObject:[[UIDevice currentDevice] model] forKey:@"mobileType"];//获取手机型号

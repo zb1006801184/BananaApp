@@ -31,16 +31,7 @@
     
     [self initView];
     
-//    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-//    [dic setObject:@"18310197121" forKey:@"telephone"];
-//    [dic setObject:@"0" forKey:@"operationType"];
-//    [[NetWorkTool shareInstance] postWithUrl:@"https://apptest.xiangjiaoqianbao.cn/sys/sendNote" paramWithDic:dic success:^(id  _Nonnull responseObject) {
-//        NSLog(@"1===%@",responseObject);
-//        NSLog(@"1===%@",responseObject[@"rspMsg"]);
-//
-//    } failure:^(NSError * _Nonnull error) {
-//        NSLog(@"2===%@",error);
-//    }];
+   
 }
 
 -(void)initView{
@@ -211,7 +202,6 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     NSLog(@"点击cell");
-    [_collectionView reloadData];
     
 }
 

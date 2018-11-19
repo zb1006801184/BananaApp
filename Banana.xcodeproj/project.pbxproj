@@ -53,6 +53,9 @@
 		3749265521A266CE00C711AA /* SHA256.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749264D21A266CE00C711AA /* SHA256.m */; };
 		3749265621A266CE00C711AA /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749264F21A266CE00C711AA /* GTMBase64.m */; };
 		3749265721A266CE00C711AA /* DES3Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749265021A266CE00C711AA /* DES3Util.m */; };
+		3749265D21A29A6E00C711AA /* popUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749265C21A29A6E00C711AA /* popUpView.m */; };
+		3749266121A29EAA00C711AA /* popUpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749265F21A29EAA00C711AA /* popUpCell.m */; };
+		3749266221A29EAA00C711AA /* popUpCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3749266021A29EAA00C711AA /* popUpCell.xib */; };
 		4096861021A15FF100ECF103 /* TXScrollLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096860E21A15FF100ECF103 /* TXScrollLabelView.m */; };
 		4096861121A15FF100ECF103 /* UIView+TXFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096860F21A15FF100ECF103 /* UIView+TXFrame.m */; };
 		4096861521A1602900ECF103 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4096861221A1602900ECF103 /* HomeCell.xib */; };
@@ -160,6 +163,11 @@
 		3749264E21A266CE00C711AA /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		3749264F21A266CE00C711AA /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		3749265021A266CE00C711AA /* DES3Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DES3Util.m; sourceTree = "<group>"; };
+		3749265B21A29A6E00C711AA /* popUpView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = popUpView.h; sourceTree = "<group>"; };
+		3749265C21A29A6E00C711AA /* popUpView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = popUpView.m; sourceTree = "<group>"; };
+		3749265E21A29EAA00C711AA /* popUpCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = popUpCell.h; sourceTree = "<group>"; };
+		3749265F21A29EAA00C711AA /* popUpCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = popUpCell.m; sourceTree = "<group>"; };
+		3749266021A29EAA00C711AA /* popUpCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = popUpCell.xib; sourceTree = "<group>"; };
 		4096860C21A15FF100ECF103 /* TXScrollLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXScrollLabelView.h; sourceTree = "<group>"; };
 		4096860D21A15FF100ECF103 /* UIView+TXFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TXFrame.h"; sourceTree = "<group>"; };
 		4096860E21A15FF100ECF103 /* TXScrollLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXScrollLabelView.m; sourceTree = "<group>"; };
@@ -306,6 +314,11 @@
 				4096862121A16CE500ECF103 /* AllProductCell.h */,
 				4096862221A16CE500ECF103 /* AllProductCell.m */,
 				4096862321A16CE600ECF103 /* AllProductCell.xib */,
+				3749265B21A29A6E00C711AA /* popUpView.h */,
+				3749265C21A29A6E00C711AA /* popUpView.m */,
+				3749265E21A29EAA00C711AA /* popUpCell.h */,
+				3749265F21A29EAA00C711AA /* popUpCell.m */,
+				3749266021A29EAA00C711AA /* popUpCell.xib */,
 			);
 			path = AllProduct;
 			sourceTree = "<group>";
@@ -564,6 +577,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A4883D921A1538D006E74E2 /* ReviseViewController.xib in Resources */,
+				3749266221A29EAA00C711AA /* popUpCell.xib in Resources */,
 				3749265321A266CE00C711AA /* readme.ME in Resources */,
 				2A928B0A219FE6EF0078AB7B /* LaunchScreen.storyboard in Resources */,
 				2A928B07219FE6EF0078AB7B /* Assets.xcassets in Resources */,
@@ -657,6 +671,7 @@
 				2A068182219FF65900ACE26B /* AllProductViewController.m in Sources */,
 				3749265121A266CE00C711AA /* AESCipher.m in Sources */,
 				2A928B02219FE6EE0078AB7B /* ViewController.m in Sources */,
+				3749266121A29EAA00C711AA /* popUpCell.m in Sources */,
 				2AE010FE21A1325D00A205F8 /* MineMainTableView.m in Sources */,
 				2AA1B42321A1339C00B0C320 /* MineMainTableViewCell.m in Sources */,
 				2ADB5CB721A15916000FFA76 /* MineMaterialViewController.m in Sources */,
@@ -667,6 +682,7 @@
 				3749265721A266CE00C711AA /* DES3Util.m in Sources */,
 				3749265621A266CE00C711AA /* GTMBase64.m in Sources */,
 				4096861621A1602900ECF103 /* HomeCell.m in Sources */,
+				3749265D21A29A6E00C711AA /* popUpView.m in Sources */,
 				2A4883D221A14FCE006E74E2 /* RegisterViewController.m in Sources */,
 				3749263F21A2402000C711AA /* ZLAdvertView.m in Sources */,
 				4096861121A15FF100ECF103 /* UIView+TXFrame.m in Sources */,

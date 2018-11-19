@@ -8,10 +8,27 @@
 #import "AllProductViewController.h"
 #import "AllProductCell.h"
 #import "BConstant.h"
+#import "popUpView.h"
+
 @interface AllProductViewController ()<UICollectionViewDataSource,UICollectionViewDelegate
 ,UICollectionViewDelegateFlowLayout>
 
+//下面三个字符串记录选中的三个条件
+@property (nonatomic, strong)NSString *oneSelectedStr;
+@property (nonatomic, strong)NSString *twoSelectedStr;
+@property (nonatomic, strong)NSString *threeSelectedStr;
+@property (nonatomic, assign)NSInteger btntag;//记录上一个按钮是点击的第几个
+
+//下面3个是3个选项卡的数据源
+@property (nonatomic, strong)NSArray *oneborrowTypeArr;
+@property (nonatomic, strong)NSArray *twoborrowTypeArr;
+@property (nonatomic, strong)NSArray *threeborrowTypeArr;
+
+
 @property (nonatomic, strong)UICollectionView *collectionView;
+
+@property (nonatomic, strong)popUpView *popUpview;//顶部下拉视图
+
 
 @end
 
@@ -21,14 +38,59 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+//    选中条件回调的通知
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(popUpselectedStr:) name:@"popUpView" object:nil];
+
     self.title = @"全部产品";
+    
+    _oneborrowTypeArr= @[@"类型不限",@"上班族1",@"上班族2",@"上班族3",@"上班族4",@"上班族5",@"上班族6"];
+    _twoborrowTypeArr= @[@"金额不限",@"2000以下",@"2000-1万",@"1万-2万",@"2万以上"];
+    _threeborrowTypeArr= @[@"期限不限",@"1个月以下",@"1-6个月",@"6-12个月",@"12个月以上"];
+
     
     [self initView];
     
 }
 
+//    选中条件回调的通知
+-(void)popUpselectedStr:(NSNotification *)noti {
+    self.collectionView.scrollEnabled = YES;
+    NSString *selectedstr = noti.object;
+    NSLog(@"%@",selectedstr);
+    NSLog(@"===%ld",_btntag);
+
+    if (selectedstr!=nil) {
+        
+        UIButton *selectedbtn = (UIButton *)[self.view viewWithTag:_btntag];
+        selectedbtn.backgroundColor = [UIColor colorWithHexString:@"#FFDA44"];
+        [selectedbtn setTitle:selectedstr forState:UIControlStateNormal];
+   
+    }
+
+}
+
 
 -(void)initView{
+    
+    NSArray *textarr = @[@"贷款类型",@"贷款金额",@"贷款期限"];
+    for (int i=0; i<textarr.count; i++) {
+        
+        UIView *arrview = [[UIView alloc]initWithFrame:CGRectMake((kScreenWidth/3)*i, 0, kScreenWidth/3, 60)];
+        [self.view addSubview:arrview];
+        
+        UIButton *selectedbtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        selectedbtn.frame = CGRectMake(15, 15, arrview.width-30, 30);
+        selectedbtn.backgroundColor = [UIColor colorWithHexString:@"#F3F3F3"];
+        [arrview addSubview:selectedbtn];
+        selectedbtn.titleLabel.font = [UIFont systemFontOfSize: 11];
+        [selectedbtn setTitle:textarr[i] forState:UIControlStateNormal];
+        [selectedbtn setTitleColor:[UIColor colorWithHexString:@"#333333"] forState:UIControlStateNormal];
+        selectedbtn.layer.cornerRadius = 4.0;
+        [selectedbtn addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
+        selectedbtn.tag = 100+i;
+        
+    }
+
     
     //单元格的大小
     UICollectionViewFlowLayout *historylayout = [[UICollectionViewFlowLayout alloc] init];
@@ -37,7 +99,7 @@
     historylayout.minimumInteritemSpacing = 0;                     //最小列间距
     historylayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);  //网格上左下右间距
     
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-kNavHeight) collectionViewLayout:historylayout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 60, kScreenWidth, kScreenHeight-kNavHeight-60) collectionViewLayout:historylayout];
     [_collectionView registerClass:[AllProductCell class] forCellWithReuseIdentifier:@"AllProductCell"];
     _collectionView.backgroundColor = [UIColor whiteColor];
     //_collectionView的代理方法
@@ -47,11 +109,39 @@
     _collectionView.showsVerticalScrollIndicator = NO;
     _collectionView.showsHorizontalScrollIndicator = NO;
     
-    //    这是头部的注册
-    [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerId"];
-    
     
 }
+
+//弹出下拉视图
+-(void)action:(UIButton *)btn{
+    _btntag = btn.tag;
+    
+    self.collectionView.scrollEnabled = NO;
+
+    self.popUpview.hidden = NO;
+    [self.collectionView addSubview:self.popUpview];
+    if (_btntag == 100) {
+        self.popUpview.borrowTypeArr = _oneborrowTypeArr;
+    }else if (_btntag == 101){
+        self.popUpview.borrowTypeArr = _twoborrowTypeArr;
+    }else if (_btntag == 102){
+        self.popUpview.borrowTypeArr = _threeborrowTypeArr;
+    }
+}
+
+#pragma mark - 顶部下拉视图
+-(popUpView *)popUpview{
+    
+    if (_popUpview == nil) {
+        
+        _popUpview = [[popUpView alloc] init];
+        _popUpview.frame = self.collectionView.bounds;
+    }
+    
+    return _popUpview;
+    
+}
+
 
 
 
@@ -77,49 +167,6 @@
 }
 
 #pragma mark - UICollectionViewDelegate
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    
-    return CGSizeMake(kScreenWidth, 60);
-}
-
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    
-    UICollectionReusableView *headerView = [_collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"headerId" forIndexPath:indexPath];
-    headerView.tag = 1000+indexPath.section;
-    headerView.backgroundColor = [UIColor whiteColor];
-    
-    for (UIView *view in headerView.subviews) {
-        [view removeFromSuperview];
-    }
-    
-    [self initHeaderView:headerView];
-    
-    return headerView;
-}
-
-//创建头部视图
--(void)initHeaderView:(UIView *)view{
-    
-    //    第一部分
-    NSArray *textarr = @[@"贷款类型",@"贷款金额",@"贷款期限"];
-    for (int i=0; i<textarr.count; i++) {
-        
-        UIView *arrview = [[UIView alloc]initWithFrame:CGRectMake((kScreenWidth/3)*i, 0, kScreenWidth/3, 60)];
-        [view addSubview:arrview];
-        
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(15, 15, arrview.width-30, 30);
-        btn.backgroundColor = [UIColor colorWithHexString:@"#F3F3F3"];
-        [arrview addSubview:btn];
-        btn.titleLabel.font = [UIFont systemFontOfSize: 11];
-        [btn setTitle:textarr[i] forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor colorWithHexString:@"#333333"] forState:UIControlStateNormal];
-        btn.layer.cornerRadius = 4.0;
-        
-    }
-    
-}
-
 
 
 //定义每个UICollectionView 的大小
@@ -133,7 +180,6 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     NSLog(@"点击cell");
-    [_collectionView reloadData];
     
 }
 
