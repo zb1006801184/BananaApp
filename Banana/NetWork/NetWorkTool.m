@@ -50,23 +50,37 @@ static id _instance = nil;
 }
 -(void)postWithUrl:(NSString *)url paramWithDic:(NSMutableDictionary *)parameter success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure {
     
+    if (parameter==nil) {
+        parameter=[NSMutableDictionary new];
+    }
 //    对参数加密的方法
     NSDictionary *finalParam = [self getDic:parameter];
 
     [self.manager POST:url parameters:finalParam success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *jsonDictionary = [responseObject mj_JSONObject];
-        success(jsonDictionary);
+        if ([jsonDictionary[@"rspCode"] isEqualToString:@"0001"]) {
+            success(jsonDictionary);
+        }else{
+            NSLog(@"%@",jsonDictionary);
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
     }];
 }
 -(void)getWithUrl:(NSString *)url paramWithDic:(NSMutableDictionary *)parameter success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure {
     
+    if (parameter==nil) {
+        parameter=[NSMutableDictionary new];
+    }
     NSDictionary *finalParam = [self getDic:parameter];
     
     [self.manager GET:url parameters:finalParam success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *jsonDictionary = [responseObject mj_JSONObject];
-        success(jsonDictionary);
+        if ([jsonDictionary[@"rspCode"] isEqualToString:@"0001"]) {
+            success(jsonDictionary);
+        }else{
+            NSLog(@"%@",jsonDictionary);
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
     }];
