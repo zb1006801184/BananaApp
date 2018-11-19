@@ -31,12 +31,12 @@
 }
 + (void)sendCodeWithToken:(NSString *)token telephone:(NSString *)telephone operationType:(NSString *)operationType success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:telephone forKey:@"telephone"];
+    [params setObject:@"15070925726" forKey:@"telephone"];
     [params setObject:operationType forKey:@"operationType"];
     if (token.length > 0) {
         [params setObject:token forKey:@"token"];
     }
-    [[NetWorkTool shareInstance] postWithUrl:@"member/register" paramWithDic:params success:^(id  _Nonnull responseObject) {
+    [[NetWorkTool shareInstance] postWithUrl:@"sys/sendNote" paramWithDic:params success:^(id  _Nonnull responseObject) {
         success(responseObject);
     } failure:^(NSError * _Nonnull error) {
         failure(error);

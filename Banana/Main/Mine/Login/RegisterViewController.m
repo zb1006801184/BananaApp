@@ -26,6 +26,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)getCodeClick:(id)sender {
+    
     //获取验证码
     [MineRequest sendCodeWithToken:@"" telephone:_phoneTextField.text operationType:@"0" success:^(id  _Nonnull responseObject) {
         NSLog(@"%@",responseObject);
