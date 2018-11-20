@@ -38,7 +38,7 @@
 //h首页数据源
 -(void)homedata{
     
-    [[NetWorkTool shareInstance] postWithUrl:@"indexShow/indexShow" paramWithDic:nil success:^(id  _Nonnull responseObject) {
+    [[NetWorkTool shareInstance] postWithUrl:MEMEBER_HOMEDATA paramWithDic:nil success:^(id  _Nonnull responseObject) {
         
         NSLog(@"%@",responseObject);
         
