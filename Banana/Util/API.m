@@ -22,4 +22,24 @@ NSString *const MEMBER_SELECTINFORMATION = @"member/selectInformation";
 //登出
 NSString *const MEMBER_LOGOUT = @"member/logout";
 //忘记密码
-NSString *const MEMEBER_CHANGEPWD = @"member/changePwd";
+NSString *const MEMEBER_CHANGEPWD = @"member/forgetPwd";
+////修改密码
+//NSString *const MEMEBER_CHANGEPWD = @"member/changePwd";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//广告页
+NSString *const MEMEBER_startShow = @"indexShow/startShow";
