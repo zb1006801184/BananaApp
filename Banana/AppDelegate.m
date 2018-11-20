@@ -89,7 +89,7 @@
 //广告图数据
 -(void)_shufflingdata
 {
-    [[NetWorkTool shareInstance] postWithUrl:@"indexShow/startShow" paramWithDic:nil success:^(id  _Nonnull responseObject) {        
+    [[NetWorkTool shareInstance] postWithUrl:MEMEBER_startShow paramWithDic:nil success:^(id  _Nonnull responseObject) {
         NSString *Img = responseObject[@"imgUrl"];
         NSString *Web = responseObject[@"adUrl"];
 

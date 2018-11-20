@@ -152,8 +152,6 @@ static id _instance = nil;
     //----------将nsdate按formatter格式转成nsstring
     
     NSString *currentTimeString = [formatter stringFromDate:datenow];
-    
-    
     return currentTimeString;
     
 }

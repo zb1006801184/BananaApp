@@ -28,10 +28,15 @@
     //广告页面跳转
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(alPushToAdvert) name:@"ZLPushToAdvert" object:nil];
 
-    
     [self initView];
     
-   
+//    [[NetWorkTool shareInstance] postWithUrl:@"https://apptest.xiangjiaoqianbao.cn/indexShow/indexShow" paramWithDic:nil success:^(id  _Nonnull responseObject) {
+//
+//        NSLog(@"%@",responseObject);
+//
+//    } failure:^(NSError * _Nonnull error) {
+//        NSLog(@"%@",error);
+//    }];
 }
 
 -(void)initView{
