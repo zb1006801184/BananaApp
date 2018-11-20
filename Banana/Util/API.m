@@ -43,3 +43,5 @@ NSString *const MEMEBER_CHANGEPWD = @"member/forgetPwd";
 
 //广告页
 NSString *const MEMEBER_startShow = @"indexShow/startShow";
+//首页数据源
+NSString *const MEMEBER_HOMEDATA = @"indexShow/indexShow";
