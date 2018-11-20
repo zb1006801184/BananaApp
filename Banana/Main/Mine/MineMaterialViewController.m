@@ -6,7 +6,7 @@
 //
 
 #import "MineMaterialViewController.h"
-
+#import "SetUserNameViewController.h"
 @interface MineMaterialViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *headImage;
 
@@ -35,6 +35,12 @@
 }
 
 - (IBAction)userNameClick:(id)sender {
+    SetUserNameViewController *userName = [[SetUserNameViewController alloc]init];
+    __weak typeof(self)weekSelf = self;
+    userName.callBackUserName = ^(NSString * _Nonnull userName) {
+        weekSelf.userNameLabel.text = userName;
+    };
+    [self.navigationController pushViewController:userName animated:YES];
 }
 
 @end

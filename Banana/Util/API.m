@@ -31,8 +31,10 @@ NSString *const SYS_IDEA = @"sys/idea";
 NSString *const MEMBER_CHANGEBIND = @"member/changeBind";
 //校验验证码的合理性
 NSString *const SYS_VALIDATECHECKCODE = @"sys/validateCheckCode";
-
-
+//修改用户信息
+NSString *const MEMBER_CHANGEMSG = @"member/changeMsg";
+//上传图片
+NSString *const MEMBER_CHANGEHEADFILE =@"member/changeHeadFile";
 
 
 

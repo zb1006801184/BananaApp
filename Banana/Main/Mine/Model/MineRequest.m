@@ -112,4 +112,14 @@
 
 }
 
++ (void)changeUserMessageWithUserName:(NSString *)userName success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:userName forKey:@"userName"];
+    [[NetWorkTool shareInstance] postWithUrl:MEMBER_CHANGEMSG paramWithDic:params success:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } failure:^(NSError * _Nonnull error) {
+        failure(error);
+    }];
+
+}
 @end

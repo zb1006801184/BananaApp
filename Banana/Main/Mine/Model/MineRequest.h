@@ -27,7 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 //验证码校验
 + (void)validateCheckCodeWithTelephone:(NSString *)telephone checkCode:(NSString *)checkCode operationType:(NSString *)operationType success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure;
 //绑定手机号
-+ (void)changeBindWithPhone:(NSString *)phone checkCode:(NSString *)checkCode validateCode:(NSString *)validateCode success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure; 
++ (void)changeBindWithPhone:(NSString *)phone checkCode:(NSString *)checkCode validateCode:(NSString *)validateCode success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure;
+//修改昵称
++ (void)changeUserMessageWithUserName:(NSString *)userName success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure;
 @end
 
 NS_ASSUME_NONNULL_END

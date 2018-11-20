@@ -48,6 +48,8 @@
 		2AE010FE21A1325D00A205F8 /* MineMainTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE010FD21A1325D00A205F8 /* MineMainTableView.m */; };
 		2AF1677F21A2D1340016F7D2 /* MineRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF1677E21A2D1340016F7D2 /* MineRequest.m */; };
 		2AF1678221A2FAFE0016F7D2 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF1678121A2FAFE0016F7D2 /* UserModel.m */; };
+		2AF3B7E721A3C86A003D2C39 /* SetUserNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF3B7E521A3C86A003D2C39 /* SetUserNameViewController.m */; };
+		2AF3B7E821A3C86A003D2C39 /* SetUserNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AF3B7E621A3C86A003D2C39 /* SetUserNameViewController.xib */; };
 		3749263F21A2402000C711AA /* ZLAdvertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749263D21A2402000C711AA /* ZLAdvertView.m */; };
 		3749264121A25E1900C711AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3749264021A25E1900C711AA /* Images.xcassets */; };
 		3749265121A266CE00C711AA /* AESCipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749264521A266CE00C711AA /* AESCipher.m */; };
@@ -157,6 +159,9 @@
 		2AF1677E21A2D1340016F7D2 /* MineRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineRequest.m; sourceTree = "<group>"; };
 		2AF1678021A2FAFE0016F7D2 /* UserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		2AF1678121A2FAFE0016F7D2 /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		2AF3B7E421A3C86A003D2C39 /* SetUserNameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetUserNameViewController.h; sourceTree = "<group>"; };
+		2AF3B7E521A3C86A003D2C39 /* SetUserNameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetUserNameViewController.m; sourceTree = "<group>"; };
+		2AF3B7E621A3C86A003D2C39 /* SetUserNameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetUserNameViewController.xib; sourceTree = "<group>"; };
 		3749263D21A2402000C711AA /* ZLAdvertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLAdvertView.m; sourceTree = "<group>"; };
 		3749263E21A2402000C711AA /* ZLAdvertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLAdvertView.h; sourceTree = "<group>"; };
 		3749264021A25E1900C711AA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -313,6 +318,9 @@
 				2ADB5CC321A1666A000FFA76 /* MineIdeaViewController.h */,
 				2ADB5CC421A1666A000FFA76 /* MineIdeaViewController.m */,
 				2ADB5CC521A1666A000FFA76 /* MineIdeaViewController.xib */,
+				2AF3B7E421A3C86A003D2C39 /* SetUserNameViewController.h */,
+				2AF3B7E521A3C86A003D2C39 /* SetUserNameViewController.m */,
+				2AF3B7E621A3C86A003D2C39 /* SetUserNameViewController.xib */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -608,6 +616,7 @@
 				2ADB5CC221A163DE000FFA76 /* MineSetViewController.xib in Resources */,
 				2A928B05219FE6EE0078AB7B /* Main.storyboard in Resources */,
 				4096861521A1602900ECF103 /* HomeCell.xib in Resources */,
+				2AF3B7E821A3C86A003D2C39 /* SetUserNameViewController.xib in Resources */,
 				2A06817E219FF64400ACE26B /* MineViewController.xib in Resources */,
 				2A068183219FF65900ACE26B /* AllProductViewController.xib in Resources */,
 				2ADB5CC721A1666A000FFA76 /* MineIdeaViewController.xib in Resources */,
@@ -694,6 +703,7 @@
 				2A068189219FF99200ACE26B /* UIColor+RGBHelper.m in Sources */,
 				2A068182219FF65900ACE26B /* AllProductViewController.m in Sources */,
 				3749265121A266CE00C711AA /* AESCipher.m in Sources */,
+				2AF3B7E721A3C86A003D2C39 /* SetUserNameViewController.m in Sources */,
 				2A928B02219FE6EE0078AB7B /* ViewController.m in Sources */,
 				3749266121A29EAA00C711AA /* popUpCell.m in Sources */,
 				2AE010FE21A1325D00A205F8 /* MineMainTableView.m in Sources */,
