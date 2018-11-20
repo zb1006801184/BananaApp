@@ -12,6 +12,8 @@
 #import "AESCipher.h"
 #import "RSAEncryptor.h"
 #import "SHA256.h"
+#import "LoginViewController.h"
+#import "UserModel.h"
 
 @interface NetWorkTool()
 @property(nonatomic,strong)AFHTTPSessionManager *manager;
@@ -61,11 +63,22 @@ static id _instance = nil;
         NSDictionary *jsonDictionary = [responseObject mj_JSONObject];
         if ([jsonDictionary[@"rspCode"] isEqualToString:@"0001"]) {
             success(jsonDictionary);
+        }else if ([jsonDictionary[@"rspCode"] isEqualToString:@"0099"]){
+            
+            [UserModel loginOut];
+            if (![[BSomeWays getCurrentVC] isKindOfClass:[LoginViewController class]]) {
+                
+                LoginViewController *loginVC = [[LoginViewController alloc]init];
+                loginVC.hidesBottomBarWhenPushed = YES;
+                [[BSomeWays getCurrentVC].navigationController pushViewController:loginVC animated:YES];
+                
+            }
         }else{
             NSLog(@"%@",jsonDictionary);
             [[UIApplication sharedApplication].keyWindow makeToast:jsonDictionary[@"rspMsg"] duration:2 position:CSToastPositionCenter style:nil];
 
         }
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
     }];
@@ -75,12 +88,23 @@ static id _instance = nil;
     if (parameter==nil) {
         parameter=[NSMutableDictionary new];
     }
+    
     NSDictionary *finalParam = [self getDic:parameter];
     
     [self.manager GET:url parameters:finalParam success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *jsonDictionary = [responseObject mj_JSONObject];
         if ([jsonDictionary[@"rspCode"] isEqualToString:@"0001"]) {
             success(jsonDictionary);
+        }else if ([jsonDictionary[@"rspCode"] isEqualToString:@"0099"]){
+            
+            [UserModel loginOut];
+            if (![[BSomeWays getCurrentVC] isKindOfClass:[LoginViewController class]]) {
+                
+                LoginViewController *loginVC = [[LoginViewController alloc]init];
+                loginVC.hidesBottomBarWhenPushed = YES;
+                [[BSomeWays getCurrentVC].navigationController pushViewController:loginVC animated:YES];
+           
+            }
         }else{
             NSLog(@"%@",jsonDictionary);
         }
