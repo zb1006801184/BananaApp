@@ -62,6 +62,8 @@ static id _instance = nil;
             success(jsonDictionary);
         }else{
             NSLog(@"%@",jsonDictionary);
+            NSLog(@"%@",jsonDictionary[@"rspMsg"]);
+
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
@@ -149,8 +151,6 @@ static id _instance = nil;
     //----------将nsdate按formatter格式转成nsstring
     
     NSString *currentTimeString = [formatter stringFromDate:datenow];
-    
-    
     return currentTimeString;
     
 }
