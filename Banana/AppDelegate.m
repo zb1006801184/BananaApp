@@ -9,7 +9,7 @@
 #import "TabBarViewController.h"
 #import "ZLAdvertView.h"
 #import "NetWorkTool.h"
-
+#import "LoginViewController.h"
 @interface AppDelegate ()
 
 
@@ -25,8 +25,18 @@
     
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    TabBarViewController *tabBarVC = [[TabBarViewController alloc]init];
-    self.window.rootViewController = tabBarVC;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL isLogin = [defaults objectForKey:@"login"];
+    if (isLogin) {
+        TabBarViewController *tabBarVC = [[TabBarViewController alloc]init];
+        self.window.rootViewController = tabBarVC;
+    }else {
+        //去登录
+        LoginViewController *loginVC = [[LoginViewController alloc]init];
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
+        self.window.rootViewController = nav;
+    }
+
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [[UINavigationBar appearance] setTranslucent:NO];
     [self.window makeKeyWindow];
@@ -79,7 +89,7 @@
 //广告图数据
 -(void)_shufflingdata
 {
-    [[NetWorkTool shareInstance] postWithUrl:@"https://apptest.xiangjiaoqianbao.cn/indexShow/startShow" paramWithDic:nil success:^(id  _Nonnull responseObject) {        
+    [[NetWorkTool shareInstance] postWithUrl:@"indexShow/startShow" paramWithDic:nil success:^(id  _Nonnull responseObject) {        
         NSString *Img = responseObject[@"imgUrl"];
         NSString *Web = responseObject[@"adUrl"];
 

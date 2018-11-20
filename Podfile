@@ -11,5 +11,6 @@ target 'Banana' do
    pod 'MJExtension'
    pod 'SDWebImage', '~> 4.0'
    pod 'FCUUID'
+   pod 'Toast', '~> 4.0.0'
 
 end

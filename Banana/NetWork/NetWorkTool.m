@@ -55,14 +55,15 @@ static id _instance = nil;
     }
 //    对参数加密的方法
     NSDictionary *finalParam = [self getDic:parameter];
-
-    [self.manager POST:url parameters:finalParam success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSString *mainUrl = [NSString stringWithFormat:@"%@%@",API_NAME,url];
+    
+    [self.manager POST:mainUrl parameters:finalParam success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *jsonDictionary = [responseObject mj_JSONObject];
         if ([jsonDictionary[@"rspCode"] isEqualToString:@"0001"]) {
             success(jsonDictionary);
         }else{
             NSLog(@"%@",jsonDictionary);
-            NSLog(@"%@",jsonDictionary[@"rspMsg"]);
+            [[UIApplication sharedApplication].keyWindow makeToast:jsonDictionary[@"rspMsg"] duration:2 position:CSToastPositionCenter style:nil];
 
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

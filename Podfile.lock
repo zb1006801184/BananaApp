@@ -23,6 +23,7 @@ PODS:
   - SDWebImage (4.4.1):
     - SDWebImage/Core (= 4.4.1)
   - SDWebImage/Core (4.4.1)
+  - Toast (4.0.0)
   - UICKeyChainStore (2.1.1)
 
 DEPENDENCIES:
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - MJExtension
   - MJRefresh
   - SDWebImage (~> 4.0)
+  - Toast (~> 4.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -43,6 +45,7 @@ SPEC REPOS:
     - MJExtension
     - MJRefresh
     - SDWebImage
+    - Toast
     - UICKeyChainStore
 
 SPEC CHECKSUMS:
@@ -53,8 +56,9 @@ SPEC CHECKSUMS:
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
+  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
 
-PODFILE CHECKSUM: baeea9c071c0193365e5b6849aba57d4a1f5c1df
+PODFILE CHECKSUM: f304a5e3cfbec70ca398483bb1f164358582cb2d
 
 COCOAPODS: 1.5.3
