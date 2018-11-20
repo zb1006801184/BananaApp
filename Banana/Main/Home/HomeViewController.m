@@ -10,11 +10,24 @@
 #import "BConstant.h"
 #import "TXScrollLabelView.h"
 #import "NetWorkTool.h"
+#import "bannerModel.h"
+#import "messageModel.h"
+#import "productModel.h"
+
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate
 ,UICollectionViewDelegateFlowLayout,TXScrollLabelViewDelegate>
 
 @property (nonatomic, strong)UICollectionView *collectionView;
+
+//@property (nonatomic, strong)bannerModel *bannermodel;//顶部三张图model
+//@property (nonatomic, strong)messageModel *messagemodel;//顶部跑马灯model
+//@property (nonatomic, strong)productModel *productmodel;//列表数据
+
+@property (nonatomic, strong)NSMutableArray *bannerarr;//顶部三张图
+@property (nonatomic, strong)NSMutableArray *messagearr;//顶部跑马灯
+@property (nonatomic, strong)NSMutableArray *productarr;//列表数据
+
 
 @end
 
@@ -28,9 +41,9 @@
     //广告页面跳转
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(alPushToAdvert) name:@"ZLPushToAdvert" object:nil];
 
+    [self homedata];
     [self initView];
     
-    [self homedata];
     
 }
 
@@ -40,8 +53,12 @@
     
     [[NetWorkTool shareInstance] postWithUrl:MEMEBER_HOMEDATA paramWithDic:nil success:^(id  _Nonnull responseObject) {
         
-        NSLog(@"%@",responseObject);
-        
+//        NSLog(@"%@",responseObject);
+        self.bannerarr = [bannerModel mj_objectArrayWithKeyValuesArray:responseObject[@"bannerList"]];
+        self.messagearr = [messageModel mj_objectArrayWithKeyValuesArray:responseObject[@"messageList"]];
+        self.productarr = [productModel mj_objectArrayWithKeyValuesArray:responseObject[@"productList"]];
+        [self.collectionView reloadData];
+
     } failure:^(NSError * _Nonnull error) {
         NSLog(@"%@",error);
     }];
@@ -82,7 +99,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-    return 20;
+    return _productarr.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -90,6 +107,8 @@
     UINib *nib = [UINib nibWithNibName:identifier bundle:[NSBundle mainBundle]];
     [_collectionView registerNib:nib forCellWithReuseIdentifier:identifier];
     HomeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+  
+    cell.productmodel = _productarr[indexPath.row];
     
     [self setBorderWithView:cell top:YES left:NO bottom:NO right:YES borderColor:[UIColor colorWithHexString:@"#bfbfbf"] borderWidth:.5];
     
@@ -143,18 +162,38 @@
     UIView *imagearrView = [[UIView alloc]initWithFrame:CGRectMake(0, kScreenWidth/4, kScreenWidth, 150)];
     [view addSubview:imagearrView];
     
-    UIImageView *oneimageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 0, imagearrView.height, imagearrView.height)];
+    bannerModel *onemode;
+    bannerModel *twomode;
+    bannerModel *threemode;
+    if (_bannerarr.count != 0) {
+        
+        onemode = self.bannerarr[0];
+        twomode = self.bannerarr[1];
+        threemode = self.bannerarr[2];
+    }
+    
+    UIButton *oneimageView = [[UIButton alloc]initWithFrame:CGRectMake(15, 0, imagearrView.height, imagearrView.height)];
     [imagearrView addSubview:oneimageView];
-    oneimageView.image = [UIImage imageNamed:@"LOGO"];
+//    [oneimageView sd_setImageWithURL:[NSURL URLWithString:onemode.picUrl]];
+    [oneimageView sd_setImageWithURL:[NSURL URLWithString:onemode.picUrl] forState:UIControlStateNormal];
+    oneimageView.tag = 100;
     
-    UIImageView *twoimageView = [[UIImageView alloc]initWithFrame:CGRectMake(oneimageView.right+10, 0, imagearrView.width-40-imagearrView.height, (imagearrView.height-10)/2)];
+    UIButton *twoimageView = [[UIButton alloc]initWithFrame:CGRectMake(oneimageView.right+10, 0, imagearrView.width-40-imagearrView.height, (imagearrView.height-10)/2)];
     [imagearrView addSubview:twoimageView];
-    twoimageView.image = [UIImage imageNamed:@"LOGO"];
-    
-    UIImageView *threeimageView = [[UIImageView alloc]initWithFrame:CGRectMake(oneimageView.right+10, twoimageView.bottom+10, imagearrView.width-40-imagearrView.height, (imagearrView.height-10)/2)];
+//    [twoimageView sd_setImageWithURL:[NSURL URLWithString:twomode.picUrl]];
+    [twoimageView sd_setImageWithURL:[NSURL URLWithString:twomode.picUrl] forState:UIControlStateNormal];
+    twoimageView.tag = 101;
+
+    UIButton *threeimageView = [[UIButton alloc]initWithFrame:CGRectMake(oneimageView.right+10, twoimageView.bottom+10, imagearrView.width-40-imagearrView.height, (imagearrView.height-10)/2)];
     [imagearrView addSubview:threeimageView];
-    threeimageView.image = [UIImage imageNamed:@"LOGO"];
+//    [threeimageView sd_setImageWithURL:[NSURL URLWithString:threemode.picUrl]];
+    [threeimageView sd_setImageWithURL:[NSURL URLWithString:threemode.picUrl] forState:UIControlStateNormal];
+    threeimageView.tag = 102;
     
+    [oneimageView addTarget:self action:@selector(clickBanner:) forControlEvents:UIControlEventTouchUpInside];
+    [twoimageView addTarget:self action:@selector(clickBanner:) forControlEvents:UIControlEventTouchUpInside];
+    [threeimageView addTarget:self action:@selector(clickBanner:) forControlEvents:UIControlEventTouchUpInside];
+
     //    第三部分
     UIView *scrollView = [[UIView alloc]initWithFrame:CGRectMake(0, imagearrView.bottom, kScreenWidth, 30)];
     [view addSubview:scrollView];
@@ -164,10 +203,12 @@
     label.text = @"最新动态";
     label.font = [UIFont systemFontOfSize:12];
     label.textColor = [UIColor colorWithHexString:@"#FFBC00"];
+    NSMutableArray *scrollTexts = [NSMutableArray array];
     
-    NSArray *scrollTexts = @[@"18327653567成功借贷5000元",
-                             @"13967832332成功借贷4000元",
-                             @"17055677654成功借贷8880元"];
+    for (messageModel *model in _messagearr) {
+        [scrollTexts addObject:model.message];
+    }
+    
     TXScrollLabelView *scrollLabelView = [TXScrollLabelView scrollWithTextArray:scrollTexts type:TXScrollLabelViewTypeFlipNoRepeat velocity:2 options:UIViewAnimationOptionCurveEaseInOut inset:UIEdgeInsetsZero];
     scrollLabelView.scrollLabelViewDelegate = self;
     scrollLabelView.frame = CGRectMake(label.right +10, 0, kScreenWidth - label.width - 40, scrollView.height);
@@ -200,9 +241,24 @@
     
     
 }
+//点击3张Banner图
+-(void)clickBanner:(UIButton *)btn{
+    
+    bannerModel *model = _bannerarr[btn.tag-100];
+    if ([model.jumpType isEqualToString:@"1"]) {
+        
+        [[UIApplication sharedApplication].keyWindow makeToast:@"跳转webview" duration:2 position:CSToastPositionCenter style:nil];
 
+    }else if ([model.jumpType isEqualToString:@"2"]){
+        [[UIApplication sharedApplication].keyWindow makeToast:@"跳转详情页" duration:2 position:CSToastPositionCenter style:nil];
+    }
+
+}
+
+//点击跑马灯
 - (void)scrollLabelView:(TXScrollLabelView *)scrollLabelView didClickWithText:(NSString *)text atIndex:(NSInteger)index{
-    NSLog(@"%@--%ld",text, index);
+    messageModel *model = _messagearr[index];
+    NSLog(@"%@--%ld----%@",text, index,model.jumpType);
 }
 
 //定义每个UICollectionView 的大小

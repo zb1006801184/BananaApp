@@ -16,6 +16,7 @@
 #import "UIView+Layout.h"
 #import "BSomeWays.h"
 #import "UIImageView+WebCache.h"
+#import "UIButton+WebCache.h"
 #import "API.h"
 #import <Toast/Toast.h>
 #import <MJExtension/MJExtension.h>

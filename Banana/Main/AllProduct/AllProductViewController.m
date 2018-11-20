@@ -9,6 +9,8 @@
 #import "AllProductCell.h"
 #import "BConstant.h"
 #import "popUpView.h"
+#import "NetWorkTool.h"
+#import "productModel.h"
 
 @interface AllProductViewController ()<UICollectionViewDataSource,UICollectionViewDelegate
 ,UICollectionViewDelegateFlowLayout>
@@ -20,7 +22,7 @@
 @property (nonatomic, assign)NSInteger btntag;//记录上一个按钮是点击的第几个
 
 //下面3个是3个选项卡的数据源
-@property (nonatomic, strong)NSArray *oneborrowTypeArr;
+@property (nonatomic, strong)NSMutableArray *oneborrowTypeArr;
 @property (nonatomic, strong)NSArray *twoborrowTypeArr;
 @property (nonatomic, strong)NSArray *threeborrowTypeArr;
 
@@ -28,6 +30,17 @@
 @property (nonatomic, strong)UICollectionView *collectionView;
 
 @property (nonatomic, strong)popUpView *popUpview;//顶部下拉视图
+
+@property (nonatomic, strong)NSMutableArray *productarr;//列表数据
+
+//接口请求参数
+@property (nonatomic, strong)NSString *pageNo;//页码
+@property (nonatomic, strong)NSString *pageNum;//每页显示的数量
+@property (nonatomic, strong)NSString *type;//产品类型
+@property (nonatomic, strong)NSString *minMoney;//最小可贷金额
+@property (nonatomic, strong)NSString *maxMoney;//最大可贷金额
+@property (nonatomic, strong)NSString *minDuration;//最短贷款期限
+@property (nonatomic, strong)NSString *maxDuration;//最长贷款期限
 
 
 @end
@@ -42,30 +55,80 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(popUpselectedStr:) name:@"popUpView" object:nil];
 
     self.title = @"全部产品";
+    _pageNo = @"1";
+    _pageNum = @"100";
+    _type = @"";
+    _minMoney = @"";
+    _maxMoney = @"";
+    _minDuration = @"";
+    _maxDuration = @"";
     
-    _oneborrowTypeArr= @[@"类型不限",@"上班族1",@"上班族2",@"上班族3",@"上班族4",@"上班族5",@"上班族6"];
+    
+    _oneborrowTypeArr = [NSMutableArray array];
+    NSData * data = [[NSUserDefaults standardUserDefaults]objectForKey:@"productTypeList"];
+    //在这里解档
+    NSMutableArray *productTypeList = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSArray *cards = @[@{@"typeName":@"类型不限",@"typeValue":@""}];
+    [_oneborrowTypeArr addObjectsFromArray:cards];
+    [_oneborrowTypeArr addObjectsFromArray:productTypeList];
+    
     _twoborrowTypeArr= @[@"金额不限",@"2000以下",@"2000-1万",@"1万-2万",@"2万以上"];
     _threeborrowTypeArr= @[@"期限不限",@"1个月以下",@"1-6个月",@"6-12个月",@"12个月以上"];
 
     
     [self initView];
     
+    [self productdata];
+    
+}
+
+
+//h首页数据源
+-(void)productdata{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:_pageNo forKey:@"pageNo"];
+    [dic setObject:_pageNum forKey:@"pageNum"];
+    [dic setObject:_type forKey:@"type"];
+    [dic setObject:_minMoney forKey:@"minMoney"];
+    [dic setObject:_maxMoney forKey:@"maxMoney"];
+    [dic setObject:_minDuration forKey:@"minDuration"];
+    [dic setObject:_maxDuration forKey:@"maxDuration"];
+
+
+    [[NetWorkTool shareInstance] postWithUrl:MEMEBER_products paramWithDic:dic success:^(id  _Nonnull responseObject) {
+        
+        self.productarr = [productModel mj_objectArrayWithKeyValuesArray:responseObject[@"productList"]];
+        [self.collectionView reloadData];
+
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+    }];
+    
 }
 
 //    选中条件回调的通知
 -(void)popUpselectedStr:(NSNotification *)noti {
-    self.collectionView.scrollEnabled = YES;
-    NSString *selectedstr = noti.object;
-    NSLog(@"%@",selectedstr);
     NSLog(@"===%ld",_btntag);
 
-    if (selectedstr!=nil) {
+    UIButton *selectedbtn = (UIButton *)[self.view viewWithTag:_btntag];
+    selectedbtn.backgroundColor = [UIColor colorWithHexString:@"#FFDA44"];
+    if (_btntag == 100) {
         
-        UIButton *selectedbtn = (UIButton *)[self.view viewWithTag:_btntag];
-        selectedbtn.backgroundColor = [UIColor colorWithHexString:@"#FFDA44"];
+        NSDictionary *selectedstr = noti.object;
+        NSLog(@"%@",selectedstr);
+        [selectedbtn setTitle:selectedstr[@"typeName"] forState:UIControlStateNormal];
+        _type = selectedstr[@"typeValue"];
+    }else{
+        
+        NSString *selectedstr = noti.object;
+        NSLog(@"%@",selectedstr);
         [selectedbtn setTitle:selectedstr forState:UIControlStateNormal];
-   
+        
+        [self getDic:selectedstr];
     }
+    
+    [self productdata];
+ 
 
 }
 
@@ -116,16 +179,17 @@
 -(void)action:(UIButton *)btn{
     _btntag = btn.tag;
     
-    self.collectionView.scrollEnabled = NO;
+    self.popUpview.borrowTypeArr = [NSMutableArray array];
+    self.popUpview.yearArr = [NSMutableArray array];
 
     self.popUpview.hidden = NO;
-    [self.collectionView addSubview:self.popUpview];
+    [self.view addSubview:self.popUpview];
     if (_btntag == 100) {
         self.popUpview.borrowTypeArr = _oneborrowTypeArr;
     }else if (_btntag == 101){
-        self.popUpview.borrowTypeArr = _twoborrowTypeArr;
+        self.popUpview.yearArr = _twoborrowTypeArr;
     }else if (_btntag == 102){
-        self.popUpview.borrowTypeArr = _threeborrowTypeArr;
+        self.popUpview.yearArr = _threeborrowTypeArr;
     }
 }
 
@@ -135,7 +199,7 @@
     if (_popUpview == nil) {
         
         _popUpview = [[popUpView alloc] init];
-        _popUpview.frame = self.collectionView.bounds;
+        _popUpview.frame = CGRectMake(0, 60, kScreenWidth, kScreenHeight);
     }
     
     return _popUpview;
@@ -152,7 +216,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-    return 20;
+    return _productarr.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -160,6 +224,7 @@
     UINib *nib = [UINib nibWithNibName:identifier bundle:[NSBundle mainBundle]];
     [_collectionView registerNib:nib forCellWithReuseIdentifier:identifier];
     AllProductCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    cell.productmodel = _productarr[indexPath.row];
     
     [self setBorderWithView:cell top:YES left:NO bottom:NO right:YES borderColor:[UIColor colorWithHexString:@"#bfbfbf"] borderWidth:.5];
     
@@ -222,8 +287,35 @@
     }
 }
 
-
-
+//回调处理日期和金额参数
+-(void)getDic:(NSString *)selectedstr{
+    
+    if ([selectedstr isEqualToString:@"2000以下"]) {
+        _minMoney = @"";
+        _maxMoney = @"2000";
+    }else if ([selectedstr isEqualToString:@"2000-1万"]){
+        _minMoney = @"2000";
+        _maxMoney = @"10000";
+    }else if ([selectedstr isEqualToString:@"1万-2万"]){
+        _minMoney = @"10000";
+        _maxMoney = @"20000";
+    }else if ([selectedstr isEqualToString:@"2万以上"]){
+        _minMoney = @"20000";
+        _maxMoney = @"";
+    }else if ([selectedstr isEqualToString:@"1个月以下"]){
+        _minDuration = @"";
+        _maxDuration = @"30";
+    }else if ([selectedstr isEqualToString:@"1-6个月"]){
+        _minDuration = @"30";
+        _maxDuration = @"180";
+    }else if ([selectedstr isEqualToString:@"6-12个月"]){
+        _minDuration = @"180";
+        _maxDuration = @"360";
+    }else if ([selectedstr isEqualToString:@"12个月"]){
+        _minDuration = @"360";
+        _maxDuration = @"0";
+    }
+}
 
 
 @end

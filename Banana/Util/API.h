@@ -45,4 +45,7 @@ FOUNDATION_EXPORT NSString *const MEMEBER_startShow;
 
 FOUNDATION_EXPORT NSString *const MEMEBER_HOMEDATA;
 
+FOUNDATION_EXPORT NSString *const MEMEBER_products;
+
+
 
