@@ -20,4 +20,5 @@
 #import <Toast/Toast.h>
 #import <MJExtension/MJExtension.h>
 #import "MineRequest.h"
+#import "UserModel.h"
 #endif /* Banana_pch */

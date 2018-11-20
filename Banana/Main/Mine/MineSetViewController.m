@@ -8,6 +8,7 @@
 #import "MineSetViewController.h"
 #import "MineIdeaViewController.h"
 #import "ChangePhoneViewController.h"
+#import "Login/LoginViewController.h"
 @interface MineSetViewController ()
 
 @end
@@ -34,7 +35,15 @@
 
 //退出登录
 - (IBAction)siginOutClick:(id)sender {
-    
+    [MineRequest loginOutSuccess:^(id  _Nonnull responseObject) {
+        [UserModel loginOut];
+        [UserModel saveUserModelWithObject:[[UserModel alloc]init]];
+        LoginViewController *loginVC = [[LoginViewController alloc]init];
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
+        [self presentViewController:nav animated:YES completion:nil];
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 @end

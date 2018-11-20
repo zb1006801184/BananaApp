@@ -67,14 +67,12 @@ static id _instance = nil;
         if ([jsonDictionary[@"rspCode"] isEqualToString:@"0001"]) {
             success(jsonDictionary);
         }else if ([jsonDictionary[@"rspCode"] isEqualToString:@"0099"]){
-            
             [UserModel loginOut];
+            [UserModel saveUserModelWithObject:[[UserModel alloc]init]];
             if (![[BSomeWays getCurrentVC] isKindOfClass:[LoginViewController class]]) {
-                
                 LoginViewController *loginVC = [[LoginViewController alloc]init];
-                loginVC.hidesBottomBarWhenPushed = YES;
-                [[BSomeWays getCurrentVC].navigationController pushViewController:loginVC animated:YES];
-                
+                UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
+                [[BSomeWays getCurrentVC] presentViewController:nav animated:YES completion:nil];
             }
         }else{
             NSLog(@"%@",jsonDictionary);
