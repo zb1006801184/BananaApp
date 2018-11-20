@@ -25,6 +25,12 @@ NSString *const MEMBER_LOGOUT = @"member/logout";
 NSString *const MEMEBER_CHANGEPWD = @"member/forgetPwd";
 ////修改密码
 //NSString *const MEMEBER_CHANGEPWD = @"member/changePwd";
+//意见反馈
+NSString *const SYS_IDEA = @"sys/idea";
+//更换绑定的手机号
+NSString *const MEMBER_CHANGEBIND = @"member/changeBind";
+//校验验证码的合理性
+NSString *const SYS_VALIDATECHECKCODE = @"sys/validateCheckCode";
 
 
 

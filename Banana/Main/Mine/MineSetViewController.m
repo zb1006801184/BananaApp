@@ -24,6 +24,7 @@
 //更换手机号
 - (IBAction)changePhoneClick:(id)sender {
     ChangePhoneViewController *phone = [[ChangePhoneViewController alloc]init];
+    phone.type = 1;
     [self.navigationController pushViewController:phone animated:YES];
 }
 

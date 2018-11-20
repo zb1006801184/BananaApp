@@ -22,6 +22,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)loginOutSuccess:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure;
 //忘记密码
 + (void)forgetPassWordWithKey:(NSString *)key password:(NSString *)password checkCode:(NSString *)checkCode success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure;;
+//意见反馈
++ (void)ideaWithContactMsg:(NSString *)contactMsg content:(NSString *)content success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure;
+//验证码校验
++ (void)validateCheckCodeWithTelephone:(NSString *)telephone checkCode:(NSString *)checkCode operationType:(NSString *)operationType success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure;
+//绑定手机号
++ (void)changeBindWithPhone:(NSString *)phone checkCode:(NSString *)checkCode validateCode:(NSString *)validateCode success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure; 
 @end
 
 NS_ASSUME_NONNULL_END

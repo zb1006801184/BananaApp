@@ -82,6 +82,7 @@ static id _instance = nil;
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        NSLog(@"%@",error);
     }];
 }
 -(void)getWithUrl:(NSString *)url paramWithDic:(NSMutableDictionary *)parameter success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure {
