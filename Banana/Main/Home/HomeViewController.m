@@ -30,13 +30,22 @@
 
     [self initView];
     
-//    [[NetWorkTool shareInstance] postWithUrl:@"https://apptest.xiangjiaoqianbao.cn/indexShow/indexShow" paramWithDic:nil success:^(id  _Nonnull responseObject) {
-//
-//        NSLog(@"%@",responseObject);
-//
-//    } failure:^(NSError * _Nonnull error) {
-//        NSLog(@"%@",error);
-//    }];
+    [self homedata];
+    
+}
+
+
+//h首页数据源
+-(void)homedata{
+    
+    [[NetWorkTool shareInstance] postWithUrl:@"indexShow/indexShow" paramWithDic:nil success:^(id  _Nonnull responseObject) {
+        
+        NSLog(@"%@",responseObject);
+        
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+    }];
+    
 }
 
 -(void)initView{
