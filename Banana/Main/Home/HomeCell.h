@@ -6,8 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "productModel.h"
 
 @interface HomeCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *borrowNOlabel;
+
+@property (nonatomic, strong)productModel *productmodel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageview;
+@property (weak, nonatomic) IBOutlet UILabel *namelabel;
 
 @end

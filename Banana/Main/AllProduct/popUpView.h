@@ -13,7 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 ,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong)UICollectionView *collectionView;
-@property (nonatomic, strong)NSArray *borrowTypeArr;//数据源
+@property (nonatomic, strong)NSArray *borrowTypeArr;//种类数据源
+
+@property (nonatomic, strong)NSArray *yearArr;//金额和日期数据源
+
 
 
 @end

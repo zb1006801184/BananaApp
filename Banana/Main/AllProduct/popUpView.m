@@ -28,6 +28,13 @@
     _collectionView.frame = CGRectMake(0, 0, kScreenWidth, 40+40*((_borrowTypeArr.count-1)%2==0?(_borrowTypeArr.count-1)/2:(_borrowTypeArr.count-1)/2+1));
 }
 
+-(void)setYearArr:(NSArray *)yearArr{
+    
+    _yearArr = yearArr;
+    [self.collectionView reloadData];
+    _collectionView.frame = CGRectMake(0, 0, kScreenWidth, 40+40*((_yearArr.count-1)%2==0?(_yearArr.count-1)/2:(_yearArr.count-1)/2+1));
+}
+
 #pragma mark  UI布局
 - (void)uiConfigure {
     
@@ -67,7 +74,13 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-    return _borrowTypeArr.count-1;
+    if (_yearArr.count == 0) {
+        
+        return _borrowTypeArr.count-1;
+    }
+    
+    return _yearArr.count-1;
+
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -75,7 +88,13 @@
     UINib *nib = [UINib nibWithNibName:identifier bundle:[NSBundle mainBundle]];
     [_collectionView registerNib:nib forCellWithReuseIdentifier:identifier];
     popUpCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    cell.textlabel.text = _borrowTypeArr[indexPath.row+1];
+    
+    if (_yearArr.count == 0) {
+        NSDictionary *dic = _borrowTypeArr[indexPath.row+1];
+        cell.textlabel.text = dic[@"typeName"];
+    }else{
+        cell.textlabel.text = _yearArr[indexPath.row+1];
+    }
         
     return cell;
 }
@@ -100,7 +119,13 @@
     selectedbtn.backgroundColor = [UIColor clearColor];
     [headerView addSubview:selectedbtn];
     selectedbtn.titleLabel.font = [UIFont systemFontOfSize: 10];
-    [selectedbtn setTitle:_borrowTypeArr[0] forState:UIControlStateNormal];
+    if (_yearArr.count == 0) {
+        NSDictionary *dic = _borrowTypeArr[0];
+        [selectedbtn setTitle:dic[@"typeName"] forState:UIControlStateNormal];
+    }else{
+        [selectedbtn setTitle:_yearArr[0] forState:UIControlStateNormal];
+
+    }
     [selectedbtn setTitleColor:[UIColor colorWithHexString:@"#666666"] forState:UIControlStateNormal];
     [selectedbtn addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
     selectedbtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -125,20 +150,29 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    [NSNotificationCenter.defaultCenter postNotificationName:@"popUpView" object:_borrowTypeArr[indexPath.row]];
+    if (_yearArr.count == 0) {
+        [NSNotificationCenter.defaultCenter postNotificationName:@"popUpView" object:_borrowTypeArr[indexPath.row+1]];
+
+    }else{
+        [NSNotificationCenter.defaultCenter postNotificationName:@"popUpView" object:_yearArr[indexPath.row+1]];
+    }
     self.hidden = YES;
 
 }
 
 -(void)action:(UIButton *)btn{
     
-    [NSNotificationCenter.defaultCenter postNotificationName:@"popUpView" object:btn.titleLabel.text];
-    self.hidden = YES;
+    if (_yearArr.count == 0) {
+        [NSNotificationCenter.defaultCenter postNotificationName:@"popUpView" object:_borrowTypeArr[0]];
+        
+    }else{
+        [NSNotificationCenter.defaultCenter postNotificationName:@"popUpView" object:_yearArr[0]];
+    }    self.hidden = YES;
 }
 
 -(void)backHidden{
     
-    [NSNotificationCenter.defaultCenter postNotificationName:@"popUpView" object:nil];
+//    [NSNotificationCenter.defaultCenter postNotificationName:@"popUpView" object:nil];
     self.hidden = YES;
     
 

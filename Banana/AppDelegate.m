@@ -112,6 +112,13 @@
             [self.zladvertView removeAdvertView];
 
         }
+        
+        
+        //存储全部产品的产品类型到本地
+        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:responseObject[@"productTypeList"]] forKey:@"productTypeList"];
+        [defaults synchronize];
+
 
     } failure:^(NSError * _Nonnull error) {
         NSLog(@"%@",error);
