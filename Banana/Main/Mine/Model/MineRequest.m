@@ -74,4 +74,52 @@
     }];
 
 }
+
++ (void)ideaWithContactMsg:(NSString *)contactMsg content:(NSString *)content success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:contactMsg forKey:@"contactMsg"];
+    [params setObject:content forKey:@"content"];
+    [[NetWorkTool shareInstance] postWithUrl:SYS_IDEA paramWithDic:params success:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } failure:^(NSError * _Nonnull error) {
+        failure(error);
+    }];
+
+}
+
++ (void)validateCheckCodeWithTelephone:(NSString *)telephone checkCode:(NSString *)checkCode operationType:(NSString *)operationType success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:telephone forKey:@"telephone"];
+    [params setObject:checkCode forKey:@"checkCode"];
+    [params setObject:operationType forKey:@"operationType"];
+    [[NetWorkTool shareInstance] postWithUrl:SYS_VALIDATECHECKCODE paramWithDic:params success:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } failure:^(NSError * _Nonnull error) {
+        failure(error);
+    }];
+
+}
++ (void)changeBindWithPhone:(NSString *)phone checkCode:(NSString *)checkCode validateCode:(NSString *)validateCode success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:phone forKey:@"phone"];
+    [params setObject:checkCode forKey:@"checkCode"];
+    [params setObject:validateCode forKey:@"validateCode"];
+    [[NetWorkTool shareInstance] postWithUrl:MEMBER_CHANGEBIND paramWithDic:params success:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } failure:^(NSError * _Nonnull error) {
+        failure(error);
+    }];
+
+}
+
++ (void)changeUserMessageWithUserName:(NSString *)userName success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:userName forKey:@"userName"];
+    [[NetWorkTool shareInstance] postWithUrl:MEMBER_CHANGEMSG paramWithDic:params success:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } failure:^(NSError * _Nonnull error) {
+        failure(error);
+    }];
+
+}
 @end

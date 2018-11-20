@@ -137,7 +137,6 @@
 }
 - (void)timerFireMethod:(id)sender{
     countDown--;
-    NSLog(@"%ld",(long)countDown);
     [self.getCodeButton setTitle:[NSString stringWithFormat:@"%ld秒后重发",(long)countDown]forState:UIControlStateNormal];
     [self.getCodeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     if (countDown == 0) {

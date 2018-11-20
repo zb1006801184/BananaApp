@@ -12,6 +12,10 @@
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 @property (nonatomic, strong) MineMainTableView *myTableView;
+@property (weak, nonatomic) IBOutlet UIImageView *headImage;
+@property (weak, nonatomic) IBOutlet UIButton *NickNameButton;
+@property (strong, nonatomic) IBOutlet UIView *showMessageView;
+
 @end
 
 @implementation MineViewController
@@ -20,6 +24,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self configViews];
+    [self loadDataForView];
+    self.showMessageView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.showMessageView.layer.shadowOffset = CGSizeMake(0, 0);
+    self.showMessageView.layer.shadowOpacity = 0.5;
+    self.showMessageView.layer.cornerRadius = 10;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -33,6 +43,13 @@
     
     [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
+
+- (void)loadDataForView {
+    self.headImage.layer.masksToBounds = YES;
+    UserModel *model = [UserModel getUserModel];
+    [self.NickNameButton setTitle:model.username forState:UIControlStateNormal];
+    [self.headImage sd_setImageWithURL:[NSURL URLWithString:model.headImg] placeholderImage:[UIImage imageNamed:@"身份认证"]];
+}
 - (void)configViews {
     _myTableView = [[MineMainTableView alloc]initWithFrame:CGRectMake(0, 10, kScreenWidth, self.mainView.height) style:UITableViewStyleGrouped];
     NSArray *dataList = @[@[@{@"title":@"个人资料",@"image":@"我的-个人资料"},@{@"title":@"关于我们",@"image":@"我的-关于我们"},@{@"title":@"清理缓存",@"image":@"我的-清理缓存.png"},],@[@{@"title":@"设置",@"image":@"我的-设置图标"},]];
@@ -42,9 +59,16 @@
 }
 
 - (IBAction)loginClick:(id)sender {
-    LoginViewController *loginVC = [[LoginViewController alloc]init];
-    loginVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:loginVC animated:YES];
+    //用户信息
+    
+}
+
+- (void)showMessagetoView {
+    [self.view addSubview:_showMessageView];
+    _showMessageView.frame = CGRectMake((kScreenWidth - 133)/2, (kScreenHeight - 86)/2, 133, 86);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self->_showMessageView removeFromSuperview];
+    });
 }
 
 @end

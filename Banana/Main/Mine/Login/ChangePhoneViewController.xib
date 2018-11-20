@@ -14,8 +14,8 @@
             <connections>
                 <outlet property="codeTextField" destination="C1m-oV-Z0m" id="IT1-pB-L07"/>
                 <outlet property="getCodeButton" destination="cum-0z-iQj" id="RcJ-TP-pBr"/>
-                <outlet property="passwordTextField" destination="V2T-pS-ENM" id="8j3-jL-fcW"/>
                 <outlet property="phoneTextField" destination="inb-Yj-9Yv" id="VwP-Yy-Wq7"/>
+                <outlet property="sureButton" destination="CMj-3o-LFo" id="AZU-sG-w3H"/>
                 <outlet property="view" destination="7Qk-6X-XdB" id="dKf-SD-w5g"/>
             </connections>
         </placeholder>
@@ -38,7 +38,7 @@
                         <constraint firstAttribute="height" constant="0.5" id="bfb-6s-eoO"/>
                     </constraints>
                 </imageView>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="inb-Yj-9Yv">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入原手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="inb-Yj-9Yv">
                     <rect key="frame" x="21" y="27" width="344" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="1I3-3e-ZT5"/>
@@ -67,21 +67,17 @@
                     <state key="normal" title="获取验证码">
                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="getCodeClick:" destination="-1" eventType="touchUpInside" id="BAH-7k-UCe"/>
                     </connections>
                 </button>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入新密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V2T-pS-ENM">
-                    <rect key="frame" x="21" y="133" width="344" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="FwJ-tp-kNy"/>
-                    </constraints>
-                    <nil key="textColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qV7-FQ-vWV">
-                    <rect key="frame" x="0.0" y="171" width="375" height="496"/>
+                    <rect key="frame" x="0.0" y="121" width="375" height="546"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMj-3o-LFo">
                             <rect key="frame" x="38" y="115" width="299" height="40"/>
@@ -90,12 +86,12 @@
                                 <constraint firstAttribute="height" constant="40" id="VIK-68-RfL"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <state key="normal" title="确认修改">
+                            <state key="normal" title="下一步">
                                 <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="10"/>
+                                    <integer key="value" value="20"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
@@ -117,19 +113,16 @@
                 <constraint firstItem="z3S-5x-mIy" firstAttribute="trailing" secondItem="C1m-oV-Z0m" secondAttribute="trailing" constant="10" id="3zl-J1-h3a"/>
                 <constraint firstItem="C1m-oV-Z0m" firstAttribute="leading" secondItem="z3S-5x-mIy" secondAttribute="leading" constant="21" id="4Xh-5s-MPp"/>
                 <constraint firstItem="clz-gY-LoT" firstAttribute="top" secondItem="inb-Yj-9Yv" secondAttribute="bottom" constant="13" id="6KO-KM-VYg"/>
-                <constraint firstItem="V2T-pS-ENM" firstAttribute="leading" secondItem="z3S-5x-mIy" secondAttribute="leading" constant="21" id="6Qn-FT-eJz"/>
                 <constraint firstItem="qV7-FQ-vWV" firstAttribute="leading" secondItem="z3S-5x-mIy" secondAttribute="leading" id="7g8-4O-Fec"/>
                 <constraint firstItem="clz-gY-LoT" firstAttribute="top" secondItem="z3S-5x-mIy" secondAttribute="top" constant="50" id="7vB-Aj-6jX"/>
-                <constraint firstItem="z3S-5x-mIy" firstAttribute="trailing" secondItem="V2T-pS-ENM" secondAttribute="trailing" constant="10" id="CBD-42-RyE"/>
                 <constraint firstItem="6Uc-I1-MH9" firstAttribute="top" secondItem="cum-0z-iQj" secondAttribute="bottom" constant="15.5" id="Es9-ng-3gX"/>
                 <constraint firstItem="z3S-5x-mIy" firstAttribute="trailing" secondItem="qV7-FQ-vWV" secondAttribute="trailing" id="KR1-3L-3QC"/>
                 <constraint firstItem="z3S-5x-mIy" firstAttribute="bottom" secondItem="qV7-FQ-vWV" secondAttribute="bottom" id="LrG-aN-gLf"/>
                 <constraint firstItem="inb-Yj-9Yv" firstAttribute="leading" secondItem="z3S-5x-mIy" secondAttribute="leading" constant="21" id="O7C-UJ-IDU"/>
                 <constraint firstItem="6Uc-I1-MH9" firstAttribute="top" secondItem="clz-gY-LoT" secondAttribute="bottom" constant="50" id="Vli-St-ttW"/>
-                <constraint firstItem="V2T-pS-ENM" firstAttribute="top" secondItem="6Uc-I1-MH9" secondAttribute="bottom" constant="12" id="VvW-RZ-T8h"/>
                 <constraint firstItem="6Uc-I1-MH9" firstAttribute="leading" secondItem="7Qk-6X-XdB" secondAttribute="leading" id="Wfa-rp-e5F"/>
                 <constraint firstItem="z3S-5x-mIy" firstAttribute="trailing" secondItem="inb-Yj-9Yv" secondAttribute="trailing" constant="10" id="Ykj-gX-F0Z"/>
-                <constraint firstItem="qV7-FQ-vWV" firstAttribute="top" secondItem="6Uc-I1-MH9" secondAttribute="bottom" constant="50" id="awR-3g-Pcl"/>
+                <constraint firstItem="qV7-FQ-vWV" firstAttribute="top" secondItem="6Uc-I1-MH9" secondAttribute="bottom" id="awR-3g-Pcl"/>
                 <constraint firstItem="clz-gY-LoT" firstAttribute="trailing" secondItem="z3S-5x-mIy" secondAttribute="trailing" id="d2A-Ku-vE5"/>
                 <constraint firstAttribute="trailing" secondItem="6Uc-I1-MH9" secondAttribute="trailing" id="fCu-za-QjT"/>
                 <constraint firstItem="z3S-5x-mIy" firstAttribute="trailing" secondItem="cum-0z-iQj" secondAttribute="trailing" constant="13" id="ifW-om-Nkk"/>

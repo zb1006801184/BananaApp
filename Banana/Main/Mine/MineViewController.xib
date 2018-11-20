@@ -11,7 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MineViewController">
             <connections>
+                <outlet property="NickNameButton" destination="jCe-nD-lAa" id="dOX-fS-ouD"/>
+                <outlet property="headImage" destination="niC-fi-zQv" id="JYB-Hn-ubG"/>
                 <outlet property="mainView" destination="1cB-17-Qak" id="5Cz-ye-XvA"/>
+                <outlet property="showMessageView" destination="RuW-GZ-0b5" id="Xu9-M8-MhU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -29,15 +32,19 @@
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="niC-fi-zQv">
                     <rect key="frame" x="152.5" y="110" width="70" height="70"/>
-                    <color key="backgroundColor" red="0.96078431369999995" green="0.33333333329999998" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="70" id="UYh-nN-Fd5"/>
                         <constraint firstAttribute="height" constant="70" id="VN4-EA-0Ew"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="35"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCe-nD-lAa">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCe-nD-lAa">
                     <rect key="frame" x="148" y="203" width="79" height="34"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <state key="normal" title="登录/注册">
                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -49,6 +56,12 @@
                     <rect key="frame" x="0.0" y="237" width="375" height="430"/>
                     <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="贷款超市" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rsq-Qd-jxT">
+                    <rect key="frame" x="152.5" y="40" width="70" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -57,8 +70,10 @@
                 <constraint firstItem="1cB-17-Qak" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="RDy-Di-HtB"/>
                 <constraint firstItem="jCe-nD-lAa" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Vpi-Io-NTB"/>
                 <constraint firstItem="niC-fi-zQv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="110" id="Wx1-pw-tor"/>
+                <constraint firstItem="Rsq-Qd-jxT" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Yma-lY-RXI"/>
                 <constraint firstAttribute="bottom" secondItem="1cB-17-Qak" secondAttribute="bottom" id="byC-C3-MiR"/>
                 <constraint firstAttribute="trailing" secondItem="dCc-sX-YGp" secondAttribute="trailing" id="bzG-Tl-p1N"/>
+                <constraint firstItem="Rsq-Qd-jxT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="gH2-SG-wx2"/>
                 <constraint firstItem="jCe-nD-lAa" firstAttribute="top" secondItem="niC-fi-zQv" secondAttribute="bottom" constant="23" id="heH-nN-RTE"/>
                 <constraint firstAttribute="trailing" secondItem="1cB-17-Qak" secondAttribute="trailing" id="i0L-NU-kX1"/>
                 <constraint firstItem="dCc-sX-YGp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="l6S-AK-7bn"/>
@@ -66,8 +81,37 @@
             </constraints>
             <point key="canvasLocation" x="39.200000000000003" y="46.326836581709152"/>
         </view>
+        <view contentMode="scaleToFill" id="RuW-GZ-0b5">
+            <rect key="frame" x="0.0" y="0.0" width="133" height="86"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="清除缓存" translatesAutoresizingMaskIntoConstraints="NO" id="vG1-e9-lQI">
+                    <rect key="frame" x="53.5" y="18" width="26" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="RwE-4v-iET"/>
+                        <constraint firstAttribute="width" constant="26" id="SrD-gK-Df8"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已清理缓存" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIg-Ah-kLZ">
+                    <rect key="frame" x="28" y="52" width="77" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vG1-e9-lQI" firstAttribute="centerX" secondItem="RuW-GZ-0b5" secondAttribute="centerX" id="JbF-bb-5yd"/>
+                <constraint firstItem="mIg-Ah-kLZ" firstAttribute="top" secondItem="vG1-e9-lQI" secondAttribute="bottom" constant="14" id="RIe-Iy-I8N"/>
+                <constraint firstItem="mIg-Ah-kLZ" firstAttribute="centerX" secondItem="RuW-GZ-0b5" secondAttribute="centerX" id="fvh-eA-xe7"/>
+                <constraint firstItem="vG1-e9-lQI" firstAttribute="top" secondItem="RuW-GZ-0b5" secondAttribute="top" constant="18" id="qZs-Ri-1Td"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="951" y="28"/>
+        </view>
     </objects>
     <resources>
         <image name="mine_top" width="750" height="381"/>
+        <image name="清除缓存" width="25" height="19"/>
     </resources>
 </document>

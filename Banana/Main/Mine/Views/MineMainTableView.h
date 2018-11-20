@@ -11,7 +11,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MineMainTableView : UITableView
 @property (nonatomic, strong) NSArray *dataList;
-
 @end
 
 NS_ASSUME_NONNULL_END

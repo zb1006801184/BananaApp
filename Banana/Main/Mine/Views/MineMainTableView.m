@@ -10,6 +10,7 @@
 #import "MineMaterialViewController.h"
 #import "AboutMineViewController.h"
 #import "MineSetViewController.h"
+#import "MineViewController.h"
 @interface MineMainTableView ()<UITableViewDelegate,UITableViewDataSource>
 @end
 @implementation MineMainTableView
@@ -80,6 +81,12 @@
         MineSetViewController *set = [[MineSetViewController alloc]init];
         set.hidesBottomBarWhenPushed = YES;
         [[BSomeWays getCurrentVC].navigationController pushViewController:set animated:YES];
+    }
+    
+    //清理缓存
+    if (indexPath.row == 2 && indexPath.section == 0) {
+        MineViewController *mine = (MineViewController*)[BSomeWays getCurrentVC];
+        [mine showMessagetoView];
     }
     
 }
