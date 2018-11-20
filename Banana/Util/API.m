@@ -35,7 +35,8 @@ NSString *const SYS_VALIDATECHECKCODE = @"sys/validateCheckCode";
 NSString *const MEMBER_CHANGEMSG = @"member/changeMsg";
 //上传图片
 NSString *const MEMBER_CHANGEHEADFILE =@"member/changeHeadFile";
-
+//OSS 权限
+NSString *const OSS_TOKEN = @"oss/getToken";
 
 
 

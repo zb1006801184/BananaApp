@@ -12,5 +12,5 @@ target 'Banana' do
    pod 'SDWebImage', '~> 4.0'
    pod 'FCUUID'
    pod 'Toast', '~> 4.0.0'
-
+   pod 'AliyunOSSiOS'
 end

@@ -30,6 +30,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)changeBindWithPhone:(NSString *)phone checkCode:(NSString *)checkCode validateCode:(NSString *)validateCode success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure;
 //修改昵称
 + (void)changeUserMessageWithUserName:(NSString *)userName success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure;
+//更改头像
++ (void)changeImageWithHeadFile:(NSString *)headFile success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure;
+//获取OSS Token
++ (void)getTokensuccess:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure;
 @end
 
 NS_ASSUME_NONNULL_END

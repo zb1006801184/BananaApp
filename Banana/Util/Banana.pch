@@ -21,4 +21,5 @@
 #import <MJExtension/MJExtension.h>
 #import "MineRequest.h"
 #import "UserModel.h"
+#import <AliyunOSSiOS/OSSService.h>
 #endif /* Banana_pch */

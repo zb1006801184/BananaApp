@@ -34,8 +34,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
     [self.navigationController setNavigationBarHidden:YES animated:animated];
+    UserModel *model = [UserModel getUserModel];
+    [_headImage sd_setImageWithURL:[NSURL URLWithString:model.headImg] placeholderImage:nil];
+    [_NickNameButton setTitle:model.username forState:UIControlStateNormal];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

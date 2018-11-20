@@ -122,4 +122,25 @@
     }];
 
 }
++ (void)changeImageWithHeadFile:(NSString *)headFile success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:headFile forKey:@"headFile"];
+    [params setObject:@"OSS" forKey:@"uploadType"];
+
+    [[NetWorkTool shareInstance] postWithUrl:MEMBER_CHANGEHEADFILE paramWithDic:params success:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } failure:^(NSError * _Nonnull error) {
+        failure(error);
+    }];
+
+}
++ (void)getTokensuccess:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [[NetWorkTool shareInstance] postWithUrl:OSS_TOKEN paramWithDic:params success:^(id  _Nonnull responseObject) {
+        success(responseObject);
+    } failure:^(NSError * _Nonnull error) {
+        failure(error);
+    }];
+
+}
 @end

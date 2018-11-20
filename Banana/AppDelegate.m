@@ -10,6 +10,7 @@
 #import "ZLAdvertView.h"
 #import "NetWorkTool.h"
 #import "LoginViewController.h"
+#import "BAliyunOSS.h"
 @interface AppDelegate ()
 
 
@@ -42,7 +43,8 @@
     [self.window makeKeyWindow];
     //    广告页
     [self Bootadvertising];
-    
+    [[BAliyunOSS sharedInstance] setupEnvironment];
+
 
     
     return YES;

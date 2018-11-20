@@ -22,6 +22,7 @@
 		2A4883D421A14FDC006E74E2 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A4883D321A14FDC006E74E2 /* RegisterViewController.xib */; };
 		2A4883D821A1538D006E74E2 /* ReviseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4883D621A1538D006E74E2 /* ReviseViewController.m */; };
 		2A4883D921A1538D006E74E2 /* ReviseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A4883D721A1538D006E74E2 /* ReviseViewController.xib */; };
+		2A5AEC3C21A3DD9B00974573 /* BAliyunOSS.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5AEC3B21A3DD9B00974573 /* BAliyunOSS.m */; };
 		2A928AFF219FE6EE0078AB7B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A928AFE219FE6EE0078AB7B /* AppDelegate.m */; };
 		2A928B02219FE6EE0078AB7B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A928B01219FE6EE0078AB7B /* ViewController.m */; };
 		2A928B05219FE6EE0078AB7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A928B03219FE6EE0078AB7B /* Main.storyboard */; };
@@ -114,6 +115,8 @@
 		2A4883D521A1538D006E74E2 /* ReviseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviseViewController.h; sourceTree = "<group>"; };
 		2A4883D621A1538D006E74E2 /* ReviseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviseViewController.m; sourceTree = "<group>"; };
 		2A4883D721A1538D006E74E2 /* ReviseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviseViewController.xib; sourceTree = "<group>"; };
+		2A5AEC3A21A3DD9B00974573 /* BAliyunOSS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BAliyunOSS.h; sourceTree = "<group>"; };
+		2A5AEC3B21A3DD9B00974573 /* BAliyunOSS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BAliyunOSS.m; sourceTree = "<group>"; };
 		2A928AFA219FE6EE0078AB7B /* Banana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Banana.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A928AFD219FE6EE0078AB7B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2A928AFE219FE6EE0078AB7B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -249,6 +252,8 @@
 				2A06818A219FFA1000ACE26B /* Banana.pch */,
 				2AD105E121A2CFF800982F5A /* API.h */,
 				2AD105E221A2CFF800982F5A /* API.m */,
+				2A5AEC3A21A3DD9B00974573 /* BAliyunOSS.h */,
+				2A5AEC3B21A3DD9B00974573 /* BAliyunOSS.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -692,6 +697,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A5AEC3C21A3DD9B00974573 /* BAliyunOSS.m in Sources */,
 				2A068165219FEF2900ACE26B /* BSomeWays.m in Sources */,
 				4096862421A16CE600ECF103 /* AllProductCell.m in Sources */,
 				2A068160219FED8300ACE26B /* NetWorkTool.m in Sources */,
