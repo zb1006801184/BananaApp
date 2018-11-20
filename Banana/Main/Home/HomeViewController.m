@@ -13,7 +13,7 @@
 #import "bannerModel.h"
 #import "messageModel.h"
 #import "productModel.h"
-
+#import "ProductDetailViewController.h"
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate
 ,UICollectionViewDelegateFlowLayout,TXScrollLabelViewDelegate>
@@ -272,6 +272,9 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     NSLog(@"点击cell");
+    ProductDetailViewController *detail = [[ProductDetailViewController alloc]init];
+    detail.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detail animated:YES];
     
 }
 
