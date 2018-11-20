@@ -34,6 +34,7 @@
 
 //退出登录
 - (IBAction)siginOutClick:(id)sender {
+    
 }
 
 @end

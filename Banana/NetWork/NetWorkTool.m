@@ -55,6 +55,9 @@ static id _instance = nil;
     if (parameter==nil) {
         parameter=[NSMutableDictionary new];
     }
+    if ([UserModel getUserModel].token.length > 0) {
+        [parameter setObject:[UserModel getUserModel].token forKey:@"token"];
+    }
 //    对参数加密的方法
     NSDictionary *finalParam = [self getDic:parameter];
     NSString *mainUrl = [NSString stringWithFormat:@"%@%@",API_NAME,url];
