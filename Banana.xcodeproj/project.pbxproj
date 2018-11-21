@@ -18,6 +18,7 @@
 		2A068182219FF65900ACE26B /* AllProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A068180219FF65900ACE26B /* AllProductViewController.m */; };
 		2A068183219FF65900ACE26B /* AllProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A068181219FF65900ACE26B /* AllProductViewController.xib */; };
 		2A068189219FF99200ACE26B /* UIColor+RGBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A068188219FF99200ACE26B /* UIColor+RGBHelper.m */; };
+		2A268ECC21A51DF300318E93 /* UIViewController+Back.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A268ECB21A51DF300318E93 /* UIViewController+Back.m */; };
 		2A4483DC21A454D700F24689 /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4483DA21A454D700F24689 /* ProductDetailViewController.m */; };
 		2A4483DD21A454D700F24689 /* ProductDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A4483DB21A454D700F24689 /* ProductDetailViewController.xib */; };
 		2A4883D221A14FCE006E74E2 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4883D121A14FCE006E74E2 /* RegisterViewController.m */; };
@@ -114,6 +115,8 @@
 		2A068187219FF99200ACE26B /* UIColor+RGBHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGBHelper.h"; sourceTree = "<group>"; };
 		2A068188219FF99200ACE26B /* UIColor+RGBHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGBHelper.m"; sourceTree = "<group>"; };
 		2A06818A219FFA1000ACE26B /* Banana.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Banana.pch; sourceTree = "<group>"; };
+		2A268ECA21A51DF300318E93 /* UIViewController+Back.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Back.h"; sourceTree = "<group>"; };
+		2A268ECB21A51DF300318E93 /* UIViewController+Back.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Back.m"; sourceTree = "<group>"; };
 		2A4483D921A454D700F24689 /* ProductDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
 		2A4483DA21A454D700F24689 /* ProductDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
 		2A4483DB21A454D700F24689 /* ProductDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductDetailViewController.xib; sourceTree = "<group>"; };
@@ -279,6 +282,8 @@
 				2A068169219FF05300ACE26B /* UIView+Layout.m */,
 				2A068187219FF99200ACE26B /* UIColor+RGBHelper.h */,
 				2A068188219FF99200ACE26B /* UIColor+RGBHelper.m */,
+				2A268ECA21A51DF300318E93 /* UIViewController+Back.h */,
+				2A268ECB21A51DF300318E93 /* UIViewController+Back.m */,
 			);
 			path = Addtion;
 			sourceTree = "<group>";
@@ -769,6 +774,7 @@
 				2ADB5CCB21A169EF000FFA76 /* ChangePhoneViewController.m in Sources */,
 				3749266C21A3A41500C711AA /* productModel.m in Sources */,
 				2A4483DC21A454D700F24689 /* ProductDetailViewController.m in Sources */,
+				2A268ECC21A51DF300318E93 /* UIViewController+Back.m in Sources */,
 				2A4883D821A1538D006E74E2 /* ReviseViewController.m in Sources */,
 				2A928AFF219FE6EE0078AB7B /* AppDelegate.m in Sources */,
 			);
