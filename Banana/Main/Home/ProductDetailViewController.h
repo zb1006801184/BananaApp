@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ProductDetailViewController : UIViewController
-
+@property (nonatomic, strong) id model; //传递过来的数据
 @end
 
 NS_ASSUME_NONNULL_END

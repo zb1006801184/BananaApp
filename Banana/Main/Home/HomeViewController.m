@@ -273,6 +273,8 @@
     
     NSLog(@"点击cell");
     ProductDetailViewController *detail = [[ProductDetailViewController alloc]init];
+    productModel *model =  _productarr[indexPath.row];
+    detail.model = model;
     detail.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detail animated:YES];
     

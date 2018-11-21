@@ -37,7 +37,8 @@ NSString *const MEMBER_CHANGEMSG = @"member/changeMsg";
 NSString *const MEMBER_CHANGEHEADFILE =@"member/changeHeadFile";
 //OSS 权限
 NSString *const OSS_TOKEN = @"oss/getToken";
-
+//详情
+NSString *const PRODUCT_DETAIL= @"product/productDetail";
 
 
 

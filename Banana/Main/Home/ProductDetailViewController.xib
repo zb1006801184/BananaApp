@@ -12,6 +12,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductDetailViewController">
             <connections>
+                <outlet property="applyView" destination="BNM-PP-exg" id="hgd-O4-Xxz"/>
+                <outlet property="checkDateLabel" destination="ZPK-T5-0ba" id="8TC-bc-1hG"/>
+                <outlet property="datailLabel" destination="scb-Uy-Ds9" id="5Jp-B0-4dA"/>
+                <outlet property="dateNumberLabel" destination="Pk6-U2-Sla" id="PH0-s9-5sf"/>
+                <outlet property="headImage" destination="rAC-F3-YFm" id="q3h-sp-r0F"/>
+                <outlet property="leftImage" destination="aUl-qf-T99" id="yWA-Tq-rhG"/>
+                <outlet property="moneyNumberLabel" destination="axN-hT-XAr" id="ET1-cT-krz"/>
+                <outlet property="nameLabel" destination="3kF-QD-iFt" id="OcE-X7-shG"/>
+                <outlet property="peopleNumberLabel" destination="NMz-9n-4hM" id="D9Y-Cv-l0z"/>
+                <outlet property="rateLabel" destination="mjU-2u-SDu" id="g8b-nR-4wa"/>
+                <outlet property="requestLoan" destination="gTy-wC-z1i" id="qpu-BS-itg"/>
+                <outlet property="rightImage" destination="Mmi-7k-DBu" id="raZ-IT-P9z"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,7 +34,7 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rAC-F3-YFm">
                     <rect key="frame" x="15" y="36" width="70" height="70"/>
-                    <color key="backgroundColor" red="0.99607843139999996" green="0.35686274509999999" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="FKx-mm-g9W"/>
                         <constraint firstAttribute="width" constant="70" id="xD8-R2-ake"/>
@@ -160,7 +172,7 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.19-38岁有花呗额度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoQ-Fa-8OL">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.19-38岁有花呗额度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoQ-Fa-8OL">
                     <rect key="frame" x="20" y="267" width="117" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="Vag-di-5s7"/>
@@ -201,6 +213,9 @@
                     <state key="normal" title="申请材料">
                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="applyClick:" destination="-1" eventType="touchUpInside" id="CbS-mF-PQd"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0GL-G4-gJu">
                     <rect key="frame" x="164" y="335" width="58" height="50"/>
@@ -211,6 +226,9 @@
                     <state key="normal" title="机构详情">
                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="mechanismClick:" destination="-1" eventType="touchUpInside" id="FWd-Ea-GWo"/>
+                    </connections>
                 </button>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mmi-7k-DBu">
                     <rect key="frame" x="173" y="382" width="40" height="3"/>
@@ -243,14 +261,17 @@
                             <integer key="value" value="10"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="nextClick:" destination="-1" eventType="touchUpInside" id="OEv-88-XRg"/>
+                    </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已为超过1000万客户提供借款服务，借款总额超过3000亿元" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scb-Uy-Ds9">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已为超过1000万客户提供借款服务，借款总额超过3000亿元" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scb-Uy-Ds9">
                     <rect key="frame" x="24" y="408" width="327" height="29"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNM-PP-exg">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNM-PP-exg">
                     <rect key="frame" x="0.0" y="393" width="375" height="54"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="身份认证" translatesAutoresizingMaskIntoConstraints="NO" id="MLe-DJ-FKM">
