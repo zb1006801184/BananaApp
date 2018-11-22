@@ -37,7 +37,7 @@ static int const showtime = 3;
 //        [_starimg addGestureRecognizer:tapGesturRecognizer];
         _starimg.backgroundColor = [UIColor whiteColor];
         _starimg.contentMode = UIViewContentModeScaleAspectFill;
-        _starimg.image = [UIImage imageNamed:(UIScreen.mainScreen.bounds.size.height == 812) ? @"矩形" : @"矩形"];
+//        _starimg.image = [UIImage imageNamed:(UIScreen.mainScreen.bounds.size.height == 812) ? @"矩形" : @"矩形"];
         
         
         _tiaoguobtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -66,10 +66,15 @@ static int const showtime = 3;
         [_detailsbtn addTarget:self action:@selector(tapPage) forControlEvents:UIControlEventTouchUpInside];
         _detailsbtn.layer.masksToBounds = YES;
         _detailsbtn.layer.cornerRadius = 15;
+        _detailsbtn.hidden = YES;
         
         
     }
     return self;
+}
+-(void)setImgurl:(NSString *)imgurl{
+    
+    _imgurl = imgurl;
 }
 
 
@@ -78,7 +83,7 @@ static int const showtime = 3;
 {
     [self removeAdvertView];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ZLPushToAdvert" object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ZLPushToAdvert" object:_imgurl userInfo:nil];
     
 }
 

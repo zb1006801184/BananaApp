@@ -104,6 +104,7 @@
         
         if (![Img isEqualToString:@""]) {
             
+            self.zladvertView.detailsbtn.hidden = NO;
             [self.zladvertView showtimer];
              [self.zladvertView.starimg sd_setImageWithURL:[NSURL URLWithString:Img]];
             if ([Web isEqualToString:@""]) {
@@ -115,6 +116,7 @@
 
         }
         
+        Web = self.zladvertView.imgurl;
         
         //存储全部产品的产品类型到本地
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];

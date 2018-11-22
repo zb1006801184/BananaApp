@@ -91,9 +91,23 @@
 
 
 - (IBAction)nextClick:(id)sender {
-    BWebViewController *web = [[BWebViewController alloc]init];
-    web.mainUrl = _homeModel.jumpUrl;
-    [self.navigationController pushViewController:web animated:YES];
+    
+    if ([_homeModel.jumpType isEqualToString:@"1"]) {
+        BWebViewController *web = [[BWebViewController alloc]init];
+        web.mainUrl = _homeModel.jumpUrl;
+        web.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:web animated:YES];
+        
+    }else if ([_homeModel.jumpType isEqualToString:@"2"]){
+        
+        NSString *openURL = _homeModel.jumpUrl;
+        NSURL *URL = [NSURL URLWithString:openURL];
+        [[UIApplication sharedApplication]openURL:URL options:@{} completionHandler:nil];
+        
+        
+    }
+    
+ 
 }
 
 

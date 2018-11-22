@@ -14,7 +14,7 @@
 #import "messageModel.h"
 #import "productModel.h"
 #import "ProductDetailViewController.h"
-
+#import "BWebViewController.h"
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate
 ,UICollectionViewDelegateFlowLayout,TXScrollLabelViewDelegate>
 
@@ -39,7 +39,7 @@
     self.title = @"贷款超市";
     
     //广告页面跳转
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(alPushToAdvert) name:@"ZLPushToAdvert" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(alPushToAdvert:) name:@"ZLPushToAdvert" object:nil];
 
     [self homedata];
     [self initView];
@@ -58,9 +58,13 @@
         self.messagearr = [messageModel mj_objectArrayWithKeyValuesArray:responseObject[@"messageList"]];
         self.productarr = [productModel mj_objectArrayWithKeyValuesArray:responseObject[@"productList"]];
         [self.collectionView reloadData];
+        [self.collectionView.mj_header endRefreshing];
+
 
     } failure:^(NSError * _Nonnull error) {
         NSLog(@"%@",error);
+        [self.collectionView.mj_header endRefreshing];
+
     }];
     
 }
@@ -87,6 +91,19 @@
     //    这是头部的注册
     [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerId"];
     
+    __weak typeof(self) weakSelf = self;
+    //默认block方法：设置下拉刷新
+    _collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf homedata];
+    }];
+    
+    //默认block方法：设置上拉加载更多(因为没有上拉加载更多，所以直接显示endRefreshingWithNoMoreData)
+    self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+    }];
+    
+  
+
     
 }
 
@@ -110,7 +127,24 @@
   
     cell.productmodel = _productarr[indexPath.row];
     
-    [self setBorderWithView:cell top:YES left:NO bottom:NO right:YES borderColor:[UIColor colorWithHexString:@"#bfbfbf"] borderWidth:.5];
+    if (indexPath.row == 0) {
+        
+        cell.linelabel1.hidden = NO;
+        cell.linelabel2.hidden = NO;
+        cell.linelabel3.hidden = NO;
+        
+    }else if (indexPath.row == 1){
+        
+        cell.linelabel1.hidden = NO;
+        cell.linelabel2.hidden = NO;
+        cell.linelabel3.hidden = NO;
+        
+    }else{
+        cell.linelabel1.hidden = YES;
+        cell.linelabel2.hidden = NO;
+        cell.linelabel3.hidden = NO;
+
+    }
     
     return cell;
 }
@@ -146,6 +180,9 @@
         
         UIView *arrview = [[UIView alloc]initWithFrame:CGRectMake((kScreenWidth/4)*i, 0, kScreenWidth/4, kScreenWidth/4)];
         [view addSubview:arrview];
+        arrview.tag = 1000+i;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(selectAction:)];
+        [arrview addGestureRecognizer:tap];
         
         UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake((arrview.width-36)/2, 20, 36, 36)];
         [arrview addSubview:imageView];
@@ -247,10 +284,17 @@
     bannerModel *model = _bannerarr[btn.tag-100];
     if ([model.jumpType isEqualToString:@"1"]) {
         
-        [[UIApplication sharedApplication].keyWindow makeToast:@"跳转webview" duration:2 position:CSToastPositionCenter style:nil];
+     
+        BWebViewController *web = [[BWebViewController alloc]init];
+        web.mainUrl = model.picUrl;
+        web.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:web animated:YES];
 
     }else if ([model.jumpType isEqualToString:@"2"]){
-        [[UIApplication sharedApplication].keyWindow makeToast:@"跳转详情页" duration:2 position:CSToastPositionCenter style:nil];
+        ProductDetailViewController *detail = [[ProductDetailViewController alloc]init];
+        detail.model = model;
+        detail.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:detail animated:YES];
     }
 
 }
@@ -259,6 +303,21 @@
 - (void)scrollLabelView:(TXScrollLabelView *)scrollLabelView didClickWithText:(NSString *)text atIndex:(NSInteger)index{
     messageModel *model = _messagearr[index];
     NSLog(@"%@--%ld----%@",text, index,model.jumpType);
+    if ([model.jumpType isEqualToString:@"1"]) {
+        
+        BWebViewController *web = [[BWebViewController alloc]init];
+        web.mainUrl = model.picUrl;
+        web.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:web animated:YES];
+        
+    }else if ([model.jumpType isEqualToString:@"2"]){
+        ProductDetailViewController *detail = [[ProductDetailViewController alloc]init];
+        detail.model = model;
+        detail.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:detail animated:YES];
+    }
+
+ 
 }
 
 //定义每个UICollectionView 的大小
@@ -272,59 +331,79 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     NSLog(@"点击cell");
-    ProductDetailViewController *detail = [[ProductDetailViewController alloc]init];
     productModel *model =  _productarr[indexPath.row];
-    detail.model = model;
-    detail.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:detail animated:YES];
+    if ([model.hasDatail isEqualToString:@"2"]) {
+        
+        if ([model.jumpType isEqualToString:@"1"]) {
+            BWebViewController *web = [[BWebViewController alloc]init];
+            web.mainUrl = model.jumpUrl;
+            web.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:web animated:YES];
+            
+        }else if ([model.jumpType isEqualToString:@"2"]){
+           
+            NSString *openURL = model.jumpUrl;
+            NSURL *URL = [NSURL URLWithString:openURL];
+            [[UIApplication sharedApplication]openURL:URL options:@{} completionHandler:nil];
+            
+    
+        }
+     
+        
+    }else if ([model.hasDatail isEqualToString:@"1"]){
+        ProductDetailViewController *detail = [[ProductDetailViewController alloc]init];
+        detail.model = model;
+        detail.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:detail animated:YES];
+    }
+
     
 }
 
-//#pragma mark - 刷新带头视图的UICollectionView切记注意要这样刷新，防止重复创建headview，因为UICollectionView的head不会复用
-//-(void)collectionViewreloadData{
-//    UICollectionReusableView *cityheaderView = (UICollectionReusableView *)[_collectionView viewWithTag:1000];
-//
-//    for (UIView *view in cityheaderView.subviews) {
-//        [view removeFromSuperview];
-//    }
-//    [_collectionView reloadData];
-//}
 
 
-- (void)setBorderWithView:(UIView *)view top:(BOOL)top left:(BOOL)left bottom:(BOOL)bottom right:(BOOL)right borderColor:(UIColor *)color borderWidth:(CGFloat)width
-{
-    if (top) {
-        CALayer *layer = [CALayer layer];
-        layer.frame = CGRectMake(0, 0, view.frame.size.width, width);
-        layer.backgroundColor = color.CGColor;
-        [view.layer addSublayer:layer];
-    }
-    if (left) {
-        CALayer *layer = [CALayer layer];
-        layer.frame = CGRectMake(0, 0, width, view.frame.size.height);
-        layer.backgroundColor = color.CGColor;
-        [view.layer addSublayer:layer];
-    }
-    if (bottom) {
-        CALayer *layer = [CALayer layer];
-        layer.frame = CGRectMake(0, view.frame.size.height - width, view.frame.size.width, width);
-        layer.backgroundColor = color.CGColor;
-        [view.layer addSublayer:layer];
-    }
-    if (right) {
-        CALayer *layer = [CALayer layer];
-        layer.frame = CGRectMake(view.frame.size.width - width, 0, width, view.frame.size.height);
-        layer.backgroundColor = color.CGColor;
-        [view.layer addSublayer:layer];
-    }
-}
 
 
 //跳转广告
--(void)alPushToAdvert{
+-(void)alPushToAdvert:(NSNotification *)noti{
     
-    NSLog(@"1111");
+    NSString *url = noti.object;
+    BWebViewController *web = [[BWebViewController alloc]init];
+    web.mainUrl = url;
+    web.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:web animated:YES];
 
+}
+
+//点击顶部4个按钮
+- (void)selectAction:(UITapGestureRecognizer *)recognizer{
+
+    UIView *toast = recognizer.view;
+    NSLog(@"123==%ld",(long)toast.tag);
+    
+    NSData * data = [[NSUserDefaults standardUserDefaults]objectForKey:@"productTypeList"];
+    //在这里解档
+    NSMutableArray *productTypeList = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSDictionary *dic;
+    if (toast.tag == 1000) {
+        dic = productTypeList[0];
+        
+    }else if (toast.tag == 1001){
+        
+        dic = productTypeList[1];
+    }else if (toast.tag == 1002){
+
+        dic = productTypeList[2];
+    }else if (toast.tag == 1003){
+
+        dic = productTypeList[3];
+    }
+    //存储全部产品的产品类型参数到本地
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:dic] forKey:@"productType"];
+    [defaults synchronize];
+    
+    self.tabBarController.selectedIndex = 1;
 }
 
 

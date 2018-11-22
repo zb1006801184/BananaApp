@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *jumpType;
 @property (nonatomic, copy) NSString *jumpValue;
 @property (nonatomic, copy) NSString *message;
+
+@property (nonatomic, copy) NSString *picUrl;
+
 @end
 
 NS_ASSUME_NONNULL_END

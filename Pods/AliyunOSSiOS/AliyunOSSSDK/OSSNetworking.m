@@ -13,10 +13,13 @@
 #import "OSSUtil.h"
 #import "OSSLog.h"
 #import "OSSXMLDictionary.h"
+#import "NSMutableData+OSS_CRC.h"
 #import "OSSInputStreamHelper.h"
 #import "OSSNetworkingRequestDelegate.h"
 #import "OSSURLRequestRetryHandler.h"
 #import "OSSHttpResponseParser.h"
+
+
 
 @implementation OSSNetworkingConfiguration
 @end
@@ -27,23 +30,28 @@
 - (instancetype)initWithConfiguration:(OSSNetworkingConfiguration *)configuration {
     if (self = [super init]) {
         self.configuration = configuration;
-        NSURLSessionConfiguration * conf = nil;
-        NSOperationQueue *delegateQueue = [NSOperationQueue new];
+
+        NSOperationQueue * operationQueue = [NSOperationQueue new];
+        NSURLSessionConfiguration * dataSessionConfig = nil;
+        NSURLSessionConfiguration * uploadSessionConfig = nil;
 
         if (configuration.enableBackgroundTransmitService) {
-            conf = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:self.configuration.backgroundSessionIdentifier];
+            uploadSessionConfig = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:self.configuration.backgroundSessionIdentifier];
         } else {
-            conf = [NSURLSessionConfiguration defaultSessionConfiguration];
+            uploadSessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
         }
-        conf.URLCache = nil;
+        dataSessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
 
         if (configuration.timeoutIntervalForRequest > 0) {
-            conf.timeoutIntervalForRequest = configuration.timeoutIntervalForRequest;
+            uploadSessionConfig.timeoutIntervalForRequest = configuration.timeoutIntervalForRequest;
+            dataSessionConfig.timeoutIntervalForRequest = configuration.timeoutIntervalForRequest;
         }
         if (configuration.timeoutIntervalForResource > 0) {
-            conf.timeoutIntervalForResource = configuration.timeoutIntervalForResource;
+            uploadSessionConfig.timeoutIntervalForResource = configuration.timeoutIntervalForResource;
+            dataSessionConfig.timeoutIntervalForResource = configuration.timeoutIntervalForResource;
         }
-        
+        dataSessionConfig.URLCache = nil;
+        uploadSessionConfig.URLCache = nil;
         if (configuration.proxyHost && configuration.proxyPort) {
             // Create an NSURLSessionConfiguration that uses the proxy
             NSDictionary *proxyDict = @{
@@ -55,21 +63,25 @@
                                         (NSString *)kCFStreamPropertyHTTPSProxyHost : configuration.proxyHost,
                                         (NSString *)kCFStreamPropertyHTTPSProxyPort : configuration.proxyPort,
                                         };
-            conf.connectionProxyDictionary = proxyDict;
+            dataSessionConfig.connectionProxyDictionary = proxyDict;
+            uploadSessionConfig.connectionProxyDictionary = proxyDict;
         }
 
-        _session = [NSURLSession sessionWithConfiguration:conf
+        _dataSession = [NSURLSession sessionWithConfiguration:dataSessionConfig
                                                  delegate:self
-                                            delegateQueue:delegateQueue];
+                                            delegateQueue:operationQueue];
+        _uploadFileSession = [NSURLSession sessionWithConfiguration:uploadSessionConfig
+                                                       delegate:self
+                                                  delegateQueue:operationQueue];
 
         self.isUsingBackgroundSession = configuration.enableBackgroundTransmitService;
         _sessionDelagateManager = [OSSSyncMutableDictionary new];
 
-        NSOperationQueue * operationQueue = [NSOperationQueue new];
-        if (configuration.maxConcurrentRequestCount > 0) {
-            operationQueue.maxConcurrentOperationCount = configuration.maxConcurrentRequestCount;
+        NSOperationQueue * queue = [NSOperationQueue new];
+        if (configuration.maxConcurrentRequestCount) {
+            queue.maxConcurrentOperationCount = configuration.maxConcurrentRequestCount;
         }
-        self.taskExecutor = [OSSExecutor executorWithOperationQueue: operationQueue];
+        self.taskExecutor = [OSSExecutor executorWithOperationQueue:queue];
     }
     return self;
 }
@@ -229,13 +241,15 @@
 
         if (requestDelegate.uploadingData) {
             [requestDelegate.internalRequest setHTTPBody:requestDelegate.uploadingData];
-            sessionTask = [_session dataTaskWithRequest:requestDelegate.internalRequest];
+            sessionTask = [_dataSession dataTaskWithRequest:requestDelegate.internalRequest];
         } else if (requestDelegate.uploadingFileURL) {
-            sessionTask = [_session uploadTaskWithRequest:requestDelegate.internalRequest fromFile:requestDelegate.uploadingFileURL];
+            sessionTask = [_uploadFileSession uploadTaskWithRequest:requestDelegate.internalRequest fromFile:requestDelegate.uploadingFileURL];
 
-                requestDelegate.isBackgroundUploadFileTask = self.isUsingBackgroundSession;
+            if (self.isUsingBackgroundSession) {
+                requestDelegate.isBackgroundUploadFileTask = YES;
+            }
         } else { // not upload request
-            sessionTask = [_session dataTaskWithRequest:requestDelegate.internalRequest];
+            sessionTask = [_dataSession dataTaskWithRequest:requestDelegate.internalRequest];
         }
 
         requestDelegate.currentSessionTask = sessionTask;
@@ -267,10 +281,6 @@
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)sessionTask didCompleteWithError:(NSError *)error
 {
-    if (error) {
-        OSSLogError(@"%@,error: %@", NSStringFromSelector(_cmd), error);
-    }
-    
     OSSNetworkingRequestDelegate * delegate = [self.sessionDelagateManager objectForKey:@(sessionTask.taskIdentifier)];
     [self.sessionDelagateManager removeObjectForKey:@(sessionTask.taskIdentifier)];
 
@@ -280,6 +290,16 @@
         /* if the background transfer service is enable, may recieve the previous task complete callback */
         /* for now, we ignore it */
         return ;
+    }
+
+    NSString * dateStr = [[httpResponse allHeaderFields] objectForKey:@"Date"];
+    if ([dateStr length]) {
+        NSDate * serverTime = [NSDate oss_dateFromString:dateStr];
+        NSDate * deviceTime = [NSDate date];
+        NSTimeInterval skewTime = [deviceTime timeIntervalSinceDate:serverTime];
+        [NSDate oss_setClockSkew:skewTime];
+    } else {
+        OSSLogError(@"date header does not exist, unable to adjust the time skew");
     }
 
     /* background upload task will not call back didRecieveResponse */
@@ -346,18 +366,6 @@
 
                 case OSSNetworkingRetryTypeShouldCorrectClockSkewAndRetry: {
                     /* correct clock skew */
-                    NSString * dateStr = [[httpResponse allHeaderFields] objectForKey:@"Date"];
-                    if ([dateStr length] > 0) {
-                        NSDate * serverTime = [NSDate oss_dateFromString:dateStr];
-                        NSDate * deviceTime = [NSDate date];
-                        NSTimeInterval skewTime = [deviceTime timeIntervalSinceDate:serverTime];
-                        [NSDate oss_setClockSkew:skewTime];
-                    } else if (!error) {
-                        // The response header does not have the 'Date' field.
-                        // This should not happen.
-                        OSSLogError(@"Date header does not exist, unable to fix the clock skew");
-                    }
-                    
                     [delegate.interceptors insertObject:[OSSTimeSkewedFixingInterceptor new] atIndex:0];
                     break;
                 }
@@ -435,10 +443,10 @@
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
 {
-    /* background upload task will not call back didRecieveResponse */
-    OSSLogVerbose(@"%@,response: %@", NSStringFromSelector(_cmd), response);
-    
     OSSNetworkingRequestDelegate * delegate = [self.sessionDelagateManager objectForKey:@(dataTask.taskIdentifier)];
+
+    /* background upload task will not call back didRecieveResponse */
+    OSSLogVerbose(@"did receive response: %@", response);
     NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *)response;
     if (httpResponse.statusCode >= 200 && httpResponse.statusCode < 300 && httpResponse.statusCode != 203) {
         [delegate.responseParser consumeHttpResponse:httpResponse];
