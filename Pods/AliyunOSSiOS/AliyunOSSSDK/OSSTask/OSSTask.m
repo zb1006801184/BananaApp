@@ -60,7 +60,7 @@ NSString *const OSSTaskMultipleExceptionsUserInfoKey = @"exceptions";
     return self;
 }
 
-- (instancetype)initWithResult:(_Nullable id)result {
+- (instancetype)initWithResult:(id)result {
     self = [super init];
     if (self) {
         [self trySetResult:result];

@@ -28,6 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSTimer *timer;
 
 @property (nonatomic, assign) int time;
+
+@property (nonatomic, strong) NSString *imgurl;
+
 /**
  *  开始定时器方法
  */

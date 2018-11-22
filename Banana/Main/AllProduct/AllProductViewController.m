@@ -11,7 +11,8 @@
 #import "popUpView.h"
 #import "NetWorkTool.h"
 #import "productModel.h"
-
+#import "ProductDetailViewController.h"
+#import "BWebViewController.h"
 @interface AllProductViewController ()<UICollectionViewDataSource,UICollectionViewDelegate
 ,UICollectionViewDelegateFlowLayout>
 
@@ -42,10 +43,51 @@
 @property (nonatomic, strong)NSString *minDuration;//最短贷款期限
 @property (nonatomic, strong)NSString *maxDuration;//最长贷款期限
 
+@property (nonatomic, strong)NSString *typestr;//类型
+@property (nonatomic, assign)BOOL isType;//判断是否第一次进入
+
 
 @end
 
 @implementation AllProductViewController
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    
+  
+    if (_isType == YES) {
+
+        NSData * productTypedata = [[NSUserDefaults standardUserDefaults]objectForKey:@"productType"];
+        NSDictionary *typedic = [NSKeyedUnarchiver unarchiveObjectWithData:productTypedata];
+        if (typedic.allKeys.count == 0) {
+            _type = @"";
+        }else{
+            
+            _typestr = typedic[@"typeName"];
+            _type = typedic[@"typeValue"];
+        }
+    }
+    
+    if(_typestr != nil){
+        
+        UIButton *selectedbtn = [self.view viewWithTag:100];
+        [selectedbtn setTitle:_typestr forState:UIControlStateNormal];
+        selectedbtn.backgroundColor = [UIColor colorWithHexString:@"#FFDA44"];
+        [self productdata];
+
+    }
+    _isType = YES;
+
+
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:[NSDictionary dictionary]] forKey:@"productType"];
+    [defaults synchronize];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -54,14 +96,15 @@
 //    选中条件回调的通知
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(popUpselectedStr:) name:@"popUpView" object:nil];
 
+
     self.title = @"全部产品";
     _pageNo = @"1";
     _pageNum = @"100";
-    _type = @"";
     _minMoney = @"";
     _maxMoney = @"";
     _minDuration = @"";
     _maxDuration = @"";
+    
     
     
     _oneborrowTypeArr = [NSMutableArray array];
@@ -78,7 +121,21 @@
     
     [self initView];
     
-    [self productdata];
+    if (_isType == NO) {
+        
+        NSData * productTypedata = [[NSUserDefaults standardUserDefaults]objectForKey:@"productType"];
+        NSDictionary *typedic = [NSKeyedUnarchiver unarchiveObjectWithData:productTypedata];
+        if (typedic.allKeys.count == 0) {
+            _type = @"";
+        }else{
+            
+            _typestr = typedic[@"typeName"];
+            _type = typedic[@"typeValue"];
+        }
+        
+        [self productdata];
+    }
+
     
 }
 
@@ -99,9 +156,13 @@
         
         self.productarr = [productModel mj_objectArrayWithKeyValuesArray:responseObject[@"productList"]];
         [self.collectionView reloadData];
+        [self.collectionView.mj_header endRefreshing];
+
 
     } failure:^(NSError * _Nonnull error) {
         NSLog(@"%@",error);
+        [self.collectionView.mj_header endRefreshing];
+
     }];
     
 }
@@ -151,6 +212,13 @@
         selectedbtn.layer.cornerRadius = 4.0;
         [selectedbtn addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
         selectedbtn.tag = 100+i;
+//        if (i == 0) {
+//            if (_typestr != nil) {
+//                [selectedbtn setTitle:_typestr forState:UIControlStateNormal];
+//                selectedbtn.backgroundColor = [UIColor colorWithHexString:@"#FFDA44"];
+//
+//            }
+//        }
         
     }
 
@@ -172,6 +240,16 @@
     _collectionView.showsVerticalScrollIndicator = NO;
     _collectionView.showsHorizontalScrollIndicator = NO;
     
+    __weak typeof(self) weakSelf = self;
+    //默认block方法：设置下拉刷新
+    _collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf productdata];
+    }];
+    //默认block方法：设置上拉加载更多(因为没有上拉加载更多，所以直接显示endRefreshingWithNoMoreData)
+    self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+    }];
+
     
 }
 
@@ -191,6 +269,7 @@
     }else if (_btntag == 102){
         self.popUpview.yearArr = _threeborrowTypeArr;
     }
+    self.popUpview.textstr = btn.titleLabel.text;
 }
 
 #pragma mark - 顶部下拉视图
@@ -225,9 +304,25 @@
     [_collectionView registerNib:nib forCellWithReuseIdentifier:identifier];
     AllProductCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     cell.productmodel = _productarr[indexPath.row];
-    
-    [self setBorderWithView:cell top:YES left:NO bottom:NO right:YES borderColor:[UIColor colorWithHexString:@"#bfbfbf"] borderWidth:.5];
-    
+
+    if (indexPath.row == 0) {
+        
+        cell.linelabel1.hidden = NO;
+        cell.linelabel2.hidden = NO;
+        cell.linelabel3.hidden = NO;
+        
+    }else if (indexPath.row == 1){
+        
+        cell.linelabel1.hidden = NO;
+        cell.linelabel2.hidden = NO;
+        cell.linelabel3.hidden = NO;
+        
+    }else{
+        cell.linelabel1.hidden = YES;
+        cell.linelabel2.hidden = NO;
+        cell.linelabel3.hidden = NO;
+        
+    }
     return cell;
 }
 
@@ -245,47 +340,35 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     NSLog(@"点击cell");
+    productModel *model =  _productarr[indexPath.row];
+    if ([model.hasDatail isEqualToString:@"2"]) {
+        
+        if ([model.jumpType isEqualToString:@"1"]) {
+            BWebViewController *web = [[BWebViewController alloc]init];
+            web.mainUrl = model.jumpUrl;
+            web.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:web animated:YES];
+            
+        }else if ([model.jumpType isEqualToString:@"2"]){
+            
+            NSString *openURL = model.jumpUrl;
+            NSURL *URL = [NSURL URLWithString:openURL];
+            [[UIApplication sharedApplication]openURL:URL options:@{} completionHandler:nil];
+            
+            
+        }
+        
+        
+    }else if ([model.hasDatail isEqualToString:@"1"]){
+        ProductDetailViewController *detail = [[ProductDetailViewController alloc]init];
+        detail.model = model;
+        detail.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:detail animated:YES];
+    }
     
 }
 
-//#pragma mark - 刷新带头视图的UICollectionView切记注意要这样刷新，防止重复创建headview，因为UICollectionView的head不会复用
-//-(void)collectionViewreloadData{
-//    UICollectionReusableView *cityheaderView = (UICollectionReusableView *)[_collectionView viewWithTag:1000];
-//
-//    for (UIView *view in cityheaderView.subviews) {
-//        [view removeFromSuperview];
-//    }
-//    [_collectionView reloadData];
-//}
 
-
-- (void)setBorderWithView:(UIView *)view top:(BOOL)top left:(BOOL)left bottom:(BOOL)bottom right:(BOOL)right borderColor:(UIColor *)color borderWidth:(CGFloat)width
-{
-    if (top) {
-        CALayer *layer = [CALayer layer];
-        layer.frame = CGRectMake(0, 0, view.frame.size.width, width);
-        layer.backgroundColor = color.CGColor;
-        [view.layer addSublayer:layer];
-    }
-    if (left) {
-        CALayer *layer = [CALayer layer];
-        layer.frame = CGRectMake(0, 0, width, view.frame.size.height);
-        layer.backgroundColor = color.CGColor;
-        [view.layer addSublayer:layer];
-    }
-    if (bottom) {
-        CALayer *layer = [CALayer layer];
-        layer.frame = CGRectMake(0, view.frame.size.height - width, view.frame.size.width, width);
-        layer.backgroundColor = color.CGColor;
-        [view.layer addSublayer:layer];
-    }
-    if (right) {
-        CALayer *layer = [CALayer layer];
-        layer.frame = CGRectMake(view.frame.size.width - width, 0, width, view.frame.size.height);
-        layer.backgroundColor = color.CGColor;
-        [view.layer addSublayer:layer];
-    }
-}
 
 //回调处理日期和金额参数
 -(void)getDic:(NSString *)selectedstr{

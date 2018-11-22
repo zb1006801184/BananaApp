@@ -17,5 +17,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *namelabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *sloganlabel;
+@property (weak, nonatomic) IBOutlet UILabel *linelabel1;
+
+@property (weak, nonatomic) IBOutlet UILabel *linelabel2;
+
+@property (weak, nonatomic) IBOutlet UILabel *linelabel3;
+
+
+
 
 @end

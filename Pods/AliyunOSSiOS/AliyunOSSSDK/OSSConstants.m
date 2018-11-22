@@ -13,9 +13,3 @@ NSString * const OSSXMLDictionaryCommentsKey = @"__comments";
 NSString * const OSSXMLDictionaryTextKey = @"__text";
 NSString * const OSSXMLDictionaryNodeNameKey = @"__name";
 NSString * const OSSXMLDictionaryAttributePrefix = @"_";
-
-NSString * const OSSHTTPMethodHEAD = @"HEAD";
-NSString * const OSSHTTPMethodGET = @"GET";
-NSString * const OSSHTTPMethodPUT = @"PUT";
-NSString * const OSSHTTPMethodPOST = @"POST";
-NSString * const OSSHTTPMethodDELETE = @"DELETE";

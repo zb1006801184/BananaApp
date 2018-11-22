@@ -12,6 +12,7 @@
 #import "OSSNetworking.h"
 #import "OSSLog.h"
 #import "OSSXMLDictionary.h"
+#import "NSMutableData+OSS_CRC.h"
 #if TARGET_OS_IOS
 #import <UIKit/UIDevice.h>
 #endif
@@ -37,11 +38,51 @@
 
 @end
 
+@implementation NSDate (OSS)
+
+NSString * const serverReturnDateFormat = @"EEE, dd MMM yyyy HH:mm:ss z";
+
+static NSTimeInterval _clockSkew = 0.0;
+
++ (void)oss_setClockSkew:(NSTimeInterval)clockSkew {
+    @synchronized(self) {
+        _clockSkew = clockSkew;
+    }
+}
+
++ (NSDate *)oss_clockSkewFixedDate {
+    NSTimeInterval skew = 0.0;
+    @synchronized(self) {
+        skew = _clockSkew;
+    }
+    return [[NSDate date] dateByAddingTimeInterval:(-1 * skew)];
+}
+
++ (NSDate *)oss_dateFromString:(NSString *)string {
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
+    dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+    dateFormatter.dateFormat = serverReturnDateFormat;
+
+    return [dateFormatter dateFromString:string];
+}
+
+- (NSString *)oss_asStringValue {
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
+    dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+    dateFormatter.dateFormat = serverReturnDateFormat;
+
+    return [dateFormatter stringFromDate:self];
+}
+
+@end
+
 @implementation OSSSyncMutableDictionary
 
 - (instancetype)init {
     if (self = [super init]) {
-        _dictionary = [NSMutableDictionary dictionary];
+        _dictionary = [NSMutableDictionary new];
         _dispatchQueue = dispatch_queue_create("com.aliyun.aliyunsycmutabledictionary", DISPATCH_QUEUE_SERIAL);
     }
 
@@ -68,7 +109,7 @@
 
 - (void)setObject:(id)anObject forKey:(id <NSCopying>)aKey {
     dispatch_sync(self.dispatchQueue, ^{
-        [self.dictionary oss_setObject:anObject forKey:aKey];
+        [self.dictionary setObject:anObject forKey:aKey];
     });
 }
 
@@ -335,7 +376,7 @@ NSString * const BACKGROUND_SESSION_IDENTIFIER = @"com.aliyun.oss.backgroundsess
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         OSSSubResourceARRAY = @[@"acl", @"uploadId", @"partNumber", @"uploads", @"logging", @"website", @"location",
-                                @"lifecycle", @"referer", @"cors", @"delete", @"append", @"position", @"security-token", @"x-oss-process", @"sequential",@"bucketInfo",@"symlink", @"restore"];
+                                @"lifecycle", @"referer", @"cors", @"delete", @"append", @"position", @"security-token", @"x-oss-process", @"sequential"];
     });
     /****************************************************************/
 
@@ -362,14 +403,17 @@ NSString * const BACKGROUND_SESSION_IDENTIFIER = @"com.aliyun.oss.backgroundsess
         if (error) {
             return [OSSTask taskWithError:error];
         }
-        [requestMessage.headerParams oss_setObject:federationToken.tToken forKey:@"x-oss-security-token"];
+        [requestMessage.headerParams setObject:federationToken.tToken forKey:@"x-oss-security-token"];
     } else if ([self.credentialProvider isKindOfClass:[OSSStsTokenCredentialProvider class]]) {
         federationToken = [(OSSStsTokenCredentialProvider *)self.credentialProvider getToken];
-        [requestMessage.headerParams oss_setObject:federationToken.tToken forKey:@"x-oss-security-token"];
+        [requestMessage.headerParams setObject:federationToken.tToken forKey:@"x-oss-security-token"];
     }
     
-    [requestMessage.headerParams oss_setObject:requestMessage.contentSHA1 forKey:OSSHttpHeaderHashSHA1];
+    if (requestMessage.contentSHA1) {
+        [requestMessage.headerParams setObject:requestMessage.contentSHA1 forKey:OSSHttpHeaderHashSHA1];
+    }
         
+
     /* construct CanonicalizedOSSHeaders */
     if (requestMessage.headerParams) {
         NSMutableArray * params = [[NSMutableArray alloc] init];
@@ -394,13 +438,13 @@ NSString * const BACKGROUND_SESSION_IDENTIFIER = @"com.aliyun.oss.backgroundsess
     if (requestMessage.objectKey) {
         resource = [resource oss_stringByAppendingPathComponentForURL:requestMessage.objectKey];
     }
-    if (requestMessage.params) {
+    if (requestMessage.querys) {
         NSMutableArray * querys = [[NSMutableArray alloc] init];
-        NSArray * sortedKey = [[requestMessage.params allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        NSArray * sortedKey = [[requestMessage.querys allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
             return [obj1 compare:obj2];
         }];
         for (NSString * key in sortedKey) {
-            NSString * value = [requestMessage.params objectForKey:key];
+            NSString * value = [requestMessage.querys objectForKey:key];
 
             if (![OSSSubResourceARRAY containsObject:key]) { // notice it's based on content compare
                 continue;
@@ -424,7 +468,7 @@ NSString * const BACKGROUND_SESSION_IDENTIFIER = @"com.aliyun.oss.backgroundsess
         || [self.credentialProvider isKindOfClass:[OSSStsTokenCredentialProvider class]])
     {
         NSString * signature = [OSSUtil sign:stringToSign withToken:federationToken];
-        [requestMessage.headerParams oss_setObject:signature forKey:@"Authorization"];
+        [requestMessage.headerParams setObject:signature forKey:@"Authorization"];
     }else if ([self.credentialProvider isKindOfClass:[OSSCustomSignerCredentialProvider class]])
     {
         OSSCustomSignerCredentialProvider *provider = (OSSCustomSignerCredentialProvider *)self.credentialProvider;
@@ -432,17 +476,16 @@ NSString * const BACKGROUND_SESSION_IDENTIFIER = @"com.aliyun.oss.backgroundsess
         NSError *customSignError;
         NSString * signature = [provider sign:stringToSign error:&customSignError];
         if (customSignError) {
-            OSSLogError(@"OSSCustomSignerError: %@", customSignError)
-            return [OSSTask taskWithError: customSignError];
+            OSSLogError(@"OSSCustomSignerError: %@",customSignError);
         }
-        [requestMessage.headerParams oss_setObject:signature forKey:@"Authorization"];
+        [requestMessage.headerParams setObject:signature forKey:@"Authorization"];
     }else
     {
         NSString * signature = [self.credentialProvider sign:stringToSign error:&error];
         if (error) {
             return [OSSTask taskWithError:error];
         }
-        [requestMessage.headerParams oss_setObject:signature forKey:@"Authorization"];
+        [requestMessage.headerParams setObject:signature forKey:@"Authorization"];
     }
     return [OSSTask taskWithResult:nil];
 }
@@ -460,7 +503,7 @@ NSString * const BACKGROUND_SESSION_IDENTIFIER = @"com.aliyun.oss.backgroundsess
 
 - (OSSTask *)interceptRequestMessage:(OSSAllRequestNeededMessage *)request {
     NSString * userAgent = [self getUserAgent:self.clientConfiguration.userAgentMark];
-    [request.headerParams oss_setObject:userAgent forKey:@"User-Agent"];
+    [request.headerParams setObject:userAgent forKey:@"User-Agent"];
     return [OSSTask taskWithResult:nil];
 }
 
@@ -529,20 +572,28 @@ NSString * const BACKGROUND_SESSION_IDENTIFIER = @"com.aliyun.oss.backgroundsess
     return rangeString;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"Range: %@", [self toHeaderString]];
+}
+
 @end
 
 #pragma mark request and result objects
 
 @implementation OSSGetServiceRequest
 
-- (NSDictionary *)requestParams {
-    NSMutableDictionary * params = [NSMutableDictionary dictionary];
-    [params oss_setObject:self.prefix forKey:@"prefix"];
-    [params oss_setObject:self.marker forKey:@"marker"];
-    if (self.maxKeys > 0) {
-        [params oss_setObject:[@(self.maxKeys) stringValue] forKey:@"max-keys"];
+- (NSDictionary *)getQueryDict {
+    NSMutableDictionary * querys = [NSMutableDictionary new];
+    if (self.prefix) {
+        [querys setObject:self.prefix forKey:@"prefix"];
     }
-    return [params copy];
+    if (self.marker) {
+        [querys setObject:self.marker forKey:@"marker"];
+    }
+    if (self.maxKeys) {
+        [querys setObject:[@(self.maxKeys) stringValue] forKey:@"max-keys"];
+    }
+    return querys;
 }
 
 @end
@@ -551,35 +602,6 @@ NSString * const BACKGROUND_SESSION_IDENTIFIER = @"com.aliyun.oss.backgroundsess
 @end
 
 @implementation OSSCreateBucketRequest
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        _storageClass = OSSBucketStorageClassStandard;
-    }
-    return self;
-}
-
-- (NSString *)storageClassAsString {
-    NSString *storageClassString = nil;
-    switch (_storageClass) {
-        case OSSBucketStorageClassStandard:
-            storageClassString = @"Standard";
-            break;
-        case OSSBucketStorageClassIA:
-            storageClassString = @"IA";
-            break;
-        case OSSBucketStorageClassArchive:
-            storageClassString = @"Archive";
-            break;
-        default:
-            storageClassString = @"Unknown";
-            break;
-    }
-    return storageClassString;
-}
-
 @end
 
 @implementation OSSCreateBucketResult
@@ -593,33 +615,49 @@ NSString * const BACKGROUND_SESSION_IDENTIFIER = @"com.aliyun.oss.backgroundsess
 
 @implementation OSSGetBucketRequest
 
-- (NSDictionary *)requestParams {
-    NSMutableDictionary * params = [NSMutableDictionary dictionary];
-    [params oss_setObject:self.delimiter forKey:@"delimiter"];
-    [params oss_setObject:self.prefix forKey:@"prefix"];
-    [params oss_setObject:self.marker forKey:@"marker"];
-    if (self.maxKeys > 0) {
-        [params oss_setObject:[@(self.maxKeys) stringValue] forKey:@"max-keys"];
+- (NSDictionary *)getQueryDict {
+    NSMutableDictionary * querys = [NSMutableDictionary new];
+    if (self.delimiter) {
+        [querys setObject:self.delimiter forKey:@"delimiter"];
     }
-    return [params copy];
+    if (self.prefix) {
+        [querys setObject:self.prefix forKey:@"prefix"];
+    }
+    if (self.marker) {
+        [querys setObject:self.marker forKey:@"marker"];
+    }
+    if (self.maxKeys) {
+        [querys setObject:[@(self.maxKeys) stringValue] forKey:@"max-keys"];
+    }
+    return querys;
 }
 
 @end
 
 @implementation OSSListMultipartUploadsRequest
-- (NSDictionary *)requestParams {
-    NSMutableDictionary * params = [NSMutableDictionary dictionary];
-    [params oss_setObject:self.delimiter forKey:@"delimiter"];
-    [params oss_setObject:self.prefix forKey:@"prefix"];
-    [params oss_setObject:self.keyMarker forKey:@"key-marker"];
-    [params oss_setObject:self.uploadIdMarker forKey:@"upload-id-marker"];
-    [params oss_setObject:self.encodingType forKey:@"encoding-type"];
-    
-    if (self.maxUploads > 0) {
-        [params oss_setObject:[@(self.maxUploads) stringValue] forKey:@"max-uploads"];
+- (NSDictionary *)getQueryDict {
+    NSMutableDictionary * querys = [NSMutableDictionary new];
+    if (self.delimiter) {
+        [querys setObject:self.delimiter forKey:@"delimiter"];
+    }
+    if (self.prefix) {
+        [querys setObject:self.prefix forKey:@"prefix"];
+    }
+    if (self.keyMarker) {
+        [querys setObject:self.keyMarker forKey:@"key-marker"];
+    }
+    if (self.maxUploads) {
+        [querys setObject:[@(self.maxUploads) stringValue] forKey:@"max-uploads"];
     }
     
-    return [params copy];
+    if (self.uploadIdMarker) {
+        [querys setObject:self.uploadIdMarker forKey:@"upload-id-marker"];
+    }
+    
+    if (self.encodingType) {
+        [querys setObject:self.encodingType forKey:@"encoding-type"];
+    }
+    return querys;
 }
 @end
 
@@ -630,11 +668,6 @@ NSString * const BACKGROUND_SESSION_IDENTIFIER = @"com.aliyun.oss.backgroundsess
 @end
 
 @implementation OSSGetBucketACLRequest
-
-- (NSDictionary *)requestParams {
-    return @{@"acl": @""};
-}
-
 @end
 
 @implementation OSSGetBucketACLResult
@@ -653,16 +686,6 @@ NSString * const BACKGROUND_SESSION_IDENTIFIER = @"com.aliyun.oss.backgroundsess
 @end
 
 @implementation OSSPutObjectACLRequest
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        _acl = @"default";
-    }
-    return self;
-}
-
 @end
 
 @implementation OSSPutObjectACLResult

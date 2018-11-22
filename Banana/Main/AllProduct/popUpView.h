@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong)NSArray *yearArr;//金额和日期数据源
 
-
+@property (nonatomic, strong)NSString *textstr;//按钮上面的文字
 
 @end
 

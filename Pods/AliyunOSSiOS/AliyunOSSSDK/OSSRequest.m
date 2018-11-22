@@ -27,15 +27,11 @@
 }
 
 - (void)cancel {
-    self.isCancelled = YES;
+    _isCancelled = YES;
     
     if (self.requestDelegate) {
         [self.requestDelegate cancel];
     }
-}
-
-- (NSDictionary *)requestParams {
-    return nil;
 }
 
 @end

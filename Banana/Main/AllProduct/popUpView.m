@@ -34,7 +34,11 @@
     [self.collectionView reloadData];
     _collectionView.frame = CGRectMake(0, 0, kScreenWidth, 40+40*((_yearArr.count-1)%2==0?(_yearArr.count-1)/2:(_yearArr.count-1)/2+1));
 }
+-(void)setTextstr:(NSString *)textstr{
+    _textstr = textstr;
+    [self.collectionView reloadData];
 
+}
 #pragma mark  UI布局
 - (void)uiConfigure {
     
@@ -94,6 +98,11 @@
         cell.textlabel.text = dic[@"typeName"];
     }else{
         cell.textlabel.text = _yearArr[indexPath.row+1];
+    }
+    if ([cell.textlabel.text isEqualToString:_textstr]) {
+        cell.textlabel.textColor = [UIColor colorWithHexString:@"#FFDA44"];
+    }else{
+        cell.textlabel.textColor = [UIColor colorWithHexString:@"#666666"];
     }
         
     return cell;

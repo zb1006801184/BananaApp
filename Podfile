@@ -13,4 +13,6 @@ target 'Banana' do
    pod 'FCUUID'
    pod 'Toast', '~> 4.0.0'
    pod 'AliyunOSSiOS'
+   pod 'MJRefresh'
+
 end
