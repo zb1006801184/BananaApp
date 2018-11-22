@@ -63,6 +63,8 @@
     }else if (buttonIndex == 1) {
         //从照片中选取
         sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }else {
+        return;
     }
     
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
