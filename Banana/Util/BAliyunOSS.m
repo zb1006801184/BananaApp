@@ -122,15 +122,15 @@ OSSClient * client;
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[BSomeWays getCurrentVC].view.window makeToast:@"上传成功!" duration:2 position:CSToastPositionCenter];
+                NSLog(@"上传成功!");
+                NSNotification * notice = [NSNotification notificationWithName:@"postImage" object:nil];
+                //发送消息
+                [[NSNotificationCenter defaultCenter]postNotification:notice];
             });
-            NSLog(@"上传成功!");
-            NSNotification * notice = [NSNotification notificationWithName:@"postImage" object:nil];
-            //发送消息
-            [[NSNotificationCenter defaultCenter]postNotification:notice];
         } else {
             
-            NSLog(@"upload object failed, error: %@" , task.error);
             dispatch_async(dispatch_get_main_queue(), ^{
+                NSLog(@"upload object failed, error: %@" , task.error);
                 [[BSomeWays getCurrentVC].view.window makeToast:@"上传失败" duration:2 position:CSToastPositionCenter];
             });
 
