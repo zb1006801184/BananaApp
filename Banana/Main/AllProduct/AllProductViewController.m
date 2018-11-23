@@ -44,7 +44,6 @@
 @property (nonatomic, strong)NSString *maxDuration;//最长贷款期限
 
 @property (nonatomic, strong)NSString *typestr;//类型
-@property (nonatomic, assign)BOOL isType;//判断是否第一次进入
 
 
 @end
@@ -54,49 +53,39 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     
-  
-    if (_isType == YES) {
-
-        NSData * productTypedata = [[NSUserDefaults standardUserDefaults]objectForKey:@"productType"];
-        NSDictionary *typedic = [NSKeyedUnarchiver unarchiveObjectWithData:productTypedata];
-        if (typedic.allKeys.count == 0) {
-            _type = @"";
-        }else{
-            
-            _typestr = typedic[@"typeName"];
-            _type = typedic[@"typeValue"];
-        }
-    }
     
-    if(_typestr != nil){
-        
-        UIButton *selectedbtn = [self.view viewWithTag:100];
-        [selectedbtn setTitle:_typestr forState:UIControlStateNormal];
-        selectedbtn.backgroundColor = [UIColor colorWithHexString:@"#FFDA44"];
-        [self productdata];
-
-    }
-    _isType = YES;
-
-
+    
 }
+
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:YES];
     
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:[NSDictionary dictionary]] forKey:@"productType"];
-    [defaults synchronize];
+}
+-(void)getType:(NSNotification *)noti {
+    NSLog(@"31231");
+    NSDictionary *typedic = noti.object;
+    _typestr = typedic[@"typeName"];
+    _type = typedic[@"typeValue"];
+    
+    UIButton *selectedbtn = [self.view viewWithTag:100];
+    [selectedbtn setTitle:_typestr forState:UIControlStateNormal];
+    selectedbtn.backgroundColor = [UIColor colorWithHexString:@"#FFDA44"];
+    [self productdata];
+    [self productdata];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-//    选中条件回调的通知
+    //    选中条件回调的通知
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(popUpselectedStr:) name:@"popUpView" object:nil];
-
-
+    
+    //    首页发送过来的条件
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(getType:) name:@"productType" object:nil];
+    
+    
     self.title = @"全部产品";
     _pageNo = @"1";
     _pageNum = @"100";
@@ -104,7 +93,7 @@
     _maxMoney = @"";
     _minDuration = @"";
     _maxDuration = @"";
-    
+    _type = @"";
     
     
     _oneborrowTypeArr = [NSMutableArray array];
@@ -117,25 +106,12 @@
     
     _twoborrowTypeArr= @[@"金额不限",@"2000以下",@"2000-1万",@"1万-2万",@"2万以上"];
     _threeborrowTypeArr= @[@"期限不限",@"1个月以下",@"1-6个月",@"6-12个月",@"12个月以上"];
-
+    
     
     [self initView];
     
-    if (_isType == NO) {
-        
-        NSData * productTypedata = [[NSUserDefaults standardUserDefaults]objectForKey:@"productType"];
-        NSDictionary *typedic = [NSKeyedUnarchiver unarchiveObjectWithData:productTypedata];
-        if (typedic.allKeys.count == 0) {
-            _type = @"";
-        }else{
-            
-            _typestr = typedic[@"typeName"];
-            _type = typedic[@"typeValue"];
-        }
-        
-        [self productdata];
-    }
-
+    [self productdata];
+    
     
 }
 
@@ -150,19 +126,31 @@
     [dic setObject:_maxMoney forKey:@"maxMoney"];
     [dic setObject:_minDuration forKey:@"minDuration"];
     [dic setObject:_maxDuration forKey:@"maxDuration"];
-
-
+    
+    
     [[NetWorkTool shareInstance] postWithUrl:MEMEBER_products paramWithDic:dic success:^(id  _Nonnull responseObject) {
         
         self.productarr = [productModel mj_objectArrayWithKeyValuesArray:responseObject[@"productList"]];
         [self.collectionView reloadData];
         [self.collectionView.mj_header endRefreshing];
-
-
+        
+        //存储产品信息信息到本地
+        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:responseObject] forKey:@"allProductData"];
+        [defaults synchronize];
+        
+        
     } failure:^(NSError * _Nonnull error) {
         NSLog(@"%@",error);
+        
+        //请求不到数据，拿到本地存储数据
+        NSData * data = [[NSUserDefaults standardUserDefaults]objectForKey:@"allProductData"];
+        id homeData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        //在这里解档
+        self.productarr = [productModel mj_objectArrayWithKeyValuesArray:homeData[@"productList"]];
+        [self.collectionView reloadData];
         [self.collectionView.mj_header endRefreshing];
-
+        
     }];
     
 }
@@ -170,7 +158,7 @@
 //    选中条件回调的通知
 -(void)popUpselectedStr:(NSNotification *)noti {
     NSLog(@"===%ld",_btntag);
-
+    
     UIButton *selectedbtn = (UIButton *)[self.view viewWithTag:_btntag];
     selectedbtn.backgroundColor = [UIColor colorWithHexString:@"#FFDA44"];
     if (_btntag == 100) {
@@ -179,6 +167,7 @@
         NSLog(@"%@",selectedstr);
         [selectedbtn setTitle:selectedstr[@"typeName"] forState:UIControlStateNormal];
         _type = selectedstr[@"typeValue"];
+        _typestr = selectedstr[@"typeName"];
     }else{
         
         NSString *selectedstr = noti.object;
@@ -189,8 +178,8 @@
     }
     
     [self productdata];
- 
-
+    
+    
 }
 
 
@@ -212,16 +201,16 @@
         selectedbtn.layer.cornerRadius = 4.0;
         [selectedbtn addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
         selectedbtn.tag = 100+i;
-//        if (i == 0) {
-//            if (_typestr != nil) {
-//                [selectedbtn setTitle:_typestr forState:UIControlStateNormal];
-//                selectedbtn.backgroundColor = [UIColor colorWithHexString:@"#FFDA44"];
-//
-//            }
-//        }
+        //        if (i == 0) {
+        //            if (_typestr != nil) {
+        //                [selectedbtn setTitle:_typestr forState:UIControlStateNormal];
+        //                selectedbtn.backgroundColor = [UIColor colorWithHexString:@"#FFDA44"];
+        //
+        //            }
+        //        }
         
     }
-
+    
     
     //单元格的大小
     UICollectionViewFlowLayout *historylayout = [[UICollectionViewFlowLayout alloc] init];
@@ -249,7 +238,7 @@
     self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [self.collectionView.mj_footer endRefreshingWithNoMoreData];
     }];
-
+    
     
 }
 
@@ -259,7 +248,7 @@
     
     self.popUpview.borrowTypeArr = [NSMutableArray array];
     self.popUpview.yearArr = [NSMutableArray array];
-
+    
     self.popUpview.hidden = NO;
     [self.view addSubview:self.popUpview];
     if (_btntag == 100) {
@@ -304,7 +293,7 @@
     [_collectionView registerNib:nib forCellWithReuseIdentifier:identifier];
     AllProductCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     cell.productmodel = _productarr[indexPath.row];
-
+    
     if (indexPath.row == 0) {
         
         cell.linelabel1.hidden = NO;
@@ -397,6 +386,12 @@
     }else if ([selectedstr isEqualToString:@"12个月"]){
         _minDuration = @"360";
         _maxDuration = @"0";
+    }else if ([selectedstr isEqualToString:@"金额不限"]){
+        _maxMoney = @"";
+        _minMoney = @"";
+    }else if ([selectedstr isEqualToString:@"期限不限"]){
+        _minDuration = @"";
+        _maxDuration = @"";
     }
 }
 

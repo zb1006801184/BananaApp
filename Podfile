@@ -14,5 +14,6 @@ target 'Banana' do
    pod 'Toast', '~> 4.0.0'
    pod 'AliyunOSSiOS'
    pod 'MJRefresh'
-
+   pod 'UMCCommon'
+   pod 'UMCSecurityPlugins'
 end

@@ -26,6 +26,8 @@ PODS:
   - SDWebImage/Core (4.4.1)
   - Toast (4.0.0)
   - UICKeyChainStore (2.1.1)
+  - UMCCommon (1.5.2)
+  - UMCSecurityPlugins (1.0.6)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
@@ -37,6 +39,8 @@ DEPENDENCIES:
   - MJRefresh
   - SDWebImage (~> 4.0)
   - Toast (~> 4.0.0)
+  - UMCCommon
+  - UMCSecurityPlugins
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -50,6 +54,8 @@ SPEC REPOS:
     - SDWebImage
     - Toast
     - UICKeyChainStore
+    - UMCCommon
+    - UMCSecurityPlugins
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -62,7 +68,9 @@ SPEC CHECKSUMS:
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
+  UMCCommon: 4392868ac47ff1b101663106bb114ba616fabbad
+  UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
 
-PODFILE CHECKSUM: 35064bcf0ac0c7d0c946b2e6152f848db947d9c5
+PODFILE CHECKSUM: 7ae06ab146cc25d0d60f0531e631bc2b220b467b
 
 COCOAPODS: 1.5.3

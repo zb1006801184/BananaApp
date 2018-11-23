@@ -11,8 +11,11 @@
 #import "NetWorkTool.h"
 #import "LoginViewController.h"
 #import "BAliyunOSS.h"
-@interface AppDelegate ()
+#import <UMCommon/UMCommon.h>
 
+//友盟appkey
+static NSString * const  UmengAppkey = @"5bd94ebdb465f5a5d300004f";
+@interface AppDelegate ()
 
 //广告图
 @property (nonatomic, strong) ZLAdvertView *zladvertView;
@@ -40,15 +43,18 @@
         [nav.navigationBar setTitleTextAttributes:dic];
         self.window.rootViewController = nav;
     }
-
+    
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [[UINavigationBar appearance] setTranslucent:NO];
     [self.window makeKeyWindow];
     //    广告页
     [self Bootadvertising];
     [[BAliyunOSS sharedInstance] setupEnvironment];
-
-
+    
+    
+    //友盟统计
+    [UMConfigure initWithAppkey:UmengAppkey channel:@"App Store"];
+    
     
     return YES;
 }
@@ -97,7 +103,7 @@
     [[NetWorkTool shareInstance] postWithUrl:MEMEBER_startShow paramWithDic:nil success:^(id  _Nonnull responseObject) {
         NSString *Img = responseObject[@"imgUrl"];
         NSString *Web = responseObject[@"adUrl"];
-
+        
         if ([Img isEqual:[NSNull null]]||[Img isEqualToString:@"#"]) {
             Img = @"";
         }
@@ -109,14 +115,14 @@
             
             self.zladvertView.detailsbtn.hidden = NO;
             [self.zladvertView showtimer];
-             [self.zladvertView.starimg sd_setImageWithURL:[NSURL URLWithString:Img]];
+            [self.zladvertView.starimg sd_setImageWithURL:[NSURL URLWithString:Img]];
             if ([Web isEqualToString:@""]) {
                 self.zladvertView.detailsbtn.hidden = YES;
             }
-
+            
         }else{
             [self.zladvertView removeAdvertView];
-
+            
         }
         
         Web = self.zladvertView.imgurl;
@@ -125,14 +131,14 @@
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
         [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:responseObject[@"productTypeList"]] forKey:@"productTypeList"];
         [defaults synchronize];
-
-
+        
+        
     } failure:^(NSError * _Nonnull error) {
         NSLog(@"%@",error);
         [self.zladvertView removeAdvertView];
-
+        
     }];
-
+    
 }
 -(void)startimg
 {

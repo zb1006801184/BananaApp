@@ -93,6 +93,8 @@ static id _instance = nil;
         failure(error);
         NSLog(@"%@",error);
         [[BSomeWays getCurrentVC].view hideToast];
+        [[BSomeWays getCurrentVC].view makeToast:@"无网络连接" duration:2 position:CSToastPositionCenter];
+
     }];
 }
 -(void)getWithUrl:(NSString *)url paramWithDic:(NSMutableDictionary *)parameter success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure {
@@ -122,6 +124,8 @@ static id _instance = nil;
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
+        [[BSomeWays getCurrentVC].view makeToast:@"无网络连接" duration:2 position:CSToastPositionCenter];
+
     }];
     
 }

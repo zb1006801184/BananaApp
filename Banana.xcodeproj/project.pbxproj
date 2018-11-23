@@ -24,8 +24,6 @@
 		2A3C6F2721A55A9D008FF3B6 /* BWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C6F2521A55A9D008FF3B6 /* BWebViewController.m */; };
 		2A3C6F2821A55A9D008FF3B6 /* BWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C6F2621A55A9D008FF3B6 /* BWebViewController.xib */; };
 		2A3C6F2A21A55D67008FF3B6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3C6F2921A55D67008FF3B6 /* WebKit.framework */; };
-		2A4483DC21A454D700F24689 /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4483DA21A454D700F24689 /* ProductDetailViewController.m */; };
-		2A4483DD21A454D700F24689 /* ProductDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A4483DB21A454D700F24689 /* ProductDetailViewController.xib */; };
 		2A4883D221A14FCE006E74E2 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4883D121A14FCE006E74E2 /* RegisterViewController.m */; };
 		2A4883D421A14FDC006E74E2 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A4883D321A14FDC006E74E2 /* RegisterViewController.xib */; };
 		2A4883D821A1538D006E74E2 /* ReviseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4883D621A1538D006E74E2 /* ReviseViewController.m */; };
@@ -73,6 +71,12 @@
 		3749266621A3A2BB00C711AA /* bannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749266521A3A2BB00C711AA /* bannerModel.m */; };
 		3749266921A3A33500C711AA /* messageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749266821A3A33500C711AA /* messageModel.m */; };
 		3749266C21A3A41500C711AA /* productModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749266B21A3A41500C711AA /* productModel.m */; };
+		37D2A53421A7CD580000AE27 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D2A53321A7CD580000AE27 /* libz.tbd */; };
+		37D2A53621A7CD650000AE27 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D2A53521A7CD650000AE27 /* libsqlite3.tbd */; };
+		37D2A53821A7CD750000AE27 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D2A53721A7CD750000AE27 /* CoreTelephony.framework */; };
+		37D2A53A21A7CD7D0000AE27 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D2A53921A7CD7D0000AE27 /* SystemConfiguration.framework */; };
+		37D2A53E21A7CE020000AE27 /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D2A53B21A7CE010000AE27 /* ProductDetailViewController.m */; };
+		37D2A53F21A7CE020000AE27 /* ProductDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37D2A53D21A7CE020000AE27 /* ProductDetailViewController.xib */; };
 		4096861021A15FF100ECF103 /* TXScrollLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096860E21A15FF100ECF103 /* TXScrollLabelView.m */; };
 		4096861121A15FF100ECF103 /* UIView+TXFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4096860F21A15FF100ECF103 /* UIView+TXFrame.m */; };
 		4096861521A1602900ECF103 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4096861221A1602900ECF103 /* HomeCell.xib */; };
@@ -130,9 +134,6 @@
 		2A3C6F2521A55A9D008FF3B6 /* BWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWebViewController.m; sourceTree = "<group>"; };
 		2A3C6F2621A55A9D008FF3B6 /* BWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWebViewController.xib; sourceTree = "<group>"; };
 		2A3C6F2921A55D67008FF3B6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		2A4483D921A454D700F24689 /* ProductDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
-		2A4483DA21A454D700F24689 /* ProductDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
-		2A4483DB21A454D700F24689 /* ProductDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductDetailViewController.xib; sourceTree = "<group>"; };
 		2A4883D021A14FCE006E74E2 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2A4883D121A14FCE006E74E2 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		2A4883D321A14FDC006E74E2 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
@@ -215,6 +216,13 @@
 		3749266821A3A33500C711AA /* messageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = messageModel.m; sourceTree = "<group>"; };
 		3749266A21A3A41500C711AA /* productModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = productModel.h; sourceTree = "<group>"; };
 		3749266B21A3A41500C711AA /* productModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = productModel.m; sourceTree = "<group>"; };
+		37D2A53321A7CD580000AE27 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		37D2A53521A7CD650000AE27 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		37D2A53721A7CD750000AE27 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		37D2A53921A7CD7D0000AE27 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		37D2A53B21A7CE010000AE27 /* ProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
+		37D2A53C21A7CE020000AE27 /* ProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
+		37D2A53D21A7CE020000AE27 /* ProductDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailViewController.xib; sourceTree = "<group>"; };
 		4096860C21A15FF100ECF103 /* TXScrollLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXScrollLabelView.h; sourceTree = "<group>"; };
 		4096860D21A15FF100ECF103 /* UIView+TXFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TXFrame.h"; sourceTree = "<group>"; };
 		4096860E21A15FF100ECF103 /* TXScrollLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXScrollLabelView.m; sourceTree = "<group>"; };
@@ -234,6 +242,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37D2A53A21A7CD7D0000AE27 /* SystemConfiguration.framework in Frameworks */,
+				37D2A53821A7CD750000AE27 /* CoreTelephony.framework in Frameworks */,
+				37D2A53621A7CD650000AE27 /* libsqlite3.tbd in Frameworks */,
+				37D2A53421A7CD580000AE27 /* libz.tbd in Frameworks */,
 				2A3C6F2A21A55D67008FF3B6 /* WebKit.framework in Frameworks */,
 				0B735345A2DF44C2D2BC8870 /* libPods-Banana.a in Frameworks */,
 			);
@@ -322,9 +334,9 @@
 				3749266321A3A2A800C711AA /* Model */,
 				2A06816E219FF12600ACE26B /* HomeViewController.h */,
 				2A06816F219FF12600ACE26B /* HomeViewController.m */,
-				2A4483D921A454D700F24689 /* ProductDetailViewController.h */,
-				2A4483DA21A454D700F24689 /* ProductDetailViewController.m */,
-				2A4483DB21A454D700F24689 /* ProductDetailViewController.xib */,
+				37D2A53C21A7CE020000AE27 /* ProductDetailViewController.h */,
+				37D2A53B21A7CE010000AE27 /* ProductDetailViewController.m */,
+				37D2A53D21A7CE020000AE27 /* ProductDetailViewController.xib */,
 				4096861321A1602900ECF103 /* HomeCell.h */,
 				4096861421A1602900ECF103 /* HomeCell.m */,
 				4096861221A1602900ECF103 /* HomeCell.xib */,
@@ -560,6 +572,10 @@
 		F8AE9840E838E20D219756C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37D2A53921A7CD7D0000AE27 /* SystemConfiguration.framework */,
+				37D2A53721A7CD750000AE27 /* CoreTelephony.framework */,
+				37D2A53521A7CD650000AE27 /* libsqlite3.tbd */,
+				37D2A53321A7CD580000AE27 /* libz.tbd */,
 				2A3C6F2921A55D67008FF3B6 /* WebKit.framework */,
 				DD31385AC2BA4DDCB8EDB5A2 /* libPods-Banana.a */,
 			);
@@ -688,8 +704,8 @@
 				3749264121A25E1900C711AA /* Images.xcassets in Resources */,
 				2ADB5CB821A15916000FFA76 /* MineMaterialViewController.xib in Resources */,
 				2AA1B42F21A145BD00B0C320 /* LoginViewController.xib in Resources */,
-				2A4483DD21A454D700F24689 /* ProductDetailViewController.xib in Resources */,
 				2AA34D9821A16E1400795F50 /* ChangePhoneViewController.xib in Resources */,
+				37D2A53F21A7CE020000AE27 /* ProductDetailViewController.xib in Resources */,
 				2AA1B42421A1339C00B0C320 /* MineMainTableViewCell.xib in Resources */,
 				2A4883D421A14FDC006E74E2 /* RegisterViewController.xib in Resources */,
 			);
@@ -764,6 +780,7 @@
 				2A068160219FED8300ACE26B /* NetWorkTool.m in Sources */,
 				2A06816A219FF05300ACE26B /* UIView+Layout.m in Sources */,
 				2A3C6F2321A553BC008FF3B6 /* HomeRequest.m in Sources */,
+				37D2A53E21A7CE020000AE27 /* ProductDetailViewController.m in Sources */,
 				2A06817D219FF64400ACE26B /* MineViewController.m in Sources */,
 				2AA1B42A21A13F8100B0C320 /* LoginViewController.m in Sources */,
 				2AD105E321A2CFF800982F5A /* API.m in Sources */,
@@ -799,7 +816,6 @@
 				2A068170219FF12600ACE26B /* HomeViewController.m in Sources */,
 				2ADB5CCB21A169EF000FFA76 /* ChangePhoneViewController.m in Sources */,
 				3749266C21A3A41500C711AA /* productModel.m in Sources */,
-				2A4483DC21A454D700F24689 /* ProductDetailViewController.m in Sources */,
 				2A268ECC21A51DF300318E93 /* UIViewController+Back.m in Sources */,
 				2A4883D821A1538D006E74E2 /* ReviseViewController.m in Sources */,
 				2A928AFF219FE6EE0078AB7B /* AppDelegate.m in Sources */,
