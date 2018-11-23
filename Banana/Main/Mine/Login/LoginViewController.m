@@ -94,11 +94,15 @@
         _getCodeButton.hidden = NO;
         _passwordTextField.placeholder = @"请输入验证码";
         [_changeButton setTitle:@"密码登录" forState:UIControlStateNormal];
+        _passwordTextField.secureTextEntry = NO;
+
     }else {
         _loginType = @"1";
         _getCodeButton.hidden = YES;
         [_changeButton setTitle:@"验证码登录" forState:UIControlStateNormal];
         _passwordTextField.placeholder = @"请输入验密码";
+        _passwordTextField.secureTextEntry = YES;
+
     }
 }
 //获取验证码
