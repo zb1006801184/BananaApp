@@ -12,6 +12,8 @@
 #import "LoginViewController.h"
 #import "BAliyunOSS.h"
 #import <UMCommon/UMCommon.h>
+#import <Bugly/Bugly.h>
+
 
 //友盟appkey
 static NSString * const  UmengAppkey = @"5bd94ebdb465f5a5d300004f";
@@ -50,11 +52,14 @@ static NSString * const  UmengAppkey = @"5bd94ebdb465f5a5d300004f";
     //    广告页
     [self Bootadvertising];
     [[BAliyunOSS sharedInstance] setupEnvironment];
-    
+    [[UITabBar appearance] setTranslucent:NO];//iOS 12.1 tabbar从二级页面返回跳动问题的解决方法
     
     //友盟统计
     [UMConfigure initWithAppkey:UmengAppkey channel:@"App Store"];
     
+    //bugly
+    [Bugly startWithAppId:@"8a20aae718"];
+
     
     return YES;
 }

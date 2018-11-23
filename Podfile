@@ -16,4 +16,6 @@ target 'Banana' do
    pod 'MJRefresh'
    pod 'UMCCommon'
    pod 'UMCSecurityPlugins'
+   pod 'Bugly'
+
 end

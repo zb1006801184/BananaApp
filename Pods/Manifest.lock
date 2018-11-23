@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - AliyunOSSiOS (2.10.4)
+  - Bugly (2.5.0)
   - FCUUID (1.3.1):
     - UICKeyChainStore (~> 2.1.0)
   - IQKeyboardManager (6.0.4)
@@ -32,6 +33,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - AliyunOSSiOS
+  - Bugly
   - FCUUID
   - IQKeyboardManager
   - MBProgressHUD (~> 1.0.0)
@@ -46,6 +48,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - AliyunOSSiOS
+    - Bugly
     - FCUUID
     - IQKeyboardManager
     - MBProgressHUD
@@ -60,6 +63,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AliyunOSSiOS: e5dcdba99963ca6b43fea863cead49423c5d4c75
+  Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   FCUUID: bb054fc90cd7cd99320f9f6ff8e130fe607fba05
   IQKeyboardManager: 29514134ef0334a6fa33cf4eee11c36c064baeaf
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -71,6 +75,6 @@ SPEC CHECKSUMS:
   UMCCommon: 4392868ac47ff1b101663106bb114ba616fabbad
   UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
 
-PODFILE CHECKSUM: 7ae06ab146cc25d0d60f0531e631bc2b220b467b
+PODFILE CHECKSUM: 3a29dacd824a310bd69bada5d7b08f7225aeee0a
 
 COCOAPODS: 1.5.3
