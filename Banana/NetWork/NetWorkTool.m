@@ -58,11 +58,13 @@ static id _instance = nil;
     if ([UserModel getUserModel].token.length > 0) {
         [parameter setObject:[UserModel getUserModel].token forKey:@"token"];
     }
+    if ([url isEqualToString:MEMBER_LOGIN]||[url isEqualToString:MEMBER_REGISTER]||[url isEqualToString:SYS_SENDNOTE]) {
+        [[BSomeWays getCurrentVC].view makeToastActivity:CSToastPositionCenter];
+    }
 //    对参数加密的方法
     NSDictionary *finalParam = [self getDic:parameter];
     NSString *mainUrl = [NSString stringWithFormat:@"%@%@",API_NAME,url];
 //    加载提示
-    [[BSomeWays getCurrentVC].view makeToastActivity:CSToastPositionCenter];
     [self.manager POST:mainUrl parameters:finalParam success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *jsonDictionary = [responseObject mj_JSONObject];
         if ([jsonDictionary[@"rspCode"] isEqualToString:@"0001"]) {
