@@ -58,7 +58,7 @@ static id _instance = nil;
     if ([UserModel getUserModel].token.length > 0) {
         [parameter setObject:[UserModel getUserModel].token forKey:@"token"];
     }
-    if ([url isEqualToString:MEMBER_LOGIN]||[url isEqualToString:MEMBER_REGISTER]||[url isEqualToString:SYS_SENDNOTE]) {
+    if ([url isEqualToString:MEMBER_LOGIN]||[url isEqualToString:MEMBER_REGISTER]||[url isEqualToString:SYS_SENDNOTE]||[url isEqualToString:MEMBER_CHANGEMSG] || [url isEqualToString:MEMBER_CHANGEHEADFILE]) {
         [[BSomeWays getCurrentVC].view makeToastActivity:CSToastPositionCenter];
     }
 //    对参数加密的方法
