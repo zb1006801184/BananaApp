@@ -42,6 +42,8 @@
         LoginViewController *loginVC = [[LoginViewController alloc]init];
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
         nav.navigationBar.barTintColor = [UIColor colorWithHexString:@"#232323"]; //导航栏的颜色
+        NSDictionary *dic=@{NSForegroundColorAttributeName :[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:18]};
+        [nav.navigationBar setTitleTextAttributes:dic];
         [self presentViewController:nav animated:YES completion:nil];
     } failure:^(NSError * _Nonnull error) {
         
