@@ -88,6 +88,7 @@
 //密码登录 验证码登录 类型切换
 
 - (IBAction)changeType:(id)sender {
+    _passwordTextField.text = @"";
     if ([_loginType isEqualToString:@"1"]) {
         _loginType = @"2";
         //验证码登录
