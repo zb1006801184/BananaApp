@@ -92,9 +92,8 @@ static id _instance = nil;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
         NSLog(@"%@",error);
-        [[BSomeWays getCurrentVC].view hideAllToasts:YES clearQueue:YES];
         [[BSomeWays getCurrentVC].view makeToast:@"无网络连接" duration:2 position:CSToastPositionCenter];
-
+        [[BSomeWays getCurrentVC].view hideAllToasts:YES clearQueue:YES];
     }];
 }
 -(void)getWithUrl:(NSString *)url paramWithDic:(NSMutableDictionary *)parameter success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure {
