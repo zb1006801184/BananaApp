@@ -101,6 +101,8 @@ OSSClient * client;
 #pragma mark ==== 同步上传=====
 - (void)uploadObjectAsyncWith:(NSData *)uploadData withObjectKey:(NSString *)objectKey withAlbumNumber:(NSString *)number{
     
+    [[BSomeWays getCurrentVC].view.window makeToastActivity:CSToastPositionCenter];
+
     //上传请求类
     OSSPutObjectRequest * request = [OSSPutObjectRequest new];
     //文件夹名 后台给出
@@ -112,8 +114,15 @@ OSSClient * client;
     OSSTask * putTask = [client putObject:request];
     [putTask continueWithBlock:^id(OSSTask *task) {
         
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[BSomeWays getCurrentVC].view.window hideAllToasts:YES clearQueue:YES];
+        });
+        
         if (!task.error) {
             
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[BSomeWays getCurrentVC].view.window makeToast:@"上传成功!" duration:2 position:CSToastPositionCenter];
+            });
             NSLog(@"上传成功!");
             NSNotification * notice = [NSNotification notificationWithName:@"postImage" object:nil];
             //发送消息
@@ -121,6 +130,9 @@ OSSClient * client;
         } else {
             
             NSLog(@"upload object failed, error: %@" , task.error);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[BSomeWays getCurrentVC].view.window makeToast:@"上传失败" duration:2 position:CSToastPositionCenter];
+            });
 
         }
         return nil;
