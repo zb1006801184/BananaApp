@@ -7,7 +7,7 @@
 
 #import "RegisterViewController.h"
 #import "MineRequest.h"
-@interface RegisterViewController ()
+@interface RegisterViewController ()<UIAlertViewDelegate>
 {
     NSInteger countDown;
     NSTimer *timer;
@@ -19,6 +19,9 @@
 @property (nonatomic, strong) NSString *codeStr;
 @property (weak, nonatomic) IBOutlet UIButton *getCodeButton;
 
+//show Message
+@property (strong, nonatomic) IBOutlet UIView *showView;
+
 @end
 
 @implementation RegisterViewController
@@ -27,6 +30,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"注册";
+    self.showView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+    [self.view addSubview:self.showView];
+    self.showView.hidden = YES;
 }
 
 - (IBAction)backLoginClick:(id)sender {
@@ -39,6 +45,13 @@
     }
     //获取验证码
     [MineRequest sendCodeWithToken:@"" telephone:_phoneTextField.text operationType:@"0" success:^(id  _Nonnull responseObject) {
+        if ([responseObject[@"rspCode"] isEqualToString:@"0098"]) {
+            UIAlertView *alterView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"该手机号已被注册" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:@"去登陆", nil];
+            [[UIView appearance] setTintColor:[UIColor colorWithHexString:@"FFCD00" alpha:1]];
+            [alterView show];
+            [self.view hideAllToasts:YES clearQueue:YES];
+            return ;
+        }
         [self.view makeToast:@"获取验证码成功" duration:1 position:CSToastPositionCenter];
         [self netWork];
     } failure:^(NSError * _Nonnull error) {
@@ -59,8 +72,10 @@
         return;
     }
     [MineRequest registerWithPhone:_phoneTextField.text username:@"" checkCode:_codeTextField.text password:_passworkTextField.text success:^(id  _Nonnull responseObject) {
-        [self.view makeToast:@"注册成功" duration:2 position:CSToastPositionCenter style:nil];
+//        [self.view makeToast:@"注册成功" duration:2 position:CSToastPositionCenter style:nil];
+        self.showView.hidden = NO;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.showView.hidden = YES;
             [self.navigationController popViewControllerAnimated:YES];
         });
     } failure:^(NSError * _Nonnull error) {
@@ -90,5 +105,15 @@
     }
 }
 
+- (IBAction)goLoginClick:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 
 @end

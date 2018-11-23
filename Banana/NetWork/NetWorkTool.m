@@ -61,7 +61,8 @@ static id _instance = nil;
 //    对参数加密的方法
     NSDictionary *finalParam = [self getDic:parameter];
     NSString *mainUrl = [NSString stringWithFormat:@"%@%@",API_NAME,url];
-    
+//    加载提示
+    [[BSomeWays getCurrentVC].view makeToastActivity:CSToastPositionCenter];
     [self.manager POST:mainUrl parameters:finalParam success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *jsonDictionary = [responseObject mj_JSONObject];
         if ([jsonDictionary[@"rspCode"] isEqualToString:@"0001"]) {
@@ -72,17 +73,24 @@ static id _instance = nil;
             if (![[BSomeWays getCurrentVC] isKindOfClass:[LoginViewController class]]) {
                 LoginViewController *loginVC = [[LoginViewController alloc]init];
                 UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
+                NSDictionary *dic=@{NSForegroundColorAttributeName :[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:18]};
+                [nav.navigationBar setTitleTextAttributes:dic];
+                nav.navigationBar.barTintColor = [UIColor colorWithHexString:@"#232323"]; //导航栏的颜色
                 [[BSomeWays getCurrentVC] presentViewController:nav animated:YES completion:nil];
             }
-        }else{
+        }else if([jsonDictionary[@"rspCode"] isEqualToString:@"0098"]){
+            success(jsonDictionary);
+        } else{
             NSLog(@"%@",jsonDictionary);
             [[UIApplication sharedApplication].keyWindow makeToast:jsonDictionary[@"rspMsg"] duration:2 position:CSToastPositionCenter style:nil];
 
         }
-        
+        [[BSomeWays getCurrentVC].view hideAllToasts:YES clearQueue:YES];
+
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
         NSLog(@"%@",error);
+        [[BSomeWays getCurrentVC].view hideToast];
     }];
 }
 -(void)getWithUrl:(NSString *)url paramWithDic:(NSMutableDictionary *)parameter success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure {

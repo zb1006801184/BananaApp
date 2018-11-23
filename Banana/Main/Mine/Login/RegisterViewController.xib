@@ -16,6 +16,7 @@
                 <outlet property="getCodeButton" destination="sY2-dh-3fY" id="MOV-yT-6oO"/>
                 <outlet property="passworkTextField" destination="kNg-zX-SOu" id="Yr5-yX-OyS"/>
                 <outlet property="phoneTextField" destination="84n-cs-ftJ" id="SeT-Yq-szL"/>
+                <outlet property="showView" destination="PDi-gV-m32" id="WBf-Iy-8kP"/>
                 <outlet property="view" destination="5vY-kW-c0x" id="1Qc-SU-QVV"/>
             </connections>
         </placeholder>
@@ -125,13 +126,13 @@
                         <constraint firstAttribute="height" constant="25" id="62C-Vf-QAe"/>
                         <constraint firstAttribute="width" constant="90" id="kIY-Di-llE"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                     <state key="normal" title="获取验证码">
                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="3"/>
+                            <real key="value" value="12.5"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -188,8 +189,90 @@
             <viewLayoutGuide key="safeArea" id="slD-xl-F7x"/>
             <point key="canvasLocation" x="5.5999999999999996" y="-188.45577211394306"/>
         </view>
+        <view contentMode="scaleToFill" id="PDi-gV-m32">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uYJ-gb-FJU">
+                    <rect key="frame" x="58.5" y="219" width="258" height="229"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="注册成功" translatesAutoresizingMaskIntoConstraints="NO" id="Vex-TD-es9">
+                            <rect key="frame" x="88" y="0.0" width="82" height="86"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="86" id="b6O-q3-hTc"/>
+                                <constraint firstAttribute="width" constant="82" id="wQ0-KL-Q07"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBi-qF-94Y">
+                            <rect key="frame" x="240" y="3" width="15" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="15" id="IhP-3E-rv9"/>
+                                <constraint firstAttribute="height" constant="22" id="nDQ-Ul-4eU"/>
+                            </constraints>
+                            <state key="normal" image="Shape 2"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注册成功" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njN-0Y-ERY">
+                            <rect key="frame" x="92" y="108" width="74" height="22"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="textColor" red="1" green="0.73725490199999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜您成功注册香蕉钱包" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewI-5I-TsA">
+                            <rect key="frame" x="61.5" y="139" width="135" height="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9sC-cd-7vY">
+                            <rect key="frame" x="44" y="187" width="170" height="40"/>
+                            <color key="backgroundColor" red="1" green="0.85490196080000003" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="DDJ-iw-3KK"/>
+                                <constraint firstAttribute="width" constant="170" id="ZVU-lN-xcg"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                            <state key="normal" title="去登陆">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="goLoginClick:" destination="-1" eventType="touchUpInside" id="yB3-AX-VGT"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="ewI-5I-TsA" firstAttribute="centerX" secondItem="uYJ-gb-FJU" secondAttribute="centerX" id="0cl-0a-fVJ"/>
+                        <constraint firstItem="MBi-qF-94Y" firstAttribute="top" secondItem="uYJ-gb-FJU" secondAttribute="top" constant="3" id="AWH-2U-cir"/>
+                        <constraint firstItem="njN-0Y-ERY" firstAttribute="top" secondItem="Vex-TD-es9" secondAttribute="bottom" constant="22" id="BWx-bv-90X"/>
+                        <constraint firstItem="9sC-cd-7vY" firstAttribute="centerX" secondItem="uYJ-gb-FJU" secondAttribute="centerX" id="Hh6-W4-RAx"/>
+                        <constraint firstItem="njN-0Y-ERY" firstAttribute="centerX" secondItem="uYJ-gb-FJU" secondAttribute="centerX" id="O7X-p0-AEP"/>
+                        <constraint firstItem="Vex-TD-es9" firstAttribute="top" secondItem="uYJ-gb-FJU" secondAttribute="top" id="SWC-Zj-Yoe"/>
+                        <constraint firstItem="Vex-TD-es9" firstAttribute="centerX" secondItem="uYJ-gb-FJU" secondAttribute="centerX" id="Xxw-0d-nC3"/>
+                        <constraint firstItem="ewI-5I-TsA" firstAttribute="top" secondItem="njN-0Y-ERY" secondAttribute="bottom" constant="9" id="fXU-aH-FWU"/>
+                        <constraint firstItem="9sC-cd-7vY" firstAttribute="top" secondItem="ewI-5I-TsA" secondAttribute="bottom" constant="33" id="itF-hc-WeI"/>
+                        <constraint firstAttribute="height" constant="229" id="jdN-EW-Ppi"/>
+                        <constraint firstAttribute="width" constant="258" id="o4d-Jd-dll"/>
+                        <constraint firstAttribute="trailing" secondItem="MBi-qF-94Y" secondAttribute="trailing" constant="3" id="qhb-8e-Iy0"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="uYJ-gb-FJU" firstAttribute="centerX" secondItem="PDi-gV-m32" secondAttribute="centerX" id="Cdd-ue-QS2"/>
+                <constraint firstItem="uYJ-gb-FJU" firstAttribute="centerY" secondItem="PDi-gV-m32" secondAttribute="centerY" id="wUt-X6-M0R"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="koz-sO-3mf"/>
+            <point key="canvasLocation" x="693.60000000000002" y="-239.73013493253376"/>
+        </view>
     </objects>
     <resources>
         <image name="LOGO" width="70" height="70"/>
+        <image name="Shape 2" width="15" height="15"/>
+        <image name="注册成功" width="81" height="85"/>
     </resources>
 </document>

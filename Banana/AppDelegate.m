@@ -35,6 +35,9 @@
         //去登录
         LoginViewController *loginVC = [[LoginViewController alloc]init];
         UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:loginVC];
+        nav.navigationBar.barTintColor = [UIColor colorWithHexString:@"#232323"]; //导航栏的颜色
+        NSDictionary *dic=@{NSForegroundColorAttributeName :[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:18]};
+        [nav.navigationBar setTitleTextAttributes:dic];
         self.window.rootViewController = nav;
     }
 
