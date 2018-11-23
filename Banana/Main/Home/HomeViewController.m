@@ -40,7 +40,7 @@
     
     //广告页面跳转
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(alPushToAdvert:) name:@"ZLPushToAdvert" object:nil];
-
+    
     [self homedata];
     [self initView];
     
@@ -53,18 +53,33 @@
     
     [[NetWorkTool shareInstance] postWithUrl:MEMEBER_HOMEDATA paramWithDic:nil success:^(id  _Nonnull responseObject) {
         
-//        NSLog(@"%@",responseObject);
+        //        NSLog(@"%@",responseObject);
         self.bannerarr = [bannerModel mj_objectArrayWithKeyValuesArray:responseObject[@"bannerList"]];
         self.messagearr = [messageModel mj_objectArrayWithKeyValuesArray:responseObject[@"messageList"]];
         self.productarr = [productModel mj_objectArrayWithKeyValuesArray:responseObject[@"productList"]];
         [self.collectionView reloadData];
         [self.collectionView.mj_header endRefreshing];
-
-
+        
+        
+        //存储首页信息信息到本地
+        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:responseObject] forKey:@"homeData"];
+        [defaults synchronize];
+        
+        
     } failure:^(NSError * _Nonnull error) {
         NSLog(@"%@",error);
+        
+        //请求不到数据，拿到本地存储数据
+        NSData * data = [[NSUserDefaults standardUserDefaults]objectForKey:@"homeData"];
+        id homeData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        //在这里解档
+        self.bannerarr = [bannerModel mj_objectArrayWithKeyValuesArray:homeData[@"bannerList"]];
+        self.messagearr = [messageModel mj_objectArrayWithKeyValuesArray:homeData[@"messageList"]];
+        self.productarr = [productModel mj_objectArrayWithKeyValuesArray:homeData[@"productList"]];
+        [self.collectionView reloadData];
         [self.collectionView.mj_header endRefreshing];
-
+        
     }];
     
 }
@@ -102,8 +117,8 @@
         [self.collectionView.mj_footer endRefreshingWithNoMoreData];
     }];
     
-  
-
+    
+    
     
 }
 
@@ -124,7 +139,7 @@
     UINib *nib = [UINib nibWithNibName:identifier bundle:[NSBundle mainBundle]];
     [_collectionView registerNib:nib forCellWithReuseIdentifier:identifier];
     HomeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-  
+    
     cell.productmodel = _productarr[indexPath.row];
     
     if (indexPath.row == 0) {
@@ -143,7 +158,7 @@
         cell.linelabel1.hidden = YES;
         cell.linelabel2.hidden = NO;
         cell.linelabel3.hidden = NO;
-
+        
     }
     
     return cell;
@@ -211,26 +226,35 @@
     
     UIButton *oneimageView = [[UIButton alloc]initWithFrame:CGRectMake(15, 0, imagearrView.height, imagearrView.height)];
     [imagearrView addSubview:oneimageView];
-//    [oneimageView sd_setImageWithURL:[NSURL URLWithString:onemode.picUrl]];
+    //    [oneimageView sd_setImageWithURL:[NSURL URLWithString:onemode.picUrl]];
     [oneimageView sd_setImageWithURL:[NSURL URLWithString:onemode.picUrl] forState:UIControlStateNormal];
     oneimageView.tag = 100;
+    oneimageView.layer.masksToBounds = YES;
+    oneimageView.layer.cornerRadius =4;
+    
     
     UIButton *twoimageView = [[UIButton alloc]initWithFrame:CGRectMake(oneimageView.right+10, 0, imagearrView.width-40-imagearrView.height, (imagearrView.height-10)/2)];
     [imagearrView addSubview:twoimageView];
-//    [twoimageView sd_setImageWithURL:[NSURL URLWithString:twomode.picUrl]];
+    //    [twoimageView sd_setImageWithURL:[NSURL URLWithString:twomode.picUrl]];
     [twoimageView sd_setImageWithURL:[NSURL URLWithString:twomode.picUrl] forState:UIControlStateNormal];
     twoimageView.tag = 101;
-
+    twoimageView.layer.masksToBounds = YES;
+    twoimageView.layer.cornerRadius =4;
+    
+    
     UIButton *threeimageView = [[UIButton alloc]initWithFrame:CGRectMake(oneimageView.right+10, twoimageView.bottom+10, imagearrView.width-40-imagearrView.height, (imagearrView.height-10)/2)];
     [imagearrView addSubview:threeimageView];
-//    [threeimageView sd_setImageWithURL:[NSURL URLWithString:threemode.picUrl]];
+    //    [threeimageView sd_setImageWithURL:[NSURL URLWithString:threemode.picUrl]];
     [threeimageView sd_setImageWithURL:[NSURL URLWithString:threemode.picUrl] forState:UIControlStateNormal];
     threeimageView.tag = 102;
+    threeimageView.layer.masksToBounds = YES;
+    threeimageView.layer.cornerRadius =4;
+    
     
     [oneimageView addTarget:self action:@selector(clickBanner:) forControlEvents:UIControlEventTouchUpInside];
     [twoimageView addTarget:self action:@selector(clickBanner:) forControlEvents:UIControlEventTouchUpInside];
     [threeimageView addTarget:self action:@selector(clickBanner:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     //    第三部分
     UIView *scrollView = [[UIView alloc]initWithFrame:CGRectMake(0, imagearrView.bottom, kScreenWidth, 30)];
     [view addSubview:scrollView];
@@ -284,19 +308,19 @@
     bannerModel *model = _bannerarr[btn.tag-100];
     if ([model.jumpType isEqualToString:@"1"]) {
         
-     
+        
         BWebViewController *web = [[BWebViewController alloc]init];
         web.mainUrl = model.picUrl;
         web.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:web animated:YES];
-
+        
     }else if ([model.jumpType isEqualToString:@"2"]){
         ProductDetailViewController *detail = [[ProductDetailViewController alloc]init];
         detail.model = model;
         detail.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:detail animated:YES];
     }
-
+    
 }
 
 //点击跑马灯
@@ -316,8 +340,8 @@
         detail.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:detail animated:YES];
     }
-
- 
+    
+    
 }
 
 //定义每个UICollectionView 的大小
@@ -341,14 +365,14 @@
             [self.navigationController pushViewController:web animated:YES];
             
         }else if ([model.jumpType isEqualToString:@"2"]){
-           
+            
             NSString *openURL = model.jumpUrl;
             NSURL *URL = [NSURL URLWithString:openURL];
             [[UIApplication sharedApplication]openURL:URL options:@{} completionHandler:nil];
             
-    
+            
         }
-     
+        
         
     }else if ([model.hasDatail isEqualToString:@"1"]){
         ProductDetailViewController *detail = [[ProductDetailViewController alloc]init];
@@ -356,7 +380,7 @@
         detail.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:detail animated:YES];
     }
-
+    
     
 }
 
@@ -372,12 +396,12 @@
     web.mainUrl = url;
     web.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:web animated:YES];
-
+    
 }
 
 //点击顶部4个按钮
 - (void)selectAction:(UITapGestureRecognizer *)recognizer{
-
+    
     UIView *toast = recognizer.view;
     NSLog(@"123==%ld",(long)toast.tag);
     
@@ -392,18 +416,25 @@
         
         dic = productTypeList[1];
     }else if (toast.tag == 1002){
-
+        
         dic = productTypeList[2];
     }else if (toast.tag == 1003){
-
+        
         dic = productTypeList[3];
     }
-    //存储全部产品的产品类型参数到本地
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:dic] forKey:@"productType"];
-    [defaults synchronize];
     
     self.tabBarController.selectedIndex = 1;
+    
+    //  等self.tabBarController.selectedIndex = 1那边创建完成之后在开始d发通知
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"productType" object:dic userInfo:nil];
+    });
+    
+    //存储全部产品的产品类型参数到本地
+    //    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    //    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:dic] forKey:@"productType"];
+    //    [defaults synchronize];
+    
 }
 
 

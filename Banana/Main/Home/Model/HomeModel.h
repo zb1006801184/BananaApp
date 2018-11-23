@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy) NSString *money;
 @property(nonatomic, copy) NSString *name;
 @property(nonatomic, copy) NSString *oiai;
+@property(nonatomic, copy) NSString *telephone;
+@property(nonatomic, copy) NSString *wechat;
+
 @property(nonatomic, copy) NSString *rate;
 @property(nonatomic, copy) NSString *realApplyPersonNum;
 @property(nonatomic, copy) NSString *rereq;
