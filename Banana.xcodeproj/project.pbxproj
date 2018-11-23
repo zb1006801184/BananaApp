@@ -22,7 +22,6 @@
 		2A3C6F2021A5538A008FF3B6 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C6F1F21A5538A008FF3B6 /* HomeModel.m */; };
 		2A3C6F2321A553BC008FF3B6 /* HomeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C6F2221A553BC008FF3B6 /* HomeRequest.m */; };
 		2A3C6F2721A55A9D008FF3B6 /* BWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C6F2521A55A9D008FF3B6 /* BWebViewController.m */; };
-		2A3C6F2821A55A9D008FF3B6 /* BWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3C6F2621A55A9D008FF3B6 /* BWebViewController.xib */; };
 		2A3C6F2A21A55D67008FF3B6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A3C6F2921A55D67008FF3B6 /* WebKit.framework */; };
 		2A4883D221A14FCE006E74E2 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4883D121A14FCE006E74E2 /* RegisterViewController.m */; };
 		2A4883D421A14FDC006E74E2 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A4883D321A14FDC006E74E2 /* RegisterViewController.xib */; };
@@ -132,7 +131,6 @@
 		2A3C6F2221A553BC008FF3B6 /* HomeRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeRequest.m; sourceTree = "<group>"; };
 		2A3C6F2421A55A9D008FF3B6 /* BWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWebViewController.h; sourceTree = "<group>"; };
 		2A3C6F2521A55A9D008FF3B6 /* BWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWebViewController.m; sourceTree = "<group>"; };
-		2A3C6F2621A55A9D008FF3B6 /* BWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BWebViewController.xib; sourceTree = "<group>"; };
 		2A3C6F2921A55D67008FF3B6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		2A4883D021A14FCE006E74E2 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2A4883D121A14FCE006E74E2 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
@@ -299,7 +297,6 @@
 				2A5AEC3B21A3DD9B00974573 /* BAliyunOSS.m */,
 				2A3C6F2421A55A9D008FF3B6 /* BWebViewController.h */,
 				2A3C6F2521A55A9D008FF3B6 /* BWebViewController.m */,
-				2A3C6F2621A55A9D008FF3B6 /* BWebViewController.xib */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -688,7 +685,6 @@
 			files = (
 				2A4883D921A1538D006E74E2 /* ReviseViewController.xib in Resources */,
 				3749266221A29EAA00C711AA /* popUpCell.xib in Resources */,
-				2A3C6F2821A55A9D008FF3B6 /* BWebViewController.xib in Resources */,
 				3749265321A266CE00C711AA /* readme.ME in Resources */,
 				2A928B0A219FE6EF0078AB7B /* LaunchScreen.storyboard in Resources */,
 				2A928B07219FE6EF0078AB7B /* Assets.xcassets in Resources */,
@@ -997,7 +993,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Banana/Util/Banana.pch";
 				INFOPLIST_FILE = Banana/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1021,7 +1017,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Banana/Util/Banana.pch";
 				INFOPLIST_FILE = Banana/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
