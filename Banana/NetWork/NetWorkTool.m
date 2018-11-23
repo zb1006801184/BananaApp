@@ -92,7 +92,7 @@ static id _instance = nil;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
         NSLog(@"%@",error);
-        [[BSomeWays getCurrentVC].view hideToast];
+        [[BSomeWays getCurrentVC].view hideAllToasts:YES clearQueue:YES];
         [[BSomeWays getCurrentVC].view makeToast:@"无网络连接" duration:2 position:CSToastPositionCenter];
 
     }];
