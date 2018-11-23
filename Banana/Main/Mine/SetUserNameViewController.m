@@ -35,12 +35,13 @@
         [self.view makeToast:@"请输入昵称" duration:2 position:CSToastPositionCenter];
         return;
     }
+    [_inputTextField resignFirstResponder];
     [MineRequest changeUserMessageWithUserName:_inputTextField.text success:^(id  _Nonnull responseObject) {
         [self.view makeToast:@"昵称修改成功" duration:2 position:CSToastPositionCenter];
         UserModel *model = [UserModel getUserModel];
         model.username = self.inputTextField.text;
         [UserModel saveUserModelWithObject:model];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.navigationController popViewControllerAnimated:YES];
             if (self.callBackUserName) {
                 self.callBackUserName(self.inputTextField.text);

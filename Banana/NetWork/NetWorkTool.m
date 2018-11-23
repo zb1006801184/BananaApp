@@ -66,6 +66,8 @@ static id _instance = nil;
     NSString *mainUrl = [NSString stringWithFormat:@"%@%@",API_NAME,url];
 //    加载提示
     [self.manager POST:mainUrl parameters:finalParam success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [[BSomeWays getCurrentVC].view hideAllToasts:YES clearQueue:YES];
+
         NSDictionary *jsonDictionary = [responseObject mj_JSONObject];
         if ([jsonDictionary[@"rspCode"] isEqualToString:@"0001"]) {
             success(jsonDictionary);
@@ -87,13 +89,12 @@ static id _instance = nil;
             [[UIApplication sharedApplication].keyWindow makeToast:jsonDictionary[@"rspMsg"] duration:2 position:CSToastPositionCenter style:nil];
 
         }
-        [[BSomeWays getCurrentVC].view hideAllToasts:YES clearQueue:YES];
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
         NSLog(@"%@",error);
-        [[BSomeWays getCurrentVC].view makeToast:@"无网络连接" duration:2 position:CSToastPositionCenter];
         [[BSomeWays getCurrentVC].view hideAllToasts:YES clearQueue:YES];
+        [[BSomeWays getCurrentVC].view makeToast:@"无网络连接" duration:2 position:CSToastPositionCenter];
     }];
 }
 -(void)getWithUrl:(NSString *)url paramWithDic:(NSMutableDictionary *)parameter success:(void(^)(id responseObject))success failure:(void(^)(NSError * error))failure {
