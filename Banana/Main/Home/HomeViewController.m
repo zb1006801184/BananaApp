@@ -93,7 +93,7 @@
     historylayout.minimumInteritemSpacing = 0;                     //最小列间距
     historylayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);  //网格上左下右间距
     
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-kNavHeight) collectionViewLayout:historylayout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-kNavHeight-kTabbarHeight) collectionViewLayout:historylayout];
     [_collectionView registerClass:[HomeCell class] forCellWithReuseIdentifier:@"HomeCell"];
     _collectionView.backgroundColor = [UIColor whiteColor];
     //_collectionView的代理方法

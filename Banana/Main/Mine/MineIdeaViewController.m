@@ -37,6 +37,7 @@
     
     [MineRequest ideaWithContactMsg:_phoneTextField.text content:_contentTextView.text success:^(id  _Nonnull responseObject) {
         [self.view makeToast:@"感谢您的意见反馈!!!" duration:2 position:CSToastPositionCenter];
+        [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSError * _Nonnull error) {
         
     }];
@@ -55,6 +56,8 @@
             _titleLabel.hidden = NO;
         }
 }
+
+
 
 
 @end

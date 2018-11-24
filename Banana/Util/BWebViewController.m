@@ -24,7 +24,8 @@
     [self.view addSubview:webView];
     webView.navigationDelegate = self;
     webView.UIDelegate = self;
-    
+    webView.customUserAgent = @"xiangjiaowallet/1.0";
+
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_mainUrl]]];
 
 
