@@ -32,4 +32,16 @@ MJCodingImplementation
     [user setObject:@NO forKey:@"login"];
     [user synchronize];
 }
++(void)saveCid:(NSString *)cid {
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    [user setObject:cid forKey:@"cid"];
+    [user synchronize];
+
+}
++(NSString *)getCid {
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *cid = [user objectForKey:@"cid"];
+    return cid;
+}
+
 @end

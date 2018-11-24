@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 +(UserModel *)getUserModel;
 +(void)login;
 +(void)loginOut;
++(void)saveCid:(NSString *)cid;
++(NSString *)getCid;
 @property (nonatomic, copy) NSString *email;
 @property (nonatomic, copy) NSString *flowNo;
 @property (nonatomic, copy) NSString *headImg;

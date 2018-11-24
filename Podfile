@@ -16,4 +16,10 @@ target 'Banana' do
    pod 'MJRefresh'
    pod 'UMCCommon'
    pod 'UMCSecurityPlugins'
+   pod 'GTSDK', '2.3.1.0-noidfa'
 end
+
+#target 'NotificationService' do
+#    platform :ios, "10.0"
+#    pod 'GTExtensionSDK'
+#end

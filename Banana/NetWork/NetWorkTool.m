@@ -61,6 +61,15 @@ static id _instance = nil;
     if ([url isEqualToString:MEMBER_LOGIN]||[url isEqualToString:MEMBER_REGISTER]||[url isEqualToString:SYS_SENDNOTE]||[url isEqualToString:MEMBER_CHANGEMSG] || [url isEqualToString:MEMBER_CHANGEHEADFILE]) {
         [[BSomeWays getCurrentVC].view makeToastActivity:CSToastPositionCenter];
     }
+    //部分接口添加cid(登录)
+    NSString *cid = [UserModel getCid];
+    if (cid.length > 0) {
+        if ([url isEqualToString:MEMBER_LOGIN] ) {
+            [parameter setObject:cid forKey:@"reserved1"];
+        }
+    }
+    
+    
 //    对参数加密的方法
     NSDictionary *finalParam = [self getDic:parameter];
     NSString *mainUrl = [NSString stringWithFormat:@"%@%@",API_NAME,url];
