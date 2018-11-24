@@ -18,7 +18,6 @@ target 'Banana' do
    pod 'UMCSecurityPlugins'
    pod 'GTSDK', '2.3.1.0-noidfa'
    pod 'Bugly'
-
 end
 
 #target 'NotificationService' do
