@@ -9,6 +9,7 @@
 #import "MineIdeaViewController.h"
 #import "ChangePhoneViewController.h"
 #import "Login/LoginViewController.h"
+#import "ChangePhoneForMoreViewController.h"
 @interface MineSetViewController ()
 
 @end
@@ -23,8 +24,8 @@
 
 //更换手机号
 - (IBAction)changePhoneClick:(id)sender {
-    ChangePhoneViewController *phone = [[ChangePhoneViewController alloc]init];
-    phone.type = 1;
+    ChangePhoneForMoreViewController *phone = [[ChangePhoneForMoreViewController alloc]init];
+//    phone.type = 1;
     [self.navigationController pushViewController:phone animated:YES];
 }
 

@@ -12,12 +12,18 @@
 #import "LoginViewController.h"
 #import "BAliyunOSS.h"
 #import <UMCommon/UMCommon.h>
+#import <GTSDK/GeTuiSdk.h>
 #import <Bugly/Bugly.h>
 
 
 //友盟appkey
 static NSString * const  UmengAppkey = @"5bd94ebdb465f5a5d300004f";
-@interface AppDelegate ()
+//个推
+#define kGtAppId           @"sPnERM9H7I9rsZJs4VvQD8"
+#define kGtAppKey          @"GqkE9dihaX5ndWshF3fhw9"
+#define kGtAppSecret       @"yOUgWv1xGr7gJHcwqTgQx1"
+
+@interface AppDelegate ()<GeTuiSdkDelegate>
 
 //广告图
 @property (nonatomic, strong) ZLAdvertView *zladvertView;
@@ -29,6 +35,9 @@ static NSString * const  UmengAppkey = @"5bd94ebdb465f5a5d300004f";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [GeTuiSdk startSdkWithAppId:kGtAppId appKey:kGtAppKey appSecret:kGtAppSecret delegate:self];
+    // 注册 APNs
+    [self registerRemoteNotification];
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -152,6 +161,58 @@ static NSString * const  UmengAppkey = @"5bd94ebdb465f5a5d300004f";
 }
 
 
+    /** 注册 APNs */
+- (void)registerRemoteNotification {
+    /*
+     警告：Xcode8 需要手动开启"TARGETS -> Capabilities -> Push Notifications"
+     */
+    
+    /*
+     警告：该方法需要开发者自定义，以下代码根据 APP 支持的 iOS 系统不同，代码可以对应修改。
+     以下为演示代码，注意根据实际需要修改，注意测试支持的 iOS 系统都能获取到 DeviceToken
+     */
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0 // Xcode 8编译会调用
+//        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+//        center.delegate = self;
+//        [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionCarPlay) completionHandler:^(BOOL granted, NSError *_Nullable error) {
+//            if (!error) {
+//                NSLog(@"request authorization succeeded!");
+//            }
+//        }];
+        
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+#else // Xcode 7编译会调用
+        UIUserNotificationType types = (UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeBadge);
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+#endif
+    } else if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        UIUserNotificationType types = (UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeBadge);
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    } else {
+        UIRemoteNotificationType apn_type = (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert |
+                                                                       UIRemoteNotificationTypeSound |
+                                                                       UIRemoteNotificationTypeBadge);
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:apn_type];
+    }
+}
+
+    /** 远程通知注册成功委托 */
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // [3]:向个推服务器注册deviceToken 为了方便开发者，建议使用新方法
+    [GeTuiSdk registerDeviceTokenData:deviceToken];
+}
+
+    /** SDK启动成功返回cid */
+- (void)GeTuiSdkDidRegisterClient:(NSString *)clientId {
+    //个推SDK已注册，返回clientId
+    NSLog(@"\n>>>[GeTuiSdk RegisterClient]:%@\n\n", clientId);
+    [UserModel saveCid:clientId];
+}
 
 @end
 

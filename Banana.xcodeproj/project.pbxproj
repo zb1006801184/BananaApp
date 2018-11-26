@@ -18,6 +18,10 @@
 		2A068182219FF65900ACE26B /* AllProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A068180219FF65900ACE26B /* AllProductViewController.m */; };
 		2A068183219FF65900ACE26B /* AllProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A068181219FF65900ACE26B /* AllProductViewController.xib */; };
 		2A068189219FF99200ACE26B /* UIColor+RGBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A068188219FF99200ACE26B /* UIColor+RGBHelper.m */; };
+		2A1448A921A8F7E500895E38 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1448A821A8F7E500895E38 /* NotificationService.m */; };
+		2A1448AD21A8F7E500895E38 /* NotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2A1448A521A8F7E500895E38 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2A1448B621A9007600895E38 /* ChangePhoneForMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1448B421A9007600895E38 /* ChangePhoneForMoreViewController.m */; };
+		2A1448B721A9007600895E38 /* ChangePhoneForMoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A1448B521A9007600895E38 /* ChangePhoneForMoreViewController.xib */; };
 		2A268ECC21A51DF300318E93 /* UIViewController+Back.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A268ECB21A51DF300318E93 /* UIViewController+Back.m */; };
 		2A3C6F2021A5538A008FF3B6 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C6F1F21A5538A008FF3B6 /* HomeModel.m */; };
 		2A3C6F2321A553BC008FF3B6 /* HomeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C6F2221A553BC008FF3B6 /* HomeRequest.m */; };
@@ -86,6 +90,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2A1448AB21A8F7E500895E38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A928AF2219FE6EE0078AB7B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A1448A421A8F7E500895E38;
+			remoteInfo = NotificationService;
+		};
 		2A928B13219FE6EF0078AB7B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A928AF2219FE6EE0078AB7B /* Project object */;
@@ -101,6 +112,20 @@
 			remoteInfo = Banana;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2A1448B121A8F7E500895E38 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2A1448AD21A8F7E500895E38 /* NotificationService.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1BE855A206E8D107BE45AD53 /* Pods-Banana.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Banana.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Banana/Pods-Banana.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +149,14 @@
 		2A068187219FF99200ACE26B /* UIColor+RGBHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGBHelper.h"; sourceTree = "<group>"; };
 		2A068188219FF99200ACE26B /* UIColor+RGBHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGBHelper.m"; sourceTree = "<group>"; };
 		2A06818A219FFA1000ACE26B /* Banana.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Banana.pch; sourceTree = "<group>"; };
+		2A1448A521A8F7E500895E38 /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A1448A721A8F7E500895E38 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		2A1448A821A8F7E500895E38 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		2A1448AA21A8F7E500895E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A1448B221A8FB6800895E38 /* NotificationService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationService.entitlements; sourceTree = "<group>"; };
+		2A1448B321A9007600895E38 /* ChangePhoneForMoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePhoneForMoreViewController.h; sourceTree = "<group>"; };
+		2A1448B421A9007600895E38 /* ChangePhoneForMoreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePhoneForMoreViewController.m; sourceTree = "<group>"; };
+		2A1448B521A9007600895E38 /* ChangePhoneForMoreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePhoneForMoreViewController.xib; sourceTree = "<group>"; };
 		2A268ECA21A51DF300318E93 /* UIViewController+Back.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Back.h"; sourceTree = "<group>"; };
 		2A268ECB21A51DF300318E93 /* UIViewController+Back.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Back.m"; sourceTree = "<group>"; };
 		2A3C6F1E21A5538A008FF3B6 /* HomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeModel.h; sourceTree = "<group>"; };
@@ -239,6 +272,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2A1448A221A8F7E500895E38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A928AF7219FE6EE0078AB7B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -379,6 +419,9 @@
 				2AF3B7E421A3C86A003D2C39 /* SetUserNameViewController.h */,
 				2AF3B7E521A3C86A003D2C39 /* SetUserNameViewController.m */,
 				2AF3B7E621A3C86A003D2C39 /* SetUserNameViewController.xib */,
+				2A1448B321A9007600895E38 /* ChangePhoneForMoreViewController.h */,
+				2A1448B421A9007600895E38 /* ChangePhoneForMoreViewController.m */,
+				2A1448B521A9007600895E38 /* ChangePhoneForMoreViewController.xib */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -401,12 +444,24 @@
 			path = AllProduct;
 			sourceTree = "<group>";
 		};
+		2A1448A621A8F7E500895E38 /* NotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				2A1448B221A8FB6800895E38 /* NotificationService.entitlements */,
+				2A1448A721A8F7E500895E38 /* NotificationService.h */,
+				2A1448A821A8F7E500895E38 /* NotificationService.m */,
+				2A1448AA21A8F7E500895E38 /* Info.plist */,
+			);
+			path = NotificationService;
+			sourceTree = "<group>";
+		};
 		2A928AF1219FE6EE0078AB7B = {
 			isa = PBXGroup;
 			children = (
 				2A928AFC219FE6EE0078AB7B /* Banana */,
 				2A928B15219FE6EF0078AB7B /* BananaTests */,
 				2A928B20219FE6EF0078AB7B /* BananaUITests */,
+				2A1448A621A8F7E500895E38 /* NotificationService */,
 				2A928AFB219FE6EE0078AB7B /* Products */,
 				109959AC8DDC7C7AFB8CEB1E /* Pods */,
 				F8AE9840E838E20D219756C8 /* Frameworks */,
@@ -419,6 +474,7 @@
 				2A928AFA219FE6EE0078AB7B /* Banana.app */,
 				2A928B12219FE6EF0078AB7B /* BananaTests.xctest */,
 				2A928B1D219FE6EF0078AB7B /* BananaUITests.xctest */,
+				2A1448A521A8F7E500895E38 /* NotificationService.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -595,6 +651,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2A1448A421A8F7E500895E38 /* NotificationService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A1448B021A8F7E500895E38 /* Build configuration list for PBXNativeTarget "NotificationService" */;
+			buildPhases = (
+				2A1448A121A8F7E500895E38 /* Sources */,
+				2A1448A221A8F7E500895E38 /* Frameworks */,
+				2A1448A321A8F7E500895E38 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotificationService;
+			productName = NotificationService;
+			productReference = 2A1448A521A8F7E500895E38 /* NotificationService.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		2A928AF9219FE6EE0078AB7B /* Banana */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A928B26219FE6EF0078AB7B /* Build configuration list for PBXNativeTarget "Banana" */;
@@ -604,10 +677,12 @@
 				2A928AF7219FE6EE0078AB7B /* Frameworks */,
 				2A928AF8219FE6EE0078AB7B /* Resources */,
 				E9A298864473DB0B96D493AD /* [CP] Copy Pods Resources */,
+				2A1448B121A8F7E500895E38 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2A1448AC21A8F7E500895E38 /* PBXTargetDependency */,
 			);
 			name = Banana;
 			productName = Banana;
@@ -658,6 +733,14 @@
 			attributes = {
 				LastUpgradeCheck = 1000;
 				TargetAttributes = {
+					2A1448A421A8F7E500895E38 = {
+						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
 					2A928AF9219FE6EE0078AB7B = {
 						CreatedOnToolsVersion = 10.0;
 					};
@@ -687,15 +770,24 @@
 				2A928AF9219FE6EE0078AB7B /* Banana */,
 				2A928B11219FE6EF0078AB7B /* BananaTests */,
 				2A928B1C219FE6EF0078AB7B /* BananaUITests */,
+				2A1448A421A8F7E500895E38 /* NotificationService */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2A1448A321A8F7E500895E38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A928AF8219FE6EE0078AB7B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A1448B721A9007600895E38 /* ChangePhoneForMoreViewController.xib in Resources */,
 				2A4883D921A1538D006E74E2 /* ReviseViewController.xib in Resources */,
 				3749266221A29EAA00C711AA /* popUpCell.xib in Resources */,
 				3749265321A266CE00C711AA /* readme.ME in Resources */,
@@ -778,6 +870,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2A1448A121A8F7E500895E38 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A1448A921A8F7E500895E38 /* NotificationService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2A928AF6219FE6EE0078AB7B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -807,6 +907,7 @@
 				2AE010FE21A1325D00A205F8 /* MineMainTableView.m in Sources */,
 				2AF1677F21A2D1340016F7D2 /* MineRequest.m in Sources */,
 				2AA1B42321A1339C00B0C320 /* MineMainTableViewCell.m in Sources */,
+				2A1448B621A9007600895E38 /* ChangePhoneForMoreViewController.m in Sources */,
 				2ADB5CB721A15916000FFA76 /* MineMaterialViewController.m in Sources */,
 				2ADB5CC121A163DE000FFA76 /* MineSetViewController.m in Sources */,
 				2ADB5CC621A1666A000FFA76 /* MineIdeaViewController.m in Sources */,
@@ -851,6 +952,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2A1448AC21A8F7E500895E38 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A1448A421A8F7E500895E38 /* NotificationService */;
+			targetProxy = 2A1448AB21A8F7E500895E38 /* PBXContainerItemProxy */;
+		};
 		2A928B14219FE6EF0078AB7B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2A928AF9219FE6EE0078AB7B /* Banana */;
@@ -883,6 +989,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2A1448AE21A8F7E500895E38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NotificationService/NotificationService.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZT24Q3TZVN;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cn.xiangjiaoqianbao.product.NotificationService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2A1448AF21A8F7E500895E38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NotificationService/NotificationService.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZT24Q3TZVN;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cn.xiangjiaoqianbao.product.NotificationService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		2A928B24219FE6EF0078AB7B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1004,6 +1152,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZT24Q3TZVN;
+				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Banana/Util/Banana.pch";
 				INFOPLIST_FILE = Banana/Info.plist;
@@ -1028,6 +1177,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZT24Q3TZVN;
+				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Banana/Util/Banana.pch";
 				INFOPLIST_FILE = Banana/Info.plist;
@@ -1116,6 +1266,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2A1448B021A8F7E500895E38 /* Build configuration list for PBXNativeTarget "NotificationService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A1448AE21A8F7E500895E38 /* Debug */,
+				2A1448AF21A8F7E500895E38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2A928AF5219FE6EE0078AB7B /* Build configuration list for PBXProject "Banana" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

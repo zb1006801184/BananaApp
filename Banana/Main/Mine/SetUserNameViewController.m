@@ -6,7 +6,6 @@
 //
 
 #import "SetUserNameViewController.h"
-
 @interface SetUserNameViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
 
