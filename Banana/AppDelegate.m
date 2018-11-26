@@ -130,7 +130,7 @@ static NSString * const  UmengAppkey = @"5bd94ebdb465f5a5d300004f";
             
         }
         
-        Web = self.zladvertView.imgurl;
+        self.zladvertView.imgurl = Web;
         
         //存储全部产品的产品类型到本地
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];

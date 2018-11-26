@@ -33,6 +33,11 @@
     self.showView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
     [self.view addSubview:self.showView];
     self.showView.hidden = YES;
+    
+    if (@available(iOS 12.0, *)) {
+        self.codeTextField.textContentType = UITextContentTypeOneTimeCode;
+    }
+
 }
 
 - (IBAction)backLoginClick:(id)sender {

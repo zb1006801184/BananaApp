@@ -56,6 +56,7 @@
 		2AF1678221A2FAFE0016F7D2 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF1678121A2FAFE0016F7D2 /* UserModel.m */; };
 		2AF3B7E721A3C86A003D2C39 /* SetUserNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF3B7E521A3C86A003D2C39 /* SetUserNameViewController.m */; };
 		2AF3B7E821A3C86A003D2C39 /* SetUserNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AF3B7E621A3C86A003D2C39 /* SetUserNameViewController.xib */; };
+		373D50EF21ABBFDA00E2C0C4 /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 373D50EE21ABBFDA00E2C0C4 /* CalculatorViewController.m */; };
 		3749263F21A2402000C711AA /* ZLAdvertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749263D21A2402000C711AA /* ZLAdvertView.m */; };
 		3749264121A25E1900C711AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3749264021A25E1900C711AA /* Images.xcassets */; };
 		3749265121A266CE00C711AA /* AESCipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 3749264521A266CE00C711AA /* AESCipher.m */; };
@@ -188,6 +189,8 @@
 		2AF3B7E421A3C86A003D2C39 /* SetUserNameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetUserNameViewController.h; sourceTree = "<group>"; };
 		2AF3B7E521A3C86A003D2C39 /* SetUserNameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetUserNameViewController.m; sourceTree = "<group>"; };
 		2AF3B7E621A3C86A003D2C39 /* SetUserNameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetUserNameViewController.xib; sourceTree = "<group>"; };
+		373D50ED21ABBFDA00E2C0C4 /* CalculatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
+		373D50EE21ABBFDA00E2C0C4 /* CalculatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 		3749263D21A2402000C711AA /* ZLAdvertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLAdvertView.m; sourceTree = "<group>"; };
 		3749263E21A2402000C711AA /* ZLAdvertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLAdvertView.h; sourceTree = "<group>"; };
 		3749264021A25E1900C711AA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -317,6 +320,7 @@
 		2A06816C219FF0DB00ACE26B /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				373D50EC21ABBF9900E2C0C4 /* Calculator */,
 				2A068171219FF15700ACE26B /* Tabbar */,
 				2A06816D219FF0FD00ACE26B /* Home */,
 				2A068179219FF5F800ACE26B /* AllProduct */,
@@ -508,6 +512,15 @@
 				2AF1678121A2FAFE0016F7D2 /* UserModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		373D50EC21ABBF9900E2C0C4 /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				373D50ED21ABBFDA00E2C0C4 /* CalculatorViewController.h */,
+				373D50EE21ABBFDA00E2C0C4 /* CalculatorViewController.m */,
+			);
+			path = Calculator;
 			sourceTree = "<group>";
 		};
 		3749263C21A2402000C711AA /* ZLAdvertView */ = {
@@ -774,6 +787,7 @@
 				2A068165219FEF2900ACE26B /* BSomeWays.m in Sources */,
 				4096862421A16CE600ECF103 /* AllProductCell.m in Sources */,
 				2A068160219FED8300ACE26B /* NetWorkTool.m in Sources */,
+				373D50EF21ABBFDA00E2C0C4 /* CalculatorViewController.m in Sources */,
 				2A06816A219FF05300ACE26B /* UIView+Layout.m in Sources */,
 				2A3C6F2321A553BC008FF3B6 /* HomeRequest.m in Sources */,
 				37D2A53E21A7CE020000AE27 /* ProductDetailViewController.m in Sources */,

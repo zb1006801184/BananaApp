@@ -31,6 +31,10 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"更换手机号";
     [self loadDataForView];
+    
+    if (@available(iOS 12.0, *)) {
+        self.codeTextField.textContentType = UITextContentTypeOneTimeCode;
+    }
 }
 - (void)loadDataForView {
     _operationType = @"4";

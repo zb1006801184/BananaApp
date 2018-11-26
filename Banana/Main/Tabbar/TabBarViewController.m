@@ -9,6 +9,9 @@
 #import "HomeViewController.h"
 #import "AllProductViewController.h"
 #import "MineViewController.h"
+#import "UserModel.h"
+#import "CalculatorViewController.h"
+
 @interface TabBarViewController ()
 
 @end
@@ -18,7 +21,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSArray *VCs = @[[self HomeNav],[self AllProductNav],[self MineNav]];
+    
+    NSArray *VCs;
+    UserModel *model = [UserModel getUserModel];
+    if ([model.userType isEqualToString:@"0"]) {
+        VCs = @[[self HomeNav],[self AllProductNav],[self MineNav]];
+    }else{
+        VCs = @[[self CalculatorNav],[self MineNav]];
+    }
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.tabBar.tintColor = [UIColor blackColor];
     self.viewControllers = VCs;
@@ -61,6 +72,20 @@
     nav.navigationBar.barTintColor = [UIColor colorWithHexString:@"#232323"]; //导航栏的颜色
 //    nav.navigationBar.topItem.title = @"";
 
+    return nav;
+}
+
+- (UINavigationController *)CalculatorNav {
+    CalculatorViewController *HomeVC = [[CalculatorViewController alloc]init];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:HomeVC];
+    HomeVC.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
+    nav.tabBarItem.title = @"计算器";
+    NSDictionary *dic=@{NSForegroundColorAttributeName :[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:18]};
+    [nav.navigationBar setTitleTextAttributes:dic];
+    nav.tabBarItem.image = [[UIImage imageNamed:@"home"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    nav.tabBarItem.selectedImage = [[UIImage imageNamed:@"home_select"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    nav.navigationBar.barTintColor = [UIColor colorWithHexString:@"#232323"]; //导航栏的颜色
+    
     return nav;
 }
 

@@ -39,6 +39,11 @@
     _getCodeButton.hidden = YES;
     _loginType = @"1";
     _passwordTextField.secureTextEntry = YES;
+    
+    if (@available(iOS 12.0, *)) {
+        self.passwordTextField.textContentType = UITextContentTypeOneTimeCode;
+    }
+
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -76,9 +81,9 @@
     [MineRequest loginWithUsername:_accountTextField.text password:_passwordTextField.text loginType:_loginType success:^(id  _Nonnull responseObject) {
         [self.view makeToast:@"登录成功" duration:1 position:CSToastPositionCenter];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self rootView];
             [UserModel login];
             [UserModel saveUserModelWithObject:[UserModel mj_objectWithKeyValues:responseObject]];
+            [self rootView];
         });
     } failure:^(NSError * _Nonnull error) {
         

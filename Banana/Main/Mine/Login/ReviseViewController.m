@@ -26,6 +26,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"修改密码";
+    
+    if (@available(iOS 12.0, *)) {
+        self.codeTextField.textContentType = UITextContentTypeOneTimeCode;
+    }
 }
 - (IBAction)sureClick:(id)sender {
     if (self.phoneTextField.text.length < 1) {

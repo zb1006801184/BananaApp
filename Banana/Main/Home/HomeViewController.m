@@ -310,7 +310,7 @@
         
         
         BWebViewController *web = [[BWebViewController alloc]init];
-        web.mainUrl = model.picUrl;
+        web.mainUrl = model.jumpValue;
         web.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:web animated:YES];
         
@@ -330,7 +330,7 @@
     if ([model.jumpType isEqualToString:@"1"]) {
         
         BWebViewController *web = [[BWebViewController alloc]init];
-        web.mainUrl = model.picUrl;
+        web.mainUrl = model.jumpValue;
         web.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:web animated:YES];
         
