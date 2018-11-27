@@ -24,11 +24,36 @@
     [self.view addSubview:webView];
     webView.navigationDelegate = self;
     webView.UIDelegate = self;
-    webView.customUserAgent = @"xiangjiaowallet/1.0";
+    
+    
+    if (@available(iOS 12.0, *)){
+        NSString *baseAgent = [webView valueForKey:@"applicationNameForUserAgent"];
+        NSString *userAgent = [NSString stringWithFormat:@"%@xiangjiaowallet/1.0",baseAgent];
+        [webView setValue:userAgent forKey:@"applicationNameForUserAgent"];
+        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.mainUrl]]];
 
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_mainUrl]]];
+    }else{
+        [webView evaluateJavaScript:@"navigator.userAgent" completionHandler:^(id result, NSError *error) {
+            
+            NSString *oldAgent = result;
+            NSString *newAgent = [NSString stringWithFormat:@"%@ %@", oldAgent, @"xiangjiaowallet/1.0"];
+            NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:newAgent, @"UserAgent", nil];
+            [[NSUserDefaults standardUserDefaults] registerDefaults:dictionary];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            if (@available(iOS 9.0, *)) {
+                [webView setCustomUserAgent:newAgent];
+            } else {
+                [webView setValue:newAgent forKey:@"applicationNameForUserAgent"];
+            }
+            [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.mainUrl]]];
+            
+        }];
+    }
 
 
+
+  
+   
 }
 
 // 页面开始加载时调用
@@ -42,6 +67,7 @@
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     
     [self.view hideAllToasts:YES clearQueue:YES];
+    
 }
 
 
