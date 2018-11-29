@@ -13,7 +13,7 @@
 //bugly
 NSString * const buglyappid = @"8a20aae718";
 
-//百度云oss
+//阿里云oss
 NSString * const Bucket = @"loan-market-pics";
 NSString * const endPoint = @"oss-cn-hangzhou.aliyuncs.com";
 NSString * const imagesFace= @"images/face/";
