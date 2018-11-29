@@ -16,12 +16,6 @@
 #import <Bugly/Bugly.h>
 
 
-//友盟appkey
-static NSString * const  UmengAppkey = @"5bd94ebdb465f5a5d300004f";
-//个推
-#define kGtAppId           @"sPnERM9H7I9rsZJs4VvQD8"
-#define kGtAppKey          @"GqkE9dihaX5ndWshF3fhw9"
-#define kGtAppSecret       @"yOUgWv1xGr7gJHcwqTgQx1"
 
 @interface AppDelegate ()<GeTuiSdkDelegate>
 
@@ -64,10 +58,10 @@ static NSString * const  UmengAppkey = @"5bd94ebdb465f5a5d300004f";
     [[UITabBar appearance] setTranslucent:NO];//iOS 12.1 tabbar从二级页面返回跳动问题的解决方法
     
     //友盟统计
-    [UMConfigure initWithAppkey:UmengAppkey channel:@"App Store"];
+    [UMConfigure initWithAppkey:UmengAppkey channel:@"OC版"];
     
     //bugly
-    [Bugly startWithAppId:@"8a20aae718"];
+    [Bugly startWithAppId:buglyappid];
 
     
     return YES;

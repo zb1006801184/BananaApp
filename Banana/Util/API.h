@@ -15,6 +15,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
+FOUNDATION_EXPORT NSString *const buglyappid;
+
+FOUNDATION_EXPORT NSString *const endPoint;
+FOUNDATION_EXPORT NSString *const Bucket;
+FOUNDATION_EXPORT NSString *const imagesFace;
+
+
+FOUNDATION_EXPORT NSString *const kGtAppId;
+FOUNDATION_EXPORT NSString *const kGtAppKey;
+FOUNDATION_EXPORT NSString *const kGtAppSecret;
+
+FOUNDATION_EXPORT NSString *const UmengAppkey;
+
 FOUNDATION_EXPORT NSString *const API_NAME;
 
 FOUNDATION_EXPORT NSString *const MEMBER_LOGIN;

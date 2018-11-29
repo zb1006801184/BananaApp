@@ -8,6 +8,8 @@
 #import "MineMaterialViewController.h"
 #import "SetUserNameViewController.h"
 #import "BAliyunOSS.h"
+#import "API.h"
+
 @interface MineMaterialViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
     OSSClient *client;
@@ -119,7 +121,7 @@
     NSString *str = [formatter stringFromDate:[NSDate date]];
     NSString *fileName = [NSString stringWithFormat:@"%@",str];
     NSString *objectKey = [NSString stringWithFormat:@"Banana%@.png",fileName];
-    _objecKey = [NSString stringWithFormat:@"images/face/%@",objectKey];
+    _objecKey = [NSString stringWithFormat:@"%@%@",imagesFace,objectKey];
     [[BAliyunOSS sharedInstance] uploadObjectAsyncWith:imageData withObjectKey:objectKey withAlbumNumber:nil];
 }
 
@@ -128,7 +130,9 @@
     __weak typeof(self)weekStyle = self;
     [MineRequest changeImageWithHeadFile:_objecKey success:^(id  _Nonnull responseObject) {
         UserModel *model = [UserModel getUserModel];
-        model.headImg = [NSString stringWithFormat:@"https://loan-market-pics.oss-cn-hangzhou.aliyuncs.com/%@",weekStyle.objecKey];
+//        model.headImg = [NSString stringWithFormat:@"https://loan-market-pics.oss-cn-hangzhou.aliyuncs.com/%@",weekStyle.objecKey];
+        model.headImg = [NSString stringWithFormat:@"https://%@.%@/%@",Bucket,endPoint,weekStyle.objecKey];
+
         [UserModel saveUserModelWithObject:model];
         [weekStyle.headImage sd_setImageWithURL:[NSURL URLWithString:model.headImg] placeholderImage:nil];
     } failure:^(NSError * _Nonnull error) {

@@ -8,7 +8,6 @@
 #import "BAliyunOSS.h"
 #import <AliyunOSSiOS/OSSService.h>
 #import <AFNetworking.h>
-NSString * const endPoint = @"https://oss-cn-hangzhou.aliyuncs.com";
 OSSClient * client;
 @interface BAliyunOSS ()
 //获取token返回的json数据
@@ -92,7 +91,9 @@ OSSClient * client;
     conf.timeoutIntervalForRequest = 30;
     conf.timeoutIntervalForResource = 24 * 60 * 60;
     
-    client = [[OSSClient alloc] initWithEndpoint:endPoint credentialProvider:credential2 clientConfiguration:conf];
+    NSString *httpendPoint = [NSString stringWithFormat:@"https://%@",endPoint];
+
+    client = [[OSSClient alloc] initWithEndpoint:httpendPoint credentialProvider:credential2 clientConfiguration:conf];
 }
 
 
@@ -106,9 +107,9 @@ OSSClient * client;
     //上传请求类
     OSSPutObjectRequest * request = [OSSPutObjectRequest new];
     //文件夹名 后台给出
-    request.bucketName = @"loan-market-pics";
+    request.bucketName = Bucket;
     //objectKey为文件名 一般自己拼接
-    request.objectKey = [NSString stringWithFormat:@"images/face/%@",objectKey];
+    request.objectKey = [NSString stringWithFormat:@"%@%@",imagesFace,objectKey];
     //上传数据类型为NSData
     request.uploadingData = uploadData;
     OSSTask * putTask = [client putObject:request];

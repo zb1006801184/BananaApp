@@ -10,7 +10,27 @@
 @implementation API
 
 @end
+//bugly
+NSString * const buglyappid = @"8a20aae718";
+
+//百度云oss
+NSString * const Bucket = @"loan-market-pics";
+NSString * const endPoint = @"oss-cn-hangzhou.aliyuncs.com";
+NSString * const imagesFace= @"images/face/";
+
+//个推
+NSString * const  kGtAppId = @"sPnERM9H7I9rsZJs4VvQD8";
+NSString * const  kGtAppKey = @"GqkE9dihaX5ndWshF3fhw9";
+NSString * const  kGtAppSecret = @"yOUgWv1xGr7gJHcwqTgQx1";
+
+//友盟appkey
+NSString * const  UmengAppkey = @"5bd94ebdb465f5a5d300004f";
+
+
+//接口前面的域名
 NSString *const API_NAME = @"https://apptest.xiangjiaoqianbao.cn/";
+
+
 //登录
 NSString *const MEMBER_LOGIN = @"member/login";
 //注册
